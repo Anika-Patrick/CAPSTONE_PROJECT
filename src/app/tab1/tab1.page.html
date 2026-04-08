@@ -1,17 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="bg ion-padding">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- 🔥 Streak -->
+  <div class="card streak">
+    <h2>🔥 Daily Streak</h2>
+    <h1>{{streak}} Days</h1>
+  </div>
+
+  <!-- 🍽️ Calories -->
+  <div class="card">
+    <h2>🍽️ Calories</h2>
+    <p>{{caloriesConsumed}} / {{caloriesGoal}} kcal</p>
+
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="caloriePercent"></div>
+    </div>
+  </div>
+
+  <!-- 🏋️ Workout -->
+  <div class="card">
+    <h2>🏋️ Workout</h2>
+    <p>{{workoutDone}} / {{workoutTotal}} Completed</p>
+
+    <div class="progress-bar">
+      <div class="progress blue" [style.width.%]="workoutPercent"></div>
+    </div>
+  </div>
+
+  <!-- 🥗 Meals -->
+  <div class="card">
+    <h2>🥗 Meals</h2>
+    <p>{{mealsDone}} / {{mealsTotal}} Completed</p>
+
+    <div class="progress-bar">
+      <div class="progress green" [style.width.%]="mealPercent"></div>
+    </div>
+  </div>
+
+  <!-- 🏆 Badges -->
+  <div class="card">
+    <h2>🏆 Badges</h2>
+
+    <div class="badges">
+      <div class="badge" *ngFor="let b of badges">
+        {{b}}
+      </div>
+    </div>
+  </div>
+
+  <!-- 💬 Floating Chat Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openChat()" routerLink="/chat">
+      <ion-icon name="chatbubbles"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

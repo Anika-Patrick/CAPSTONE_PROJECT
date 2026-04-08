@@ -1,17 +1,78 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="workout-page ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Header -->
+  <div class="header">
+    <h1>Train Hard</h1>
+    <p>No excuses</p>
+  </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Streak -->
+  <div class="streak-box">
+    🔥 Current Streak: {{streak}}
+  </div>
+
+  <!-- Categories -->
+  <div class="categories">
+    <div
+      *ngFor="let category of categories"
+      class="chip"
+      [class.active]="selectedCategory === category"
+      (click)="selectCategory(category)"
+    >
+      {{category}}
+    </div>
+  </div>
+
+  <!-- Workout Cards -->
+  <div class="exercise-list">
+    <div class="exercise-card" *ngFor="let workout of filteredWorkouts">
+
+      <div class="top">
+        <h2>{{workout.icon}} {{workout.name}}</h2>
+      </div>
+
+      <p>{{workout.sets}} sets • {{workout.reps}} reps</p>
+
+      <button
+        class="complete-btn"
+        [class.done]="workout.completed"
+        (click)="markComplete(workout)"
+      >
+        {{ workout.completed ? 'Completed ✅' : 'Mark Complete' }}
+      </button>
+
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="showModal">
+
+    <div class="modal-content">
+
+      <h2>Add Workout</h2>
+
+      <input placeholder="Exercise Name" [(ngModel)]="newWorkout.name">
+
+      <select [(ngModel)]="newWorkout.category">
+        <option *ngFor="let cat of categories">{{cat}}</option>
+      </select>
+
+      <input placeholder="Sets" [(ngModel)]="newWorkout.sets">
+
+      <input placeholder="Reps" [(ngModel)]="newWorkout.reps">
+
+      <button (click)="addWorkout()">Add</button>
+      <button class="cancel" (click)="closeModal()">Cancel</button>
+
+    </div>
+
+  </div>
+
 </ion-content>

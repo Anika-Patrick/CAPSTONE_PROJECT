@@ -1,0 +1,83 @@
+/* 🌌 Background */
+.bg {
+  --background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+  color: white;
+}
+
+/* Header */
+.header {
+  --background: transparent;
+  text-align: center;
+}
+
+/* Cards */
+.card {
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Streak */
+.streak {
+  text-align: center;
+  background: linear-gradient(45deg, #f59e0b, #ef4444);
+}
+
+/* Progress bars */
+.progress-bar {
+  height: 12px;
+  border-radius: 10px;
+  background: #1e293b;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(45deg, #f59e0b, #ef4444);
+  transition: width 0.5s ease;
+}
+
+.progress.blue {
+  background: linear-gradient(45deg, #3b82f6, #6366f1);
+}
+
+.progress.green {
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+}
+
+/* Badges */
+.badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #6366f1, #3b82f6);
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+/* FAB */
+ion-fab-button {
+  --background: linear-gradient(45deg, #22c55e, #16a34a);
+  --box-shadow: 0 5px 20px rgba(34,197,94,0.6);
+}

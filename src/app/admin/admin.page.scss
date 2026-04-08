@@ -1,0 +1,79 @@
+/* 🌌 Same gradient */
+ion-content {
+  --background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+}
+
+/* 🧊 Card */
+.card {
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* 💬 Chat */
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  margin: 15px 0;
+
+  border-radius: 12px;
+  background: rgba(0,0,0,0.4);
+}
+
+/* 💬 Messages */
+.message {
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.User {
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+}
+
+.Admin {
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+}
+
+/* ⏱ Time */
+.time {
+  font-size: 10px;
+  text-align: right;
+  opacity: 0.7;
+}
+
+/* 🔘 Buttons */
+ion-button {
+  margin-top: 10px;
+  border-radius: 12px;
+
+  --background: linear-gradient(45deg, #22c55e, #16a34a);
+}
+
+ion-button:hover {
+  transform: scale(1.05);
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

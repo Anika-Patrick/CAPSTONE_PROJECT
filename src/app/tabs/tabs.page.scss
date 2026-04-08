@@ -1,1 +1,116 @@
 
+.workout-page {
+  --background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.header p {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.streak-box {
+  background: linear-gradient(45deg, #f97316, #ef4444);
+  padding: 12px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.categories {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chip {
+  padding: 10px 18px;
+  background: #1e293b;
+  border-radius: 30px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chip.active {
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  transform: scale(1.05);
+}
+
+.exercise-card {
+  background: rgba(255,255,255,0.05);
+  padding: 18px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.exercise-card:hover {
+  transform: translateY(-4px);
+}
+
+.complete-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  color: white;
+}
+
+.complete-btn.done {
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+}
+
+ion-fab-button {
+  --background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.cancel {
+  background: red;
+}
