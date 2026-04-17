@@ -1,0 +1,50 @@
+<ion-content class="dashboard ion-padding">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>🔥 Dashboard</h1>
+    <p>Track your fitness journey</p>
+  </div>
+
+  <!-- CALORIES CARD -->
+  <div class="card calories">
+    <h2>Calories Burned</h2>
+    <p>{{fitness.calories}} / {{fitness.goal}}</p>
+
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progress"></div>
+    </div>
+  </div>
+
+  <!-- TOKENS CARD -->
+  <div class="card tokens">
+    <h2>🎯 Tokens</h2>
+    <p>{{fitness.tokens}} Earned</p>
+  </div>
+
+  <!-- GOAL SETTER -->
+  <div class="card goal">
+    <h2>Set Daily Goal</h2>
+
+    <ion-input
+      type="number"
+      placeholder="Enter calories goal"
+      [(ngModel)]="goalInput">
+    </ion-input>
+
+    <ion-button expand="block" (click)="setGoal()">
+      Update Goal
+    </ion-button>
+  </div>
+
+  <!-- CHAT ACCESS -->
+  <div class="card chat">
+    <h2>💬 Trainer Chat</h2>
+    <p>Unlock with 50 tokens</p>
+
+    <ion-button expand="block" (click)="openChat()">
+      Open Chat
+    </ion-button>
+  </div>
+
+</ion-content>

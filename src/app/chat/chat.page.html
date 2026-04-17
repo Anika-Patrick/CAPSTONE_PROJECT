@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Chat with Coach 💬</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg ion-padding">
+
+  <!-- 💬 Chat Box -->
+  <div class="chat-box">
+
+    <div *ngFor="let msg of messages"
+         [ngClass]="msg.sender === 'User' ? 'user-msg' : 'admin-msg'">
+
+      <div class="bubble">
+        {{msg.text}}
+        <div class="time">{{msg.time}}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<!-- 📨 Input -->
+<ion-footer>
+  <div class="input-area">
+    <ion-input placeholder="Type a message..." [(ngModel)]="userMsg"></ion-input>
+    <ion-button (click)="sendMsg()">Send</ion-button>
+  </div>
+</ion-footer>
