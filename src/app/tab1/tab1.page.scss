@@ -1,83 +1,208 @@
-/* 🌌 Background */
-.bg {
-  --background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+/* src/app/tab1/tab1.page.scss */
+
+.tab1-page {
+  --background: #0f172a;
   color: white;
+  padding-bottom: 100px;
 }
 
-/* Header */
-.header {
-  --background: transparent;
+/* HERO */
+
+.hero-section {
   text-align: center;
-}
-
-/* Cards */
-.card {
-  padding: 18px;
-  margin-bottom: 18px;
-  border-radius: 18px;
-
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-/* Streak */
-.streak {
-  text-align: center;
-  background: linear-gradient(45deg, #f59e0b, #ef4444);
-}
-
-/* Progress bars */
-.progress-bar {
-  height: 12px;
-  border-radius: 10px;
-  background: #1e293b;
+  padding: 30px 20px;
+  position: relative;
   overflow: hidden;
-  margin-top: 10px;
 }
 
-.progress {
+.hero-section h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+/* FLOATING ICONS */
+
+.floating-icon {
+  position: absolute;
+  font-size: 28px;
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+.icon1 {
+  top: 20px;
+  left: 20px;
+}
+
+.icon2 {
+  top: 30px;
+  right: 30px;
+}
+
+.icon3 {
+  bottom: 20px;
+  left: 40px;
+}
+
+.icon4 {
+  bottom: 10px;
+  right: 20px;
+}
+
+/* CARDS */
+
+.main-card,
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 22px;
+  padding: 20px;
+  margin: 16px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: fadeUp 0.8s ease;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.mini-box {
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.mini-box h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.mini-box p {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* PROGRESS */
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-fill {
   height: 100%;
-  background: linear-gradient(45deg, #f59e0b, #ef4444);
-  transition: width 0.5s ease;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #8b5cf6
+  );
+  animation: progressAnim 2s ease;
 }
 
-.progress.blue {
-  background: linear-gradient(45deg, #3b82f6, #6366f1);
-}
+/* GRAPH */
 
-.progress.green {
-  background: linear-gradient(45deg, #22c55e, #16a34a);
-}
-
-/* Badges */
-.badges {
+.graph-grid {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 10px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 20px;
+  height: 220px;
 }
 
-.badge {
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: linear-gradient(45deg, #6366f1, #3b82f6);
+.bar-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: 28px;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    #60a5fa,
+    #7c3aed
+  );
+  animation: growBar 1.2s ease;
+}
+
+.bar-box span {
+  margin-top: 8px;
   font-size: 12px;
-  transition: 0.3s;
+  color: #cbd5e1;
 }
 
-.badge:hover {
-  transform: scale(1.1);
+/* BMI */
+
+.bmi-card h1 {
+  font-size: 44px;
+  margin: 10px 0;
 }
 
 /* FAB */
+
 ion-fab-button {
-  --background: linear-gradient(45deg, #22c55e, #16a34a);
-  --box-shadow: 0 5px 20px rgba(34,197,94,0.6);
+  --background: linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+  );
+  --box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+}
+
+/* KEYFRAMES */
+
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growBar {
+  from {
+    height: 0;
+  }
+}
+
+@keyframes progressAnim {
+  from {
+    width: 0;
+  }
 }

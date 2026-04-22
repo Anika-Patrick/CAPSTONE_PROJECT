@@ -1,78 +1,105 @@
-<ion-content class="workout-page ion-padding">
+<ion-content class="tab2-page ion-padding">
 
-  <!-- Header -->
+  <!-- FLOATING EXERCISE EMOJIS -->
+  <div class="floating-emoji emoji1">🏋️</div>
+  <div class="floating-emoji emoji2">🔥</div>
+  <div class="floating-emoji emoji3">💪</div>
+  <div class="floating-emoji emoji4">⚡</div>
+
+  <!-- HEADER -->
   <div class="header">
-    <h1>Train Hard</h1>
-    <p>No excuses</p>
+
+    <h1>🔥 Train Hard</h1>
+    <p>No excuses. Only results.</p>
+
   </div>
 
-  <!-- Streak -->
-  <div class="streak-box">
-    🔥 Current Streak: {{streak}}
+  <!-- TOP ACTIONS -->
+  <div class="top-actions">
+
+    <ion-button
+      color="danger"
+      fill="outline"
+      class="reset-btn"
+      (click)="clearWorkouts()">
+
+      Reset Workouts
+
+    </ion-button>
+
   </div>
 
-  <!-- Categories -->
-  <div class="categories">
+  <!-- CLICKABLE CATEGORY CAROUSEL -->
+  <div class="category-scroll">
+
     <div
-      *ngFor="let category of categories"
-      class="chip"
-      [class.active]="selectedCategory === category"
-      (click)="selectCategory(category)"
-    >
-      {{category}}
+      class="category-chip"
+      *ngFor="let c of categories"
+      [class.active]="selectedCategory === c.name"
+      (click)="selectedCategory = c.name">
+
+      {{ c.emoji }} {{ c.name }}
+
     </div>
+
   </div>
 
-  <!-- Workout Cards -->
-  <div class="exercise-list">
-    <div class="exercise-card" *ngFor="let workout of filteredWorkouts">
+  <!-- MAIN CATEGORY CARDS -->
+  <div class="cards">
 
-      <div class="top">
-        <h2>{{workout.icon}} {{workout.name}}</h2>
+    <div
+      class="exercise-card"
+      *ngFor="let c of categories"
+      (click)="openCategory(c.name)">
+
+      <div class="glow"></div>
+
+      <div class="content">
+
+        <div class="emoji">
+          {{ c.emoji }}
+        </div>
+
+        <h2>
+          {{ c.name }}
+        </h2>
+
+        <p>
+          🔥 5 Exercises • {{ c.level }}
+        </p>
+
+        <p>
+          🎯 Reward: 5 Tokens
+        </p>
+
+        <p>
+          ⚡ Avg Burn: 200 Calories
+        </p>
+
+        <ion-button
+          expand="block"
+          class="complete-btn">
+
+          Start Workout →
+
+        </ion-button>
+
       </div>
 
-      <p>{{workout.sets}} sets • {{workout.reps}} reps</p>
-
-      <button
-        class="complete-btn"
-        [class.done]="workout.completed"
-        (click)="markComplete(workout)"
-      >
-        {{ workout.completed ? 'Completed ✅' : 'Mark Complete' }}
-      </button>
-
     </div>
+
   </div>
 
-  <!-- FAB -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openModal()">
-      <ion-icon name="add"></ion-icon>
+  <!-- FLOATING ADD WORKOUT BUTTON -->
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed">
+
+    <ion-fab-button>
+      +
     </ion-fab-button>
+
   </ion-fab>
-
-  <!-- Modal -->
-  <div class="modal" *ngIf="showModal">
-
-    <div class="modal-content">
-
-      <h2>Add Workout</h2>
-
-      <input placeholder="Exercise Name" [(ngModel)]="newWorkout.name">
-
-      <select [(ngModel)]="newWorkout.category">
-        <option *ngFor="let cat of categories">{{cat}}</option>
-      </select>
-
-      <input placeholder="Sets" [(ngModel)]="newWorkout.sets">
-
-      <input placeholder="Reps" [(ngModel)]="newWorkout.reps">
-
-      <button (click)="addWorkout()">Add</button>
-      <button class="cancel" (click)="closeModal()">Cancel</button>
-
-    </div>
-
-  </div>
 
 </ion-content>

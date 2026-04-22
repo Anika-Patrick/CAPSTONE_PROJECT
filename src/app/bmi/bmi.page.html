@@ -1,0 +1,78 @@
+<ion-content class="bmi-page">
+
+  <div class="hero-section">
+
+    <h1>📏 BMI & Fitness Plan</h1>
+    <p>Create your perfect transformation plan</p>
+
+  </div>
+
+  <div class="form-card">
+
+    <ion-item>
+      <ion-input
+        type="number"
+        placeholder="Enter Weight (kg)"
+        [(ngModel)]="weight">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        type="number"
+        placeholder="Enter Height (cm)"
+        [(ngModel)]="height">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        [(ngModel)]="goalType"
+        placeholder="Select Goal">
+
+        <ion-select-option value="fat">
+          Fat Loss 🔥
+        </ion-select-option>
+
+        <ion-select-option value="muscle">
+          Muscle Gain 💪
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        type="number"
+        placeholder="Calories Goal"
+        [(ngModel)]="goalCalories">
+      </ion-input>
+    </ion-item>
+
+    <!-- BMI CARD -->
+    <div class="bmi-card">
+
+      <h2>Your BMI</h2>
+
+      <div class="bmi-value">
+        {{ bmi }}
+      </div>
+
+      <p class="bmi-status">
+        {{ bmiStatus }}
+      </p>
+
+    </div>
+
+    <ion-button
+      expand="block"
+      class="save-btn"
+      (click)="savePlan()">
+
+      Generate My Plan 🚀
+
+    </ion-button>
+
+  </div>
+
+</ion-content>

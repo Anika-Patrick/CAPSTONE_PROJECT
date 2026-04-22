@@ -24,52 +24,70 @@ export class HomePage implements OnInit {
     this.loadUsers();
   }
 
-  // 📥 Load users
+  // 📥 Load users from localStorage
   loadUsers() {
     const data = localStorage.getItem('fitness_users');
     this.users = data ? JSON.parse(data) : [];
   }
 
-  // 💾 Save users
+  // 💾 Save users to localStorage
   saveUsers() {
-    localStorage.setItem('fitness_users', JSON.stringify(this.users));
+    localStorage.setItem(
+      'fitness_users',
+      JSON.stringify(this.users)
+    );
   }
 
-  // 🔐 LOGIN (FIXED)
+  // 🔐 LOGIN
   login() {
 
-    // ✅ Admin login
-    if (this.username === 'admin' && this.password === '5678') {
+    // ✅ Admin Login
+    if (
+      this.username === 'admin' &&
+      this.password === '5678'
+    ) {
       this.router.navigate(['/admin']);
       return;
     }
 
-    // ✅ Default user login (1234)
-    if (this.username === 'user' && this.password === '1234') {
-      this.router.navigateByUrl('/tabs/tab1'); // 🔥 FIX
+    // ✅ Default User Login
+    if (
+      this.username === 'user' &&
+      this.password === '1234'
+    ) {
+      // 🔥 Go to BMI first
+      this.router.navigateByUrl('/bmi');
       return;
     }
 
-    // ✅ Registered users
+    // ✅ Registered Users Login
     const user = this.users.find(
-      u => u.username === this.username && u.password === this.password
+      u =>
+        u.username === this.username &&
+        u.password === this.password
     );
 
     if (user) {
-      this.router.navigateByUrl('/tabs/tab1'); // 🔥 FIX
+      // 🔥 Go to BMI first
+      this.router.navigateByUrl('/bmi');
     } else {
-      alert('User not found. Please register.');
+      alert(
+        'User not found. Please register first.'
+      );
     }
   }
 
   // 🆕 REGISTER
   register() {
+
     if (!this.username || !this.password) {
-      alert('Enter username & password');
+      alert('Please enter username and password');
       return;
     }
 
-    const exists = this.users.find(u => u.username === this.username);
+    const exists = this.users.find(
+      u => u.username === this.username
+    );
 
     if (exists) {
       alert('User already exists');
@@ -83,8 +101,11 @@ export class HomePage implements OnInit {
 
     this.saveUsers();
 
-    alert('Registered successfully! Now login.');
+    alert(
+      'Registered successfully! Now login.'
+    );
 
+    // Clear fields
     this.username = '';
     this.password = '';
   }

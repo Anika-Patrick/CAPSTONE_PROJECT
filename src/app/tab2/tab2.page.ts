@@ -1,87 +1,75 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonicModule, CommonModule],
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss']
 })
 export class Tab2Page {
 
-  categories = ['Chest', 'Back', 'Legs', 'Arms', 'Abs'];
+  constructor(private router: Router) {}
+
+  // ✅ SELECTED CATEGORY FOR CLICKABLE CAROUSEL
   selectedCategory = 'Chest';
 
-  streak = 0;
-
-  showModal = false;
-
-  newWorkout = {
-    name: '',
-    category: '',
-    sets: '',
-    reps: ''
-  };
-
-  workouts = [
-    { name: 'Bench Press', category: 'Chest', sets: 3, reps: 12, icon: '🏋️', completed: false },
-    { name: 'Push Ups', category: 'Chest', sets: 4, reps: 15, icon: '💪', completed: false },
-
-    { name: 'Deadlift', category: 'Back', sets: 3, reps: 10, icon: '🔥', completed: false },
-    { name: 'Pull Ups', category: 'Back', sets: 4, reps: 8, icon: '🏋️', completed: false },
-
-    { name: 'Squats', category: 'Legs', sets: 4, reps: 12, icon: '🦵', completed: false },
-
-    { name: 'Bicep Curl', category: 'Arms', sets: 3, reps: 15, icon: '💥', completed: false },
-
-    { name: 'Crunches', category: 'Abs', sets: 4, reps: 20, icon: '⚡', completed: false }
+  // 💪 WORKOUT CATEGORIES
+  categories = [
+    {
+      name: 'Chest',
+      emoji: '💪',
+      level: 'Beginner',
+      desc: 'Build upper body strength'
+    },
+    {
+      name: 'Legs',
+      emoji: '🦵',
+      level: 'Advanced',
+      desc: 'Powerful lower body training'
+    },
+    {
+      name: 'Arms',
+      emoji: '🏋️',
+      level: 'Moderate',
+      desc: 'Biceps & triceps focus'
+    },
+    {
+      name: 'Shoulders',
+      emoji: '🔥',
+      level: 'Moderate',
+      desc: 'Strong shoulder definition'
+    },
+    {
+      name: 'Abs',
+      emoji: '⚡',
+      level: 'Beginner',
+      desc: 'Core strength & stability'
+    }
   ];
 
-  get filteredWorkouts() {
-    return this.workouts.filter(
-      workout => workout.category === this.selectedCategory
-    );
-  }
+  // 🚀 OPEN EXERCISE PAGE
+  openCategory(category: string) {
+    console.log('Opening:', category);
 
-  selectCategory(category: string) {
+    // also update active selected chip
     this.selectedCategory = category;
+
+    this.router.navigate([
+      '/exercise',
+      category
+    ]);
   }
 
-  markComplete(workout: any) {
-    if (!workout.completed) {
-      workout.completed = true;
-      this.streak++;
-    }
-  }
+  // 🧹 CLEAR ONLY TAB 2 DATA
+  clearWorkouts() {
+    localStorage.removeItem('fitness_workouts');
 
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
-  }
-
-  addWorkout() {
-    this.workouts.push({
-      name: this.newWorkout.name,
-      category: this.newWorkout.category,
-      sets: Number(this.newWorkout.sets),
-      reps: Number(this.newWorkout.reps),
-      icon: '🔥',
-      completed: false
-    });
-
-    this.newWorkout = {
-      name: '',
-      category: '',
-      sets: '',
-      reps: ''
-    };
-
-    this.closeModal();
+    alert(
+      '🧹 Workout data cleared successfully!'
+    );
   }
 }

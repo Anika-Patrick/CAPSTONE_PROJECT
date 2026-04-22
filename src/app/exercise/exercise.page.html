@@ -1,0 +1,37 @@
+<ion-content class="exercise ion-padding">
+
+  <div *ngIf="exercises.length && index < exercises.length">
+
+    <div class="card">
+
+      <h1>{{exercises[index].name}}</h1>
+
+      <div class="details">
+        <span>🏋 {{exercises[index].sets}} sets</span>
+        <span>🔁 {{exercises[index].reps}} reps</span>
+        <span>🔥 {{exercises[index].cal}} cal</span>
+      </div>
+
+      <!-- VIDEO -->
+      <iframe
+        [src]="exercises[index].video"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+
+      <!-- COMPLETE -->
+      <ion-button expand="block" (click)="completeExercise()">
+        Complete ✅
+      </ion-button>
+
+    </div>
+
+  </div>
+
+  <!-- DONE SCREEN -->
+  <div *ngIf="index >= exercises.length" class="done">
+    <h2>🎉 Workout Completed!</h2>
+    <p>You earned +5 tokens</p>
+  </div>
+
+</ion-content>
