@@ -1,10 +1,8 @@
-// src/app/tab1/tab1.page.ts
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FitnessService } from '../services/fitness';
 
 @Component({
@@ -35,7 +33,8 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   constructor(
     public fitness: FitnessService,
-    private toast: ToastController
+    private toast: ToastController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -51,13 +50,13 @@ export class Tab1Page implements OnInit, OnDestroy {
     clearInterval(this.quoteInterval);
   }
 
-  // Progress %
+  // 📊 Progress %
   get progress() {
     if (this.fitness.goal === 0) return 0;
     return (this.fitness.calories / this.fitness.goal) * 100;
   }
 
-  // BMI
+  // 📏 BMI
   get bmi() {
     const weight = this.fitness.profile?.weight || 0;
     const height = this.fitness.profile?.height || 0;
@@ -70,6 +69,7 @@ export class Tab1Page implements OnInit, OnDestroy {
     return bmiValue.toFixed(1);
   }
 
+  // 🏆 BMI Status
   get bmiStatus() {
     if (this.bmi === '--') return 'No Data';
 
@@ -82,10 +82,10 @@ export class Tab1Page implements OnInit, OnDestroy {
     return 'Obese 🚨';
   }
 
-  // Floating Chat Button
+  // 💬 Floating Chat Button
   openChat() {
     if (this.fitness.useChat()) {
-      window.location.href = '/chat';
+      this.router.navigate(['/chat']);
     } else {
       this.showToast(
         '⚠️ Need 50 tokens to unlock admin chat'
@@ -93,13 +93,13 @@ export class Tab1Page implements OnInit, OnDestroy {
     }
   }
 
-  // Reset
+  // 🧹 Reset All
   resetAll() {
     this.fitness.resetAll();
     location.reload();
   }
 
-  // Auto motivational quotes
+  // 🔥 Auto motivational quotes
   startQuotes() {
     this.quoteInterval = setInterval(() => {
       const randomQuote =

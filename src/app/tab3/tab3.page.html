@@ -1,17 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- src/app/tab3/tab3.page.html -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="chat-page">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <!-- CENTER WELCOME SECTION -->
+  <div class="welcome-section">
+
+    <div class="bot-logo">
+      🤖
+    </div>
+
+    <h1>Welcome to FitnessGPT</h1>
+
+    <p>
+      Your Personal Fitness Assistant
+    </p>
+
+    <span>
+      What can I help you with today?
+    </span>
+
+  </div>
+
+  <!-- QUICK OPTIONS -->
+  <div class="quick-options">
+
+    <div
+      class="option-chip"
+      *ngFor="let question of quickQuestions"
+      (click)="selectQuickQuestion(question)"
+    >
+      {{ question }}
+    </div>
+
+  </div>
+
+  <!-- CHAT AREA -->
+  <div class="chat-container">
+
+    <div
+      *ngFor="let msg of chatMessages"
+      class="message"
+      [ngClass]="{
+        'bot-message': msg.sender === 'bot',
+        'user-message': msg.sender === 'user'
+      }"
+    >
+      <div class="bubble">
+        {{ msg.text }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INPUT BOX -->
+  <div class="chat-input-box">
+
+    <div class="input-wrapper">
+
+      <input
+        type="text"
+        class="custom-input"
+        placeholder="Ask anything about fitness..."
+        [(ngModel)]="userQuestion"
+        (keydown.enter)="sendMessage()"
+      />
+
+      <button
+        class="send-btn"
+        (click)="sendMessage()"
+        type="button"
+      >
+        ➤
+      </button>
+
+    </div>
+
+  </div>
+
 </ion-content>

@@ -1,42 +1,24 @@
 <ion-content class="tab2-page ion-padding">
 
-  <!-- FLOATING EXERCISE EMOJIS -->
-  <div class="floating-emoji emoji1">🏋️</div>
-  <div class="floating-emoji emoji2">🔥</div>
-  <div class="floating-emoji emoji3">💪</div>
-  <div class="floating-emoji emoji4">⚡</div>
-
   <!-- HEADER -->
   <div class="header">
-
     <h1>🔥 Train Hard</h1>
     <p>No excuses. Only results.</p>
-
   </div>
 
-  <!-- TOP ACTIONS -->
-  <div class="top-actions">
+  <!-- RESET -->
+  <ion-button color="danger" fill="outline" (click)="clearWorkouts()">
+    Reset Workouts
+  </ion-button>
 
-    <ion-button
-      color="danger"
-      fill="outline"
-      class="reset-btn"
-      (click)="clearWorkouts()">
-
-      Reset Workouts
-
-    </ion-button>
-
-  </div>
-
-  <!-- CLICKABLE CATEGORY CAROUSEL -->
+  <!-- CATEGORY CHIPS -->
   <div class="category-scroll">
 
     <div
       class="category-chip"
       *ngFor="let c of categories"
       [class.active]="selectedCategory === c.name"
-      (click)="selectedCategory = c.name">
+      (click)="openCategory(c.name)">
 
       {{ c.emoji }} {{ c.name }}
 
@@ -44,62 +26,73 @@
 
   </div>
 
-  <!-- MAIN CATEGORY CARDS -->
+  <!-- CARDS -->
   <div class="cards">
 
-    <div
-      class="exercise-card"
-      *ngFor="let c of categories"
-      (click)="openCategory(c.name)">
+    <div class="exercise-card" *ngFor="let c of categories">
 
-      <div class="glow"></div>
-
-      <div class="content">
-
-        <div class="emoji">
-          {{ c.emoji }}
-        </div>
-
-        <h2>
-          {{ c.name }}
-        </h2>
-
-        <p>
-          🔥 5 Exercises • {{ c.level }}
-        </p>
-
-        <p>
-          🎯 Reward: 5 Tokens
-        </p>
-
-        <p>
-          ⚡ Avg Burn: 200 Calories
-        </p>
-
-        <ion-button
-          expand="block"
-          class="complete-btn">
-
-          Start Workout →
-
-        </ion-button>
-
+      <!-- GIF -->
+      <div class="exercise-gif">
+        <img
+          [src]="'assets/workouts/' + c.name.toLowerCase() + '.gif'"
+        />
       </div>
+
+      <h2>{{ c.name }}</h2>
+      <p>🔥 Level: {{ c.level }}</p>
+
+      <ion-button
+        expand="block"
+        (click)="startWorkout(c.name)">
+
+        Start Workout
+
+      </ion-button>
 
     </div>
 
   </div>
+<!-- FLOATING BACKGROUND ICONS -->
+<div class="floating-bg">
+  <span class="bg-icon i1">💪</span>
+  <span class="bg-icon i2">🔥</span>
+  <span class="bg-icon i3">⚡</span>
+  <span class="bg-icon i4">🏋️</span>
+  <span class="bg-icon i5">🏆</span>
+  <span class="bg-icon i6">💥</span>
+  <span class="bg-icon i7">🦵</span>
+  <span class="bg-icon i8">🚀</span>
+</div>
+  <!-- WORKOUT OVERLAY -->
+  <div class="workout-overlay" *ngIf="isWorkoutMode">
 
-  <!-- FLOATING ADD WORKOUT BUTTON -->
-  <ion-fab
-    vertical="bottom"
-    horizontal="end"
-    slot="fixed">
+    <div class="workout-box">
 
-    <ion-fab-button>
-      +
-    </ion-fab-button>
+      <h2>{{ selectedCategory }} Workout</h2>
 
-  </ion-fab>
+      <img
+        class="workout-gif"
+        [src]="'assets/workouts/' + selectedCategory.toLowerCase() + '.gif'"
+      />
+
+      <h3>
+        {{ workoutExercises[selectedCategory]?.[currentExerciseIndex]?.name }}
+      </h3>
+
+      <p>💪 Reps: {{ reps }}</p>
+      <p>⏱ Time: {{ timeLeft }}s</p>
+
+      <div class="controls">
+        <button (click)="prevExercise()">⬅ Prev</button>
+        <button (click)="nextExercise()">Next ➡</button>
+      </div>
+
+      <button class="exit-btn" (click)="exitWorkout()">
+        Exit Workout
+      </button>
+
+    </div>
+
+  </div>
 
 </ion-content>
