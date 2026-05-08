@@ -173,3 +173,88 @@
     font-size: 13px;
   }
 }
+.exercise-gif {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 18px;
+  margin-bottom: 14px;
+}
+
+.exercise-gif img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  animation: zoomPulse 4s infinite ease-in-out;
+}
+
+.workout-gif {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 15px 0;
+  animation: floatGif 3s infinite ease-in-out;
+}
+
+/* GIF Animations */
+
+@keyframes zoomPulse {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatGif {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+.exercise-gif {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.exercise-gif img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.workout-gif {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 15px 0;
+}
+.workout-gif {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+  margin: 15px auto;
+}

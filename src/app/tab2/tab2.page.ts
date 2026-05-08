@@ -72,8 +72,96 @@ export class Tab2Page implements OnInit {
   }
 
   // ================= YOUR EXERCISES =================
- 
+ // ================= WORKOUT GIFS =================
 
+exerciseGifs: any = {
+
+  // ================= CHEST =================
+  'Push Ups': 'assets/workouts/chest.gif',
+  'Incline Push Ups': 'assets/workouts/chest.gif',
+  'Knee Push Ups': 'assets/workouts/chest.gif',
+  'Wall Push Ups': 'assets/workouts/chest.gif',
+  'Chest Press Light': 'assets/workouts/chest.gif',
+  'Bench Press': 'assets/workouts/chest.gif',
+  'Incline Dumbbell Press': 'assets/workouts/chest.gif',
+  'Chest Fly': 'assets/workouts/chest.gif',
+  'Decline Push Ups': 'assets/workouts/chest.gif',
+  'Cable Press': 'assets/workouts/chest.gif',
+  'Weighted Push Ups': 'assets/workouts/chest.gif',
+  'Heavy Bench Press': 'assets/workouts/chest.gif',
+  'Cable Fly': 'assets/workouts/chest.gif',
+  'Dips': 'assets/workouts/chest.gif',
+  'Explosive Push Ups': 'assets/workouts/chest.gif',
+
+  // ================= BACK =================
+  'Superman Hold': 'assets/workouts/back.gif',
+  'Resistance Band Pull': 'assets/workouts/back.gif',
+  'Reverse Snow Angels': 'assets/workouts/back.gif',
+  'Wall Slides': 'assets/workouts/back.gif',
+  'Bird Dog': 'assets/workouts/back.gif',
+  'Pull Ups': 'assets/workouts/back.gif',
+  'Lat Pulldown': 'assets/workouts/back.gif',
+  'Seated Row': 'assets/workouts/back.gif',
+  'Bent Over Row': 'assets/workouts/back.gif',
+  'Deadlift Light': 'assets/workouts/back.gif',
+  'Weighted Pull Ups': 'assets/workouts/back.gif',
+  'Deadlift': 'assets/workouts/back.gif',
+  'T Bar Row': 'assets/workouts/back.gif',
+  'Single Arm Row': 'assets/workouts/back.gif',
+  'Muscle Up': 'assets/workouts/back.gif',
+
+  // ================= LEGS =================
+  'Bodyweight Squats': 'assets/workouts/legs.gif',
+  'Step Ups': 'assets/workouts/legs.gif',
+  'Glute Bridge': 'assets/workouts/legs.gif',
+  'Wall Sit': 'assets/workouts/legs.gif',
+  'Calf Raises': 'assets/workouts/legs.gif',
+  'Squats': 'assets/workouts/legs.gif',
+  'Lunges': 'assets/workouts/legs.gif',
+  'Leg Press': 'assets/workouts/legs.gif',
+  'Step Lunges': 'assets/workouts/legs.gif',
+  'Hip Thrust': 'assets/workouts/legs.gif',
+  'Barbell Squats': 'assets/workouts/legs.gif',
+  'Jump Squats': 'assets/workouts/legs.gif',
+  'Bulgarian Split Squat': 'assets/workouts/legs.gif',
+  'Sprints': 'assets/workouts/legs.gif',
+
+  // ================= SHOULDERS =================
+  'Shoulder Press': 'assets/workouts/shoulders.gif',
+  'Front Raise': 'assets/workouts/shoulders.gif',
+  'Arm Circles': 'assets/workouts/shoulders.gif',
+  'Wall Press': 'assets/workouts/shoulders.gif',
+  'Light Lateral Raise': 'assets/workouts/shoulders.gif',
+  'Dumbbell Press': 'assets/workouts/shoulders.gif',
+  'Lateral Raise': 'assets/workouts/shoulders.gif',
+  'Rear Delt Fly': 'assets/workouts/shoulders.gif',
+  'Arnold Press': 'assets/workouts/shoulders.gif',
+  'Cable Raise': 'assets/workouts/shoulders.gif',
+  'Heavy Press': 'assets/workouts/shoulders.gif',
+  'Handstand Pushup': 'assets/workouts/shoulders.gif',
+  'Upright Row': 'assets/workouts/shoulders.gif',
+  'Plate Raise': 'assets/workouts/shoulders.gif',
+  'Explosive Press': 'assets/workouts/shoulders.gif',
+
+  // ================= ABS =================
+  'Crunches': 'assets/workouts/abs.gif',
+  'Leg Raise': 'assets/workouts/abs.gif',
+  'Plank': 'assets/workouts/abs.gif',
+  'Sit Ups': 'assets/workouts/abs.gif',
+  'Toe Touch': 'assets/workouts/abs.gif',
+  'Bicycle Crunch': 'assets/workouts/abs.gif',
+  'Hanging Knee Raise': 'assets/workouts/abs.gif',
+  'Russian Twist': 'assets/workouts/abs.gif',
+  'Reverse Crunch': 'assets/workouts/abs.gif',
+  'Dragon Flag': 'assets/workouts/abs.gif',
+  'Hanging Leg Raise': 'assets/workouts/abs.gif',
+  'V Ups': 'assets/workouts/abs.gif',
+  'Toe to Bar': 'assets/workouts/abs.gif'
+};
+onGifError(event: any) {
+  event.target.src =
+    'https://cdn-icons-png.flaticon.com/512/1048/1048941.png';
+}
     workoutExercises: any = {
 
   // ================= CHEST =================

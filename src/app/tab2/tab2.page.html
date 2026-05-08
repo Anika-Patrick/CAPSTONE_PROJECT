@@ -42,8 +42,11 @@
 
       <!-- GIF -->
       <div class="exercise-gif">
-        <img [src]="'assets/workouts/' + c.name.toLowerCase() + '.gif'" />
-      </div>
+  <img
+    [src]="'assets/workouts/' + c.name.toLowerCase() + '.gif'"
+    alt="workout gif"
+  />
+</div>
 
       <h2>{{ c.name }}</h2>
 
@@ -78,9 +81,13 @@
       <h2>{{ selectedCategory }} Workout</h2>
 
       <img
-        class="workout-gif"
-        [src]="'assets/workouts/' + selectedCategory.toLowerCase() + '.gif'"
-      />
+  class="workout-gif"
+  [src]="exerciseGifs[
+    workoutExercises[selectedCategory]?.[selectedLevel]?.[currentExerciseIndex]?.name
+  ]"
+  (error)="onGifError($event)"
+/>
+
 
       <!-- FIXED EXERCISE ACCESS -->
       <h3>
