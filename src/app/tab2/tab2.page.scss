@@ -127,4 +127,49 @@
     transform: translateY(0px) scale(1) rotate(0deg);
     opacity: 0.25;
   }
+}/* ================= LEVEL SELECT ================= */
+
+.level-select {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+/* CHIP STYLE */
+.level-chip {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #aaa;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* HOVER EFFECT */
+.level-chip:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ACTIVE STATE */
+.level-chip.active {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(255, 80, 50, 0.4);
+  transform: scale(1.05);
+}
+
+/* SMALL SCREEN */
+@media (max-width: 500px) {
+  .level-chip {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
 }

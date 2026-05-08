@@ -11,19 +11,28 @@
     Reset Workouts
   </ion-button>
 
+  <!-- LEVEL SELECTOR -->
+  <div class="level-select">
+    <div
+      class="level-chip"
+      *ngFor="let l of levels"
+      [class.active]="selectedLevel === l"
+      (click)="changeLevel(l)"
+    >
+      {{ l }}
+    </div>
+  </div>
+
   <!-- CATEGORY CHIPS -->
   <div class="category-scroll">
-
     <div
       class="category-chip"
       *ngFor="let c of categories"
       [class.active]="selectedCategory === c.name"
-      (click)="openCategory(c.name)">
-
+      (click)="openCategory(c.name)"
+    >
       {{ c.emoji }} {{ c.name }}
-
     </div>
-
   </div>
 
   <!-- CARDS -->
@@ -33,36 +42,34 @@
 
       <!-- GIF -->
       <div class="exercise-gif">
-        <img
-          [src]="'assets/workouts/' + c.name.toLowerCase() + '.gif'"
-        />
+        <img [src]="'assets/workouts/' + c.name.toLowerCase() + '.gif'" />
       </div>
 
       <h2>{{ c.name }}</h2>
-      <p>🔥 Level: {{ c.level }}</p>
 
-      <ion-button
-        expand="block"
-        (click)="startWorkout(c.name)">
+      <!-- FIXED LEVEL DISPLAY -->
+      <p class="level-text">🔥 Level: {{ selectedLevel }}</p>
 
+      <ion-button expand="block" (click)="startWorkout(c.name)">
         Start Workout
-
       </ion-button>
 
     </div>
 
   </div>
-<!-- FLOATING BACKGROUND ICONS -->
-<div class="floating-bg">
-  <span class="bg-icon i1">💪</span>
-  <span class="bg-icon i2">🔥</span>
-  <span class="bg-icon i3">⚡</span>
-  <span class="bg-icon i4">🏋️</span>
-  <span class="bg-icon i5">🏆</span>
-  <span class="bg-icon i6">💥</span>
-  <span class="bg-icon i7">🦵</span>
-  <span class="bg-icon i8">🚀</span>
-</div>
+
+  <!-- FLOATING BACKGROUND ICONS -->
+  <div class="floating-bg">
+    <span class="bg-icon i1">💪</span>
+    <span class="bg-icon i2">🔥</span>
+    <span class="bg-icon i3">⚡</span>
+    <span class="bg-icon i4">🏋️</span>
+    <span class="bg-icon i5">🏆</span>
+    <span class="bg-icon i6">💥</span>
+    <span class="bg-icon i7">🦵</span>
+    <span class="bg-icon i8">🚀</span>
+  </div>
+
   <!-- WORKOUT OVERLAY -->
   <div class="workout-overlay" *ngIf="isWorkoutMode">
 
@@ -75,18 +82,23 @@
         [src]="'assets/workouts/' + selectedCategory.toLowerCase() + '.gif'"
       />
 
+      <!-- FIXED EXERCISE ACCESS -->
       <h3>
-        {{ workoutExercises[selectedCategory]?.[currentExerciseIndex]?.name }}
+        {{
+          workoutExercises[selectedCategory]?.[selectedLevel]?.[currentExerciseIndex]?.name
+        }}
       </h3>
 
       <p>💪 Reps: {{ reps }}</p>
       <p>⏱ Time: {{ timeLeft }}s</p>
 
+      <!-- CONTROLS -->
       <div class="controls">
         <button (click)="prevExercise()">⬅ Prev</button>
         <button (click)="nextExercise()">Next ➡</button>
       </div>
 
+      <!-- EXIT -->
       <button class="exit-btn" (click)="exitWorkout()">
         Exit Workout
       </button>
