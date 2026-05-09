@@ -67,6 +67,42 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'home'
+  },  {
+    path: 'tab4',
+    loadComponent: () => import('./tab4/tab4.page').then( m => m.Tab4Page)
+  },
+  {
+    path: 'cardio',
+    loadComponent: () => import('./cardio/cardio.page').then( m => m.CardioPage)
+  },
+  {
+    path: 'strength',
+    loadComponent: () => import('./strength/strength.page').then( m => m.StrengthPage)
+  },
+  {
+    path: 'yoga',
+    loadComponent: () => import('./yoga/yoga.page').then( m => m.YogaPage)
+  },
+  {
+    path: 'running',
+    loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
+  },
+  {
+    path: 'cardio',
+    loadComponent: () => import('./cardio/cardio.page').then( m => m.CardioPage)
+  },
+  {
+    path: 'strength',
+    loadComponent: () => import('./strength/strength.page').then( m => m.StrengthPage)
+  },
+  {
+    path: 'yoga',
+    loadComponent: () => import('./yoga/yoga.page').then( m => m.YogaPage)
+  },
+  {
+    path: 'running',
+    loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
   }
+
 
 ];
