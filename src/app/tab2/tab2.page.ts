@@ -74,24 +74,67 @@ export class Tab2Page implements OnInit {
   // ================= YOUR EXERCISES =================
  // ================= WORKOUT GIFS =================
 
+categoryGifs: any = {
+  Chest: 'assets/workouts/chest1.gif',
+  Legs: 'assets/workouts/leg.gif',
+  Arms: 'assets/workouts/arms.gif',
+  Shoulders: 'assets/workouts/shoulder.gif',
+  Abs: 'assets/workouts/abs.gif',
+  Biceps: 'assets/workouts/biceps.gif',
+  Triceps: 'assets/workouts/triceps.gifs.gif',
+  Forearms: 'assets/workouts/forearms.gif',
+  Quads: 'assets/workouts/leg.gif',
+  Hamstrings: 'assets/workouts/hamstring.gif',
+  Calves: 'assets/workouts/calves.gif'
+};
 exerciseGifs: any = {
 
   // ================= CHEST =================
-  'Push Ups': 'assets/workouts/chest.gif',
-  'Incline Push Ups': 'assets/workouts/chest.gif',
-  'Knee Push Ups': 'assets/workouts/chest.gif',
-  'Wall Push Ups': 'assets/workouts/chest.gif',
-  'Chest Press Light': 'assets/workouts/chest.gif',
-  'Bench Press': 'assets/workouts/chest.gif',
-  'Incline Dumbbell Press': 'assets/workouts/chest.gif',
-  'Chest Fly': 'assets/workouts/chest.gif',
-  'Decline Push Ups': 'assets/workouts/chest.gif',
-  'Cable Press': 'assets/workouts/chest.gif',
-  'Weighted Push Ups': 'assets/workouts/chest.gif',
-  'Heavy Bench Press': 'assets/workouts/chest.gif',
-  'Cable Fly': 'assets/workouts/chest.gif',
-  'Dips': 'assets/workouts/chest.gif',
-  'Explosive Push Ups': 'assets/workouts/chest.gif',
+  // CHEST
+  'Push Ups':
+    'assets/workouts/chest/pushups.gif',
+
+  'Incline Push Ups':
+    'assets/workouts/chest/inclinepushups.gif',
+
+  'Knee Push Ups':
+    'assets/workouts/chest/kneepushups.gif',
+
+  'Wall Push Ups':
+    'assets/workouts/chest/wallpushups.gif',
+
+  'Chest Press Light':
+    'assets/workouts/chest/chestpresslight.gif',
+
+  'Bench Press':
+    'assets/workouts/chest/benchpress.gif',
+
+  'Incline Dumbbell Press':
+    'assets/workouts/chest/inclinedumbbellpress.gif',
+
+  'Chest Fly':
+    'assets/workouts/chest/chestfly.gif',
+
+  'Decline Push Ups':
+    'assets/workouts/chest/Declinepushup.gif',
+
+  'Cable Press':
+    'assets/workouts/chest/cablepress.gif',
+
+  'Weighted Push Ups':
+    'assets/workouts/chest/explosivepushups.gif',
+
+  'Heavy Bench Press':
+    'assets/workouts/chest/heavybenchpress.gif',
+
+  'Cable Fly':
+    'assets/workouts/chest/cablefly.gif',
+
+  'Dips':
+    'assets/workouts/chest/dips.gif',
+
+  'Explosive Push Ups':
+    'assets/workouts/chest/explosivepushups.gif',
 
   // ================= BACK =================
   'Superman Hold': 'assets/workouts/back.gif',

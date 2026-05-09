@@ -43,9 +43,9 @@
       <!-- GIF -->
       <div class="exercise-gif">
   <img
-    [src]="'assets/workouts/' + c.name.toLowerCase() + '.gif'"
-    alt="workout gif"
-  />
+  [src]="categoryGifs[c.name]"
+  alt="workout gif"
+/>
 </div>
 
       <h2>{{ c.name }}</h2>
