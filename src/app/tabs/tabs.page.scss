@@ -1,17 +1,19 @@
-
 .workout-page {
   --background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
+  transition: background 0.5s ease; /* smooth background change */
 }
 
 .header h1 {
   font-size: 32px;
   font-weight: bold;
+  animation: fadeInDown 0.6s ease; /* animated entrance */
 }
 
 .header p {
   color: #94a3b8;
   margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease;
 }
 
 .streak-box {
@@ -20,6 +22,12 @@
   border-radius: 15px;
   margin-bottom: 20px;
   font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.streak-box:hover {
+  transform: scale(1.05) rotate(1deg);
 }
 
 .categories {
@@ -27,6 +35,7 @@
   overflow-x: auto;
   gap: 10px;
   margin-bottom: 20px;
+  scrollbar-width: thin;
 }
 
 .chip {
@@ -38,9 +47,15 @@
   transition: 0.3s;
 }
 
+.chip:hover {
+  background: #334155;
+  transform: translateY(-2px);
+}
+
 .chip.active {
   background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 .exercise-card {
@@ -53,7 +68,8 @@
 }
 
 .exercise-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
 }
 
 .complete-btn {
@@ -64,6 +80,12 @@
   border-radius: 12px;
   background: linear-gradient(45deg, #3b82f6, #8b5cf6);
   color: white;
+  transition: 0.3s;
+}
+
+.complete-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .complete-btn.done {
@@ -72,6 +94,11 @@
 
 ion-fab-button {
   --background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  transition: transform 0.3s ease;
+}
+
+ion-fab-button:hover {
+  transform: rotate(15deg) scale(1.1);
 }
 
 .modal {
@@ -81,10 +108,10 @@ ion-fab-button {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.7);
-
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 0.4s ease;
 }
 
 .modal-content {
@@ -92,6 +119,7 @@ ion-fab-button {
   padding: 20px;
   border-radius: 20px;
   width: 90%;
+  animation: popUp 0.4s ease;
 }
 
 .modal-content input,
@@ -101,6 +129,13 @@ ion-fab-button {
   padding: 10px;
   border-radius: 10px;
   border: none;
+  transition: 0.3s;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  outline: none;
+  box-shadow: 0 0 8px #3b82f6;
 }
 
 .modal-content button {
@@ -109,8 +144,84 @@ ion-fab-button {
   margin-top: 10px;
   border: none;
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.modal-content button:hover {
+  transform: scale(1.05);
 }
 
 .cancel {
   background: red;
+  color: white;
+}
+
+/* 🔥 Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+ion-tab-bar {
+  --background: linear-gradient(135deg, #0f172a, #1e293b); /* dark gradient background */
+  --color: #94a3b8; /* inactive tab color */
+  --color-selected: #f97316; /* fallback active color */
+  border-top: 1px solid #1e293b;
+}
+
+/* Tab button base */
+ion-tab-button {
+  transition: transform 0.25s ease, color 0.25s ease;
+  position: relative;
+}
+
+/* Hover effect */
+ion-tab-button:hover {
+  transform: scale(1.05);
+  color: #f97316;
+}
+
+/* Tap effect */
+ion-tab-button:active {
+  transform: scale(0.95);
+}
+
+/* Active tab glow effect */
+ion-tab-button.tab-selected {
+  color: #fff; /* make text white */
+}
+
+ion-tab-button.tab-selected ion-icon,
+ion-tab-button.tab-selected ion-label {
+  background: linear-gradient(45deg, #f97316, #ef4444, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowPulse 1.5s infinite;
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 6px rgba(249, 115, 22, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 14px rgba(139, 92, 246, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(249, 115, 22, 0.6);
+  }
 }

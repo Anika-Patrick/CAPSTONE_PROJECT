@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { FitnessService } from '../services/fitness';
 
+
+
+
+
 @Component({
   selector: 'app-tab1',
   standalone: true,

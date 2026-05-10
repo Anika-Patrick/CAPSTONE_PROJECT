@@ -102,6 +102,22 @@ export const routes: Routes = [
   {
     path: 'running',
     loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
+  },
+  {
+    path: 'tab5',
+    loadComponent: () => import('./tab5/tab5.page').then( m => m.Tab5Page)
+  },
+  {
+    path: 'tab5',
+    loadComponent: () => import('./tab5/tab5.page').then( m => m.Tab5Page)
+  },
+  {
+    path: 'chat',
+    loadComponent: () => import('./chat/chat.page').then( m => m.ChatPage)
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
   }
 
 
