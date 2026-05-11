@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { YogaPage } from './yoga.page';
+import { FitnessModePage } from './fitness-mode.page';
 
-describe('YogaPage', () => {
-  let component: YogaPage;
-  let fixture: ComponentFixture<YogaPage>;
+describe('FitnessModePage', () => {
+  let component: FitnessModePage;
+  let fixture: ComponentFixture<FitnessModePage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(YogaPage);
+    fixture = TestBed.createComponent(FitnessModePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

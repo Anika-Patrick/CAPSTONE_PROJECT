@@ -67,7 +67,8 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'home'
-  },  {
+  },
+  {
     path: 'tab4',
     loadComponent: () => import('./tab4/tab4.page').then( m => m.Tab4Page)
   },
@@ -79,10 +80,7 @@ export const routes: Routes = [
     path: 'strength',
     loadComponent: () => import('./strength/strength.page').then( m => m.StrengthPage)
   },
-  {
-    path: 'yoga',
-    loadComponent: () => import('./yoga/yoga.page').then( m => m.YogaPage)
-  },
+  
   {
     path: 'running',
     loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
@@ -95,10 +93,7 @@ export const routes: Routes = [
     path: 'strength',
     loadComponent: () => import('./strength/strength.page').then( m => m.StrengthPage)
   },
-  {
-    path: 'yoga',
-    loadComponent: () => import('./yoga/yoga.page').then( m => m.YogaPage)
-  },
+  
   {
     path: 'running',
     loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
@@ -118,7 +113,12 @@ export const routes: Routes = [
   {
     path: 'profile',
     loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
-  }
+  },
+  {
+    path: 'fitness-mode',
+    loadComponent: () => import('./fitness-mode/fitness-mode.page').then( m => m.FitnessModePage)
+  },
+ 
 
 
 ];
