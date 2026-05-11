@@ -1,50 +1,127 @@
 .music-bg {
-  --background: linear-gradient(to bottom, #0f0f0f, #1e1e1e);
+  --background: linear-gradient(180deg, #0b1020 0%, #111827 45%, #1f2937 100%);
   color: white;
+  overflow-x: hidden;
+  position: relative;
 }
 
+/* BACKGROUND GLOW EFFECTS */
+.music-bg::before,
+.music-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: 0;
+}
+
+.music-bg::before {
+  width: 260px;
+  height: 260px;
+  background: rgba(0, 255, 149, 0.18);
+  top: -60px;
+  left: -80px;
+}
+
+.music-bg::after {
+  width: 220px;
+  height: 220px;
+  background: rgba(0, 195, 255, 0.15);
+  bottom: 0;
+  right: -60px;
+}
+
+/* TOOLBAR */
 .toolbar {
-  --background: #111;
+  --background: rgba(15, 15, 25, 0.75);
   --color: white;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+/* HERO SECTION */
 .hero-section {
   text-align: center;
-  padding-top: 20px;
+  padding: 30px 20px 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-section h1 {
-  font-size: 32px;
-  font-weight: bold;
-  color: #00ff95;
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 10px;
+
+  background: linear-gradient(90deg, #00ff95, #00c3ff, #9d4edd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  letter-spacing: 1px;
 }
 
 .hero-section p {
-  color: #ccc;
-  margin-bottom: 20px;
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
+/* START BUTTON */
 .start-btn {
-  --background: linear-gradient(to right, #00ff95, #00c3ff);
-  --border-radius: 15px;
-  height: 50px;
-  font-weight: bold;
+  --background: linear-gradient(135deg, #00ff95, #00c3ff);
+  --border-radius: 18px;
+
+  height: 54px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 255, 149, 0.35),
+    0 0 25px rgba(0, 195, 255, 0.2);
+
+  transition: 0.35s ease;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* SECTION TITLE */
+.section-title {
+  padding: 0 18px;
+  margin-top: 26px;
 }
 
 .section-title h2 {
   color: white;
-  margin-top: 25px;
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 65%;
+  height: 4px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #00ff95, #00c3ff);
 }
 
 /* CATEGORY SCROLL */
 .category-scroll {
   display: flex;
   overflow-x: auto;
-  gap: 15px;
-  padding: 12px;
+  gap: 18px;
+  padding: 20px 16px;
 
   scrollbar-width: none;
+  position: relative;
+  z-index: 2;
 }
 
 .category-scroll::-webkit-scrollbar {
@@ -53,11 +130,11 @@
 
 /* CATEGORY CARD */
 .category-card {
-  min-width: 120px;
-  width: 120px;
-  height: 120px;
+  min-width: 135px;
+  width: 135px;
+  height: 145px;
 
-  border-radius: 22px;
+  border-radius: 30px;
 
   display: flex;
   flex-direction: column;
@@ -69,12 +146,15 @@
   color: white;
   font-weight: bold;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  backdrop-filter: blur(18px);
 
-  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.12);
 
-  margin: 0;
-  padding: 0;
+  box-shadow:
+    0 12px 25px rgba(0,0,0,0.35),
+    inset 0 1px 1px rgba(255,255,255,0.12);
+
+  transition: 0.35s ease;
 
   flex-shrink: 0;
 
@@ -82,102 +162,234 @@
   overflow: hidden;
 }
 
-/* HOVER EFFECT */
+/* SHINY EFFECT */
+.category-card::before {
+  content: '';
+  position: absolute;
+  width: 160%;
+  height: 60%;
+  background: rgba(255,255,255,0.15);
+  transform: rotate(-35deg);
+  top: -40%;
+  left: -120%;
+  transition: 0.6s ease;
+}
+
+.category-card:hover::before {
+  left: 120%;
+}
+
+/* CARD HOVER */
 .category-card:hover {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow:
+    0 18px 35px rgba(0,0,0,0.45),
+    0 0 20px rgba(255,255,255,0.08);
 }
 
 /* ICON */
 .category-card ion-icon {
-  font-size: 38px;
-  margin-bottom: 10px;
-
-  display: block;
+  font-size: 42px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 4px 12px rgba(255,255,255,0.35));
 }
 
 /* TEXT */
 .category-card h3 {
   margin: 0;
-  padding: 0;
-
   font-size: 20px;
-  font-weight: 700;
-
-  line-height: 1.2;
+  font-weight: 800;
+  line-height: 1.3;
 }
 
-/* DIFFERENT CARD COLORS */
-
+/* CARD COLORS */
 .category-card.cardio {
-  --background: linear-gradient(135deg, #ff416c, #ff4b2b) !important;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
 }
 
 .category-card.strength {
-  --background: linear-gradient(135deg, #4776E6, #8E54E9) !important;
+  background: linear-gradient(135deg, #4776E6, #8E54E9);
 }
 
 .category-card.yoga {
-  --background: linear-gradient(135deg, #11998e, #38ef7d) !important;
+  background: linear-gradient(135deg, #11998e, #38ef7d);
 }
 
 .category-card.running {
-  --background: linear-gradient(135deg, #f7971e, #ffd200) !important;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
 }
 
 /* PLAYLIST CARD */
 .playlist-card {
-  margin: 15px;
-  border-radius: 20px;
-  background: #222;
+  margin: 18px;
+  border-radius: 28px;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
   color: white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    inset 0 1px 1px rgba(255,255,255,0.08);
+
+  transition: 0.35s ease;
+}
+
+.playlist-card:hover {
+  transform: translateY(-6px);
 }
 
 .playlist-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 22px;
 }
 
 .playlist-content h2 {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 6px;
 }
 
 .playlist-content p {
-  color: #aaa;
+  color: #cbd5e1;
+  font-size: 14px;
 }
 
 .playlist-content ion-icon {
-  font-size: 45px;
-  color: #00ff95;
+  font-size: 54px;
+
+  background: linear-gradient(135deg, #00ff95, #00c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 0 12px rgba(0,255,149,0.35));
 }
 
+/* SONG LIST */
 .song-list {
   background: transparent;
+  padding-bottom: 20px;
 }
 
+/* SONG ITEM */
 ion-item {
-  --background: #1c1c1c;
+  --background: rgba(255,255,255,0.06);
+
+  margin: 12px 18px;
+  border-radius: 22px;
+
   color: white;
-  margin: 10px;
-  border-radius: 15px;
+
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.25);
+
+  transition: 0.3s ease;
+}
+
+ion-item:hover {
+  transform: scale(1.02);
 }
 
 ion-item h2 {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
 }
 
 ion-item p {
-  color: #aaa;
+  color: #cbd5e1;
+  font-size: 13px;
 }
 
 ion-item ion-icon {
   color: #00ff95;
-  font-size: 24px;
+  font-size: 26px;
+
+  padding: 10px;
+  border-radius: 50%;
+
+  background: rgba(0,255,149,0.12);
+}
+
+/* AVATAR */
+ion-avatar {
+  width: 58px;
+  height: 58px;
 }
 
 ion-avatar img {
-  border-radius: 12px;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.12);
+}
+
+/* FLOATING MUSIC GLOW */
+.music-wave {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(0,255,149,0.08);
+  filter: blur(80px);
+  border-radius: 50%;
+  top: 35%;
+  left: 10%;
+  z-index: 0;
+}
+/* HEADER */
+
+.toolbar {
+  --background: linear-gradient(135deg, #141e30, #243b55);
+  --border-width: 0;
+
+  min-height: 52px;   /* thinner header */
+  padding: 0 8px;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* TOOLBAR HEIGHT */
+ion-toolbar {
+  --min-height: 52px;
+}
+
+/* TITLE */
+ion-toolbar ion-title {
+  color: #e2e8f0;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  text-align: center;
+
+  letter-spacing: 0.5px;
+}
+
+/* BUTTONS */
+ion-buttons ion-button {
+  --color: #00ff95;
+
+  background: rgba(255,255,255,0.08);
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 10px;
+
+  margin: 0 2px;
+}
+
+/* ICONS */
+ion-buttons ion-icon {
+  font-size: 18px;
+  color: #00ff95;
 }
