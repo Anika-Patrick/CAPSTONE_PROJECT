@@ -31,21 +31,44 @@
   </div>
 
   <!-- STATS -->
-  <div class="stats-container">
+  <!-- USER INPUT STATS -->
+
+<div class="stats-container">
 
   <ion-card class="stat-card">
-    <h2>{{ calories }}</h2>
-    <p>Calories</p>
+
+    <h3>Calories</h3>
+
+    <ion-input
+      type="number"
+      placeholder="Enter calories"
+      [(ngModel)]="calories">
+    </ion-input>
+
   </ion-card>
 
   <ion-card class="stat-card">
-    <h2>{{ duration }}m</h2>
-    <p>Duration</p>
+
+    <h3>Duration</h3>
+
+    <ion-input
+      type="number"
+      placeholder="Enter minutes"
+      [(ngModel)]="duration">
+    </ion-input>
+
   </ion-card>
 
   <ion-card class="stat-card">
-    <h2>{{ bpm }}</h2>
-    <p>BPM</p>
+
+    <h3>BPM</h3>
+
+    <ion-input
+      type="number"
+      placeholder="Enter BPM"
+      [(ngModel)]="bpm">
+    </ion-input>
+
   </ion-card>
 
 </div>

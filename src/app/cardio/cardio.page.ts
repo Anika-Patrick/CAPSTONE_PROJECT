@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cardio',
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     IonicModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 
@@ -23,14 +25,12 @@ export class CardioPage implements OnInit {
   // AUDIO PLAYER
   currentAudio = new Audio();
 
-  // LIVE STATS
-  calories = 450;
+  // FIXED STATS
+  calories = 0;
 
-  duration = 32;
+  duration = 0;
 
-  bpm = 128;
-
-  statsInterval: any;
+  bpm = 0;
 
   constructor(
     private toastController: ToastController
@@ -38,16 +38,6 @@ export class CardioPage implements OnInit {
 
   ngOnInit() {
 
-    // AUTO UPDATE STATS
-    this.statsInterval = setInterval(() => {
-
-      this.calories += Math.floor(Math.random() * 5);
-
-      this.duration += 1;
-
-      this.bpm = 120 + Math.floor(Math.random() * 20);
-
-    }, 3000);
   }
 
   // START WORKOUT BUTTON
@@ -77,13 +67,13 @@ export class CardioPage implements OnInit {
     const songs: any = {
 
       'HIIT Blast':
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
 
       'Treadmill Run':
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
 
       'Jump Rope':
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
     };
 
     // PLAY NEW SONG
@@ -104,14 +94,12 @@ export class CardioPage implements OnInit {
     await toast.present();
   }
 
-  // STOP AUDIO + INTERVAL
+  // STOP AUDIO
   ionViewWillLeave() {
 
     this.currentAudio.pause();
 
     this.currentAudio.currentTime = 0;
-
-    clearInterval(this.statsInterval);
   }
 
 }

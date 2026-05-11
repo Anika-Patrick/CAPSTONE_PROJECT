@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FitnessService } from '../services/fitness';
+import { SpeechRecognition } from '@capacitor-community/speech-recognition';
 
 @Component({
   selector: 'app-tab3',
@@ -17,6 +18,7 @@ import { FitnessService } from '../services/fitness';
   templateUrl: './tab3.page.html',
   styleUrls: ['./tab3.page.scss']
 })
+
 export class Tab3Page implements OnInit {
 
   // =========================
@@ -32,7 +34,7 @@ export class Tab3Page implements OnInit {
   chatMessages: any[] = [];
 
   // =========================
-  // QUICK OPTIONS
+  // QUICK QUESTIONS
   // =========================
 
   quickQuestions = [
@@ -41,34 +43,89 @@ export class Tab3Page implements OnInit {
     'Non Veg Meal',
     'Workout',
     'Calories',
-    'Motivation'
+    'Motivation',
+    'Weight Loss',
+    'Muscle Gain',
+    'Protein',
+    'BMI',
+    'Water Intake',
+    'Sleep',
+    'Yoga',
+    'Supplements',
+    'Walking',
+    'Beginner Gym'
   ];
 
   constructor(
     public fitness: FitnessService
   ) {}
 
+  async startListening() {
+
+  // ASK MICROPHONE PERMISSION
+  const permission = await SpeechRecognition.requestPermissions();
+
+  if (permission.speechRecognition !== 'granted') {
+    return;
+  }
+
+  // START LISTENING
+  await SpeechRecognition.start({
+    language: 'en-US',
+    maxResults: 1,
+    partialResults: false,
+    prompt: 'Speak now'
+  });
+
+  // GET VOICE RESULT
+  SpeechRecognition.addListener('partialResults', (data: any) => {
+
+    if (data.matches && data.matches.length > 0) {
+
+      this.userQuestion = data.matches[0];
+
+    }
+
+  });
+
+}
+
   // =========================
   // PAGE LOAD
   // =========================
 
   ngOnInit() {
+
     this.chatMessages.push({
       sender: 'bot',
       text: `Welcome to FitnessGPT 👋
 
-Your Personal Fitness Assistant
+Your Personal Fitness Assistant 💪
 
-What can I help you with today?`
+Ask me about:
+
+• Diet
+• Workouts
+• Calories
+• Weight Loss
+• Muscle Gain
+• Protein
+• Yoga
+• BMI
+• Motivation
+• Supplements`
     });
+
   }
 
   // =========================
-  // CLICKABLE QUESTIONS
+  // QUICK QUESTION CLICK
   // =========================
 
   selectQuickQuestion(question: string) {
+
     this.userQuestion = question;
+
     this.sendMessage();
   }
 
@@ -77,6 +134,7 @@ What can I help you with today?`
   // =========================
 
   sendMessage() {
+
     const question = this.userQuestion.trim();
 
     if (!question) return;
@@ -88,80 +146,41 @@ What can I help you with today?`
     });
 
     const q = question.toLowerCase();
+
     let response = '';
 
     // =================================================
-    // NON VEG MEAL (KEEP FIRST)
+    // NON VEG MEAL
     // =================================================
 
     if (
       q.includes('non veg') ||
       q.includes('nonveg') ||
-      q.includes('non veg meal') ||
-      q.includes('nonveg meal') ||
-      q.includes('chicken diet') ||
-      q.includes('egg diet') ||
-      q.includes('fish diet') ||
-      q.includes('gym diet non veg') ||
-      q.includes('high protein non veg') ||
-      q.includes('non veg for gym') ||
-      q.includes('bulking diet') ||
+      q.includes('chicken') ||
+      q.includes('egg') ||
+      q.includes('fish') ||
       q.includes('muscle gain diet')
     ) {
+
       response = `🍗 NON-VEG HIGH PROTEIN DIET PLAN
 
 🔥 Breakfast
-4 Boiled Eggs
-2 Brown Bread Toast
-1 Glass Milk
-1 Banana
-
-🔥 Mid-Morning
-Greek Yogurt
-OR
-Boiled Eggs
+4 Eggs
+Brown Bread
+Milk
+Banana
 
 🔥 Lunch
-Grilled Chicken Breast
+Chicken Breast
 Rice
-Green Salad
-Curd
-
-🔥 Evening Snack
-Boiled Eggs
-Black Coffee
-Fruit
+Salad
 
 🔥 Dinner
-Fish / Chicken Breast
+Fish / Chicken
 Vegetables
-Soup
 
-🔥 Before Sleep
-Milk
-OR
-Curd
+💪 Best for muscle gain`;
 
-⚡ BEST FOR
-
-Muscle Gain
-Fat Loss
-Gym Body
-High Protein Diet
-
-💪 BEST SOURCES
-
-Chicken Breast
-Eggs
-Fish
-Greek Yogurt
-Milk
-Curd
-
-Would you like:
-👉 Chicken Recipe
-👉 Egg Recipe
-👉 Fish Recipe`;
     }
 
     // =================================================
@@ -169,64 +188,32 @@ Would you like:
     // =================================================
 
     else if (
-      q.includes('veg meal') ||
-      q.includes('veg diet') ||
+      q.includes('veg') ||
       q.includes('vegetarian') ||
-      q.includes('vegetarian diet') ||
-      q.includes('paneer diet') ||
-      q.includes('tofu diet') ||
-      q.includes('veg protein') ||
-      q.includes('high protein veg')
+      q.includes('paneer') ||
+      q.includes('tofu')
     ) {
-      response = `🥦 VEG HIGH PROTEIN DIET PLAN
+
+      response = `🥦 VEG HIGH PROTEIN DIET
 
 🔥 Breakfast
 Oats + Milk
-Banana
-Peanut Butter Toast
-
-🔥 Mid-Morning
-Fruits
-Curd
 
 🔥 Lunch
-Rice + Dal
-Paneer
-Salad
-
-🔥 Evening Snack
-Roasted Chana
-Nuts
-Buttermilk
+Rice + Dal + Paneer
 
 🔥 Dinner
-Roti + Sabzi
-Paneer + Curd
+Roti + Sabzi + Curd
 
-🔥 Before Sleep
-Milk
-
-⚡ BEST FOR
-
-Fat Loss
-Lean Muscle
-Healthy Lifestyle
-
-💪 BEST SOURCES
+💪 Best Veg Protein Sources
 
 Paneer
 Tofu
+Milk
 Dal
 Rajma
-Chole
-Milk
-Curd
-Soya Chunks
+Soya`;
 
-Would you like:
-👉 Paneer Recipe
-👉 Tofu Recipe
-👉 Dal Recipe`;
     }
 
     // =================================================
@@ -237,15 +224,13 @@ Would you like:
       q.includes('meal') ||
       q.includes('diet') ||
       q.includes('food') ||
-      q.includes('breakfast') ||
-      q.includes('lunch') ||
-      q.includes('dinner') ||
-      q.includes('meal plan')
+      q.includes('breakfast')
     ) {
+
       response = `🍽 SMART DAILY MEAL PLAN
 
 Breakfast
-Oats + Milk + Banana
+Oats + Banana
 
 Lunch
 Rice + Dal + Paneer
@@ -256,13 +241,8 @@ Fruit + Nuts
 Dinner
 Roti + Sabzi + Curd
 
-Pre Workout
-Banana + Coffee
+⚡ Balanced Diet`;
 
-Post Workout
-Protein Rich Meal
-
-Balanced for fat loss + fitness 💪`;
     }
 
     // =================================================
@@ -273,13 +253,9 @@ Balanced for fat loss + fitness 💪`;
       q.includes('workout') ||
       q.includes('exercise') ||
       q.includes('gym') ||
-      q.includes('home workout') ||
-      q.includes('cardio') ||
-      q.includes('walking') ||
-      q.includes('abs') ||
-      q.includes('chest') ||
-      q.includes('arms')
+      q.includes('cardio')
     ) {
+
       response = `🏋️ WEEKLY WORKOUT PLAN
 
 Monday → Chest
@@ -294,15 +270,8 @@ Friday → Arms
 
 Saturday → Abs + Cardio
 
-Sunday → Rest
+Sunday → Rest`;
 
-🏠 HOME WORKOUT
-
-Pushups
-Squats
-Plank
-Lunges
-Jumping Jacks`;
     }
 
     // =================================================
@@ -311,24 +280,12 @@ Jumping Jacks`;
 
     else if (
       q.includes('calorie') ||
-      q.includes('calories') ||
       q.includes('rice') ||
-      q.includes('roti') ||
-      q.includes('banana') ||
-      q.includes('milk') ||
       q.includes('pizza') ||
       q.includes('burger')
     ) {
+
       response = `🔥 CALORIES GUIDE
-
-Fat Loss
-1600–1900 cal
-
-Muscle Gain
-2200–2800 cal
-
-Maintenance
-2000–2300 cal
 
 🍚 Rice → 200 cal
 
@@ -336,13 +293,12 @@ Maintenance
 
 🍌 Banana → 90 cal
 
-🥛 Milk → 150 cal
-
 🍕 Pizza → 300 cal
 
-🍔 Burger → 350+ cal
+🍔 Burger → 350 cal
 
 🥚 Egg → 70 cal`;
+
     }
 
     // =================================================
@@ -352,23 +308,253 @@ Maintenance
     else if (
       q.includes('motivation') ||
       q.includes('lazy') ||
-      q.includes('discipline') ||
-      q.includes('confidence') ||
-      q.includes('not motivated')
+      q.includes('discipline')
     ) {
+
       response = `🚀 MOTIVATION
 
 Discipline beats motivation
-
-Start small
 
 Never skip twice
 
 Progress > Perfection
 
-Consistency creates results
+Consistency creates results 💪`;
 
-You are stronger than excuses 💪🔥`;
+    }
+
+    // =================================================
+    // WEIGHT LOSS
+    // =================================================
+
+    else if (
+      q.includes('weight loss') ||
+      q.includes('lose weight') ||
+      q.includes('fat loss') ||
+      q.includes('belly fat')
+    ) {
+
+      response = `🔥 WEIGHT LOSS TIPS
+
+✅ Calorie Deficit
+✅ Cardio
+✅ Walking
+✅ High Protein
+✅ Drink Water
+
+🏃 Best Exercises
+
+Running
+Jump Rope
+Cycling
+HIIT`;
+
+    }
+
+    // =================================================
+    // MUSCLE GAIN
+    // =================================================
+
+    else if (
+      q.includes('muscle gain') ||
+      q.includes('bulk') ||
+      q.includes('build muscle')
+    ) {
+
+      response = `💪 MUSCLE GAIN GUIDE
+
+✅ High Protein
+✅ Strength Training
+✅ Good Sleep
+✅ Progressive Overload
+
+🍗 Protein Foods
+
+Eggs
+Chicken
+Paneer
+Fish
+Milk`;
+
+    }
+
+    // =================================================
+    // PROTEIN
+    // =================================================
+
+    else if (
+      q.includes('protein')
+    ) {
+
+      response = `🥚 HIGH PROTEIN FOODS
+
+Eggs
+Chicken
+Paneer
+Tofu
+Fish
+Milk
+Greek Yogurt
+Soya Chunks
+
+💪 Protein helps muscle recovery`;
+
+    }
+
+    // =================================================
+    // WATER
+    // =================================================
+
+    else if (
+      q.includes('water') ||
+      q.includes('hydration')
+    ) {
+
+      response = `💧 WATER INTAKE
+
+Men → 3-4 Litres
+
+Women → 2-3 Litres
+
+Benefits:
+
+Healthy Skin
+Fat Loss
+Better Recovery
+Energy`;
+
+    }
+
+    // =================================================
+    // BMI
+    // =================================================
+
+    else if (
+      q.includes('bmi')
+    ) {
+
+      response = `📏 BMI GUIDE
+
+Underweight → Below 18.5
+
+Normal → 18.5 - 24.9
+
+Overweight → 25+
+
+⚡ Healthy lifestyle matters most`;
+
+    }
+
+    // =================================================
+    // SLEEP
+    // =================================================
+
+    else if (
+      q.includes('sleep') ||
+      q.includes('recovery')
+    ) {
+
+      response = `😴 SLEEP GUIDE
+
+Adults need 7-9 hours sleep
+
+Benefits:
+
+Muscle Recovery
+Fat Loss
+Energy
+Mental Health`;
+
+    }
+
+    // =================================================
+    // SUPPLEMENTS
+    // =================================================
+
+    else if (
+      q.includes('supplement') ||
+      q.includes('creatine') ||
+      q.includes('whey')
+    ) {
+
+      response = `💊 FITNESS SUPPLEMENTS
+
+✅ Whey Protein
+
+✅ Creatine
+
+✅ Pre Workout
+
+⚠️ Supplements help only with good diet`;
+
+    }
+
+    // =================================================
+    // YOGA
+    // =================================================
+
+    else if (
+      q.includes('yoga') ||
+      q.includes('stretching')
+    ) {
+
+      response = `🧘 YOGA BENEFITS
+
+Better flexibility
+
+Stress relief
+
+Posture improvement
+
+🔥 Best Poses
+
+Cobra Pose
+Child Pose
+Mountain Pose`;
+
+    }
+
+    // =================================================
+    // WALKING
+    // =================================================
+
+    else if (
+      q.includes('walking') ||
+      q.includes('steps')
+    ) {
+
+      response = `👣 DAILY STEP GUIDE
+
+Beginner → 5000 Steps
+
+Active → 8000 Steps
+
+Fitness Goal → 10000+ Steps`;
+
+    }
+
+    // =================================================
+    // BEGINNER GYM
+    // =================================================
+
+    else if (
+      q.includes('beginner')
+    ) {
+
+      response = `🏋️ BEGINNER GYM TIPS
+
+✅ Learn form first
+
+✅ Start light
+
+✅ Focus on consistency
+
+🔥 Beginner Exercises
+
+Pushups
+Squats
+Walking`;
+
     }
 
     // =================================================
@@ -379,6 +565,7 @@ You are stronger than excuses 💪🔥`;
       q.includes('recipe') ||
       q.includes('how to make')
     ) {
+
       response = `👨‍🍳 HEALTHY RECIPE
 
 Paneer Protein Bowl
@@ -388,17 +575,9 @@ Paneer
 Rice
 Vegetables
 Curd
-Black Pepper
-Lemon
-
-Method:
-1. Lightly cook paneer
-2. Add boiled rice
-3. Add vegetables
-4. Add pepper + lemon
-5. Serve with curd
 
 Simple + High Protein 💪`;
+
     }
 
     // =================================================
@@ -406,27 +585,31 @@ Simple + High Protein 💪`;
     // =================================================
 
     else {
+
       response = `🤖 I can help with:
 
 • Meals
-• Veg Meal
-• Non Veg Meal
-• Workout
+• Workouts
+• Weight Loss
 • Calories
+• Protein
+• BMI
+• Yoga
 • Motivation
-• Recipes
+• Supplements
 
 Try asking:
 
-"Give me non veg diet"
+"Give me muscle gain diet"
 
 "Calories in rice"
 
 "Workout for belly fat"
 
-"Motivate me"
+"Protein foods"
 
-"What should I eat?" 💪`;
+"Motivate me" 💪`;
+
     }
 
     // BOT RESPONSE
@@ -437,5 +620,7 @@ Try asking:
 
     // CLEAR INPUT
     this.userQuestion = '';
+
   }
+
 }

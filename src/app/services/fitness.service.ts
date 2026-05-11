@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FitnessService {
 
-  private apiUrl = 'http://localhost:3000/chat';
+  calories: number = 0;
 
-  constructor(private http: HttpClient) {}
+  duration: number = 0;
 
-  sendMessage(question: string) {
-    return this.http.post<any>(this.apiUrl, { question });
-  }
+  bpm: number = 0;
+
 }
