@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar class="strength-toolbar">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Yoga Arena</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="strength-bg">
+
+  <!-- HERO -->
+  <div class="hero-section">
+
+    <div class="energy-bar">
+      <div class="energy-fill" [style.width.%]="powerLevel"></div>
+    </div>
+
+    <ion-icon name="barbell" class="hero-icon"></ion-icon>
+
+    <h1>Muscle Builder</h1>
+
+    <p>
+      Push your limits and unlock beast mode 💪
+    </p>
+
+    <ion-button
+      class="train-btn"
+      expand="block"
+      (click)="boostPower()">
+
+      Boost Power
+
+    </ion-button>
+
+  </div>
+
+  <!-- POWER STATS -->
+  <div class="stats-grid">
+
+    <ion-card class="power-card">
+
+      <ion-icon name="flame"></ion-icon>
+
+      <h2>{{ calories }}</h2>
+
+      <p>Calories Burned</p>
+
+    </ion-card>
+
+    <ion-card class="power-card">
+
+      <ion-icon name="fitness"></ion-icon>
+
+      <h2>{{ sets }}</h2>
+
+      <p>Sets Completed</p>
+
+    </ion-card>
+
+    <ion-card class="power-card">
+
+      <ion-icon name="flash"></ion-icon>
+
+      <h2>{{ powerLevel }}%</h2>
+
+      <p>Power Level</p>
+
+    </ion-card>
+
+    <ion-card class="power-card">
+
+      <ion-icon name="timer"></ion-icon>
+
+      <h2>{{ duration }}m</h2>
+
+      <p>Workout Time</p>
+
+    </ion-card>
+
+  </div>
+
+  <!-- DAILY CHALLENGE -->
+  <div class="challenge-box">
+
+    <h2>Today's Challenge 🏆</h2>
+
+    <p>
+      Complete 50 Push-Ups to unlock Power Badge
+    </p>
+
+    <ion-progress-bar
+      [value]="challengeProgress / 100">
+
+    </ion-progress-bar>
+
+    <h3>
+      {{ challengeProgress }}% Completed
+    </h3>
+
+    <ion-button
+      expand="block"
+      class="challenge-btn"
+      (click)="increaseChallenge()">
+
+      Complete Challenge
+
+    </ion-button>
+
+    <!-- DYNAMIC ACHIEVEMENTS -->
+
+    <div
+      *ngIf="challengeProgress >= 50 && challengeProgress < 100"
+      class="achievement-box bronze-achievement">
+
+      🥉 Bronze Warrior Badge Unlocked!
+
+    </div>
+
+    <div
+      *ngIf="challengeProgress >= 100"
+      class="achievement-box gold-achievement">
+
+      🏆 Ultimate Champion Badge Unlocked!
+
+    </div>
+
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section-title">
+
+    <h2>Achievements</h2>
+
+  </div>
+
+  <div class="badge-container">
+
+    <div class="badge bronze">
+
+      🥉
+
+      <span>Beginner</span>
+
+    </div>
+
+    <div class="badge silver">
+
+      🥈
+
+      <span>Intermediate</span>
+
+    </div>
+
+    <div class="badge gold">
+
+      🥇
+
+      <span>Elite</span>
+
+    </div>
+
+  </div>
+
+</ion-content>

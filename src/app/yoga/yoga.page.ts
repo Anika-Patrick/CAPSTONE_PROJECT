@@ -1,28 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, ToastController } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+
+import {
+  IonicModule,
+  ToastController
+} from '@ionic/angular';
 
 @Component({
-  selector: 'app-strength',
-  templateUrl: './strength.page.html',
-  styleUrls: ['./strength.page.scss'],
+  selector: 'app-yoga',
+  templateUrl: './yoga.page.html',
+  styleUrls: ['./yoga.page.scss'],
   standalone: true,
 
   imports: [
     IonicModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 
-export class StrengthPage implements OnInit {
+export class YogaPage implements OnInit {
 
-  calories = 420;
+  // LIVE STATS
+  calories = 180;
 
-  sets = 12;
+  sets = 8;
 
-  duration = 45;
+  duration = 30;
 
-  powerLevel = 65;
+  powerLevel = 75;
 
   challengeProgress = 20;
 
@@ -34,21 +41,14 @@ export class StrengthPage implements OnInit {
 
   ngOnInit() {
 
+    // AUTO LIVE UPDATES
     this.statsInterval = setInterval(() => {
 
-      this.calories += Math.floor(Math.random() * 10);
-
-      this.sets += Math.floor(Math.random() * 2);
+      this.calories += 3;
 
       this.duration += 1;
 
-      this.powerLevel += Math.floor(Math.random() * 5);
-
-      if (this.powerLevel > 100) {
-        this.powerLevel = 100;
-      }
-
-      this.powerLevel -= Math.floor(Math.random() * 3);
+      this.powerLevel -= 1;
 
       if (this.powerLevel < 40) {
         this.powerLevel = 40;
@@ -57,6 +57,7 @@ export class StrengthPage implements OnInit {
     }, 3000);
   }
 
+  // BOOST ENERGY
   async boostPower() {
 
     this.powerLevel += 10;
@@ -67,11 +68,11 @@ export class StrengthPage implements OnInit {
 
     const toast = await this.toastController.create({
 
-      message: '⚡ Power Boost Activated!',
+      message: '🧘 Energy Boost Activated!',
 
       duration: 2000,
 
-      color: 'warning',
+      color: 'success',
 
       position: 'top'
     });
@@ -79,43 +80,23 @@ export class StrengthPage implements OnInit {
     await toast.present();
   }
 
+  // CHALLENGE BUTTON
   async increaseChallenge() {
 
     this.challengeProgress += 10;
 
-    this.calories += 20;
+    this.calories += 15;
 
     this.sets += 1;
-
-    this.powerLevel += 5;
 
     if (this.challengeProgress > 100) {
       this.challengeProgress = 100;
     }
 
-    if (this.powerLevel > 100) {
-      this.powerLevel = 100;
-    }
-
-    let message = 'Challenge Updated 🔥';
-
-    let color = 'success';
-
-    if (
-      this.challengeProgress >= 50 &&
-      this.challengeProgress < 100
-    ) {
-
-      message = '🥉 Bronze Medal Activated!';
-
-      color = 'warning';
-    }
+    let message = '🔥 Yoga Challenge Updated';
 
     if (this.challengeProgress >= 100) {
-
-      message = '🏆 Champion Medal Activated!';
-
-      color = 'danger';
+      message = '🏆 Yoga Master Achieved!';
     }
 
     const toast = await this.toastController.create({
@@ -124,16 +105,16 @@ export class StrengthPage implements OnInit {
 
       duration: 2500,
 
-      position: 'middle',
+      color: 'warning',
 
-      color: color
+      position: 'middle'
     });
 
     await toast.present();
   }
 
   ionViewWillLeave() {
-
     clearInterval(this.statsInterval);
   }
+
 }

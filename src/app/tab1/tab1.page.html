@@ -1,43 +1,68 @@
-<ion-content class="tab1-page">
+<div
+  class="popup-overlay"
+  *ngIf="showStreakPopup">
 
-  
+  <div class="streak-popup">
 
-  <!-- HERO SECTION -->
-  <div class="hero-section">
+    <h1>🔥</h1>
 
-    <div class="floating-icon icon1">🔥</div>
-    <div class="floating-icon icon2">💪</div>
-    <div class="floating-icon icon3">⚡</div>
-    <div class="floating-icon icon4">🏆</div>
+    <h2>Streak Updated</h2>
 
-    <h1>🔥 FitFreak Dashboard 🔥</h1>
-    <p>Push harder than yesterday. Stay stronger every day.</p>
+    <p>{{ streakMessage }}</p>
+
+    <ion-button
+      expand="block"
+      (click)="closePopup()">
+
+      OK
+
+    </ion-button>
 
   </div>
 
-  <!-- PROFILE SUMMARY -->
-  <div class="main-card profile-card">
+</div>
+
+<ion-content fullscreen class="dashboard-page">
+
+
+  <!-- HEADER -->
+  <div class="dashboard-header">
+
+    <h1>🔥 FitFreak Dashboard 🔥</h1>
+
+
+    <p>
+      Push harder than yesterday. Stay stronger every day.
+    </p>
+
+    <h2>
+      Hello, {{ username }} !
+    </h2>
+  </div>
+
+  <!-- FITNESS PROFILE -->
+  <div class="card">
 
     <h2>👤 Your Fitness Profile</h2>
 
-    <div class="profile-grid">
+    <div class="grid">
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Weight</h3>
         <p>{{ fitness.profile?.weight }} kg</p>
       </div>
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Height</h3>
         <p>{{ fitness.profile?.height }} cm</p>
       </div>
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Goal</h3>
         <p>{{ fitness.profile?.goalType }}</p>
       </div>
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Level</h3>
         <p>{{ fitness.profile?.level }}</p>
       </div>
@@ -46,46 +71,46 @@
 
   </div>
 
-  <!-- CALORIES + TOKENS -->
-  <div class="stats-grid">
+  <!-- LIVE STATS -->
+  <div class="card">
 
-    <div class="stat-card calories-card">
-      <h3>🔥 Calories Burned</h3>
-      <h1>{{ fitness.calories }}</h1>
-      <p>Burn more. Win more.</p>
-    </div>
+    <h2>🔥 Fitness Stats</h2>
 
-    <div class="stat-card token-card">
-      <h3>🎯 Tokens Earned</h3>
-      <h1>{{ fitness.tokens }}</h1>
-      <p>50 tokens unlock Admin Chat</p>
+    <div class="grid">
+
+      <div class="mini-card">
+        <h3>Calories Burned</h3>
+        <p>{{ fitness.calories }}</p>
+      </div>
+
+      <div class="mini-card">
+        <h3>Tokens Earned</h3>
+        <p>{{ fitness.tokens }}</p>
+      </div>
+
     </div>
 
   </div>
 
   <!-- GOAL PROGRESS -->
-  <div class="main-card">
+  <div class="card">
 
     <h2>🎯 Goal Progress</h2>
 
-    <div class="progress-bar">
-      <div
-        class="progress-fill"
-        [style.width.%]="progress">
-      </div>
-    </div>
+    <ion-progress-bar
+      [value]="progress / 100">
+    </ion-progress-bar>
 
     <p>
-      {{ fitness.calories }}
-      /
+      {{ fitness.calories }} /
       {{ fitness.goal }}
       Calories Completed
     </p>
 
   </div>
 
-  <!-- BMI CARD -->
-  <div class="main-card bmi-card">
+  <!-- BMI -->
+  <div class="card">
 
     <h2>📏 BMI Summary</h2>
 
@@ -95,33 +120,53 @@
 
     <ion-button
       expand="block"
+      color="primary"
       routerLink="/bmi">
 
-      Update BMI
+      UPDATE BMI
 
     </ion-button>
 
   </div>
 
   <!-- WEEKLY GRAPH -->
-  <div class="main-card">
+  <div class="card">
 
-    <h2>📈 Weekly Calories Graph</h2>
+    <h2>📊 Weekly Calories Graph</h2>
 
-    <div class="graph-grid">
+    <div class="graph-container">
 
-      <div
-        class="bar-box"
-        *ngFor="let item of history; let i = index">
+      <!-- SCALE -->
+      <div class="scale">
+
+        <span>500</span>
+        <span>400</span>
+        <span>300</span>
+        <span>200</span>
+        <span>100</span>
+        <span>0</span>
+
+      </div>
+
+      <!-- GRAPH -->
+      <div class="graph">
 
         <div
           class="bar"
-          [style.height.px]="item">
-        </div>
+          *ngFor="let item of fitness.weeklyCalories; let i = index">
 
-        <span>
-          {{ ['S','M','T','W','T','F','S'][i] }}
-        </span>
+          <div
+            class="fill"
+            [style.height.%]="item / 5">
+          </div>
+
+          <p>
+            {{
+              ['S','M','T','W','T','F','S'][i]
+            }}
+          </p>
+
+        </div>
 
       </div>
 
@@ -130,78 +175,118 @@
   </div>
 
   <!-- ACHIEVEMENTS -->
-  <div class="main-card">
+  <div class="card">
 
     <h2>🏆 Achievements</h2>
 
-    <div class="profile-grid">
+    <div class="grid">
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Workout Streak</h3>
-        <p>7 Days 🔥</p>
+        <p>{{ fitness.streak }} Days 🔥</p>
       </div>
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Completed</h3>
-        <p>{{ fitness.calories > 0 ? 'Yes ✅' : 'No ❌' }}</p>
+        <p>
+          {{ fitness.totalWorkouts > 0 ? 'Yes ✅' : 'No ❌' }}
+        </p>
       </div>
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Rank</h3>
-        <p>Warrior ⚔️</p>
+        <p>{{ fitness.rank }}</p>
       </div>
 
-      <div class="mini-box">
+      <div class="mini-card">
         <h3>Status</h3>
-        <p>Active 💪</p>
+        <p>
+          {{
+            fitness.totalWorkouts > 0
+            ? 'Active 💪'
+            : 'Inactive 😴'
+          }}
+        </p>
       </div>
 
     </div>
 
   </div>
 
-  <!-- CHAT STATUS -->
-  <div class="main-card">
+  <!-- RANK SYSTEM -->
+  <div class="card">
 
-    <h2>💬 Admin Chat Access</h2>
+    <h2>🎖 Rank System</h2>
 
-    <p *ngIf="fitness.tokens < 50">
-      Need {{ 50 - fitness.tokens }} more tokens
-      to unlock chat
-    </p>
+    <div class="rank-slider">
 
-    <p *ngIf="fitness.tokens >= 50">
-      Chat Unlocked ✅
-    </p>
+  <div class="rank-card">
+    🌱 Beginner <br>
+    1 Day Streak
+  </div>
+
+  <div class="rank-card">
+    🔥 Rookie <br>
+    3 Day Streak
+  </div>
+
+  <div class="rank-card">
+    ⚡ Warrior <br>
+    7 Day Streak
+  </div>
+
+  <div class="rank-card">
+    🏆 Champion <br>
+    14 Day Streak
+  </div>
+
+  <div class="rank-card">
+    👑 Legend <br>
+    30 Day Streak
+  </div>
+
+</div>
 
   </div>
 
-  <!-- RESET -->
-  <div class="main-card">
+  <!-- ADMIN CHAT -->
+  <div class="card">
 
-    <h2>🧹 Reset Dashboard</h2>
+    <h2>💬 Admin Chat Access</h2>
+
+    <p>
+      {{
+        fitness.tokens >= 50
+        ? 'Chat unlocked ✅'
+        : 'Need ' + (50 - fitness.tokens) + ' more tokens'
+      }}
+    </p>
 
     <ion-button
-      color="danger"
       expand="block"
-      (click)="resetAll()">
+      color="tertiary"
+      (click)="openChat()">
 
-      Clear All Data
+      OPEN CHAT
 
     </ion-button>
 
   </div>
 
-  <!-- FLOATING CHAT BUTTON -->
-  <ion-fab
-    vertical="bottom"
-    horizontal="end"
-    slot="fixed">
+  <!-- RESET -->
+  <div class="card">
 
-    <ion-fab-button (click)="openChat()">
-      💬
-    </ion-fab-button>
+    <h2>🧹 Reset Dashboard</h2>
 
-  </ion-fab>
+    <ion-button
+      expand="block"
+      color="danger"
+      (click)="resetAll()">
+
+      CLEAR ALL DATA
+
+    </ion-button>
+
+  </div>
 
 </ion-content>

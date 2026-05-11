@@ -28,8 +28,12 @@
     "@capacitor/keyboard": "8.0.2",
     "@capacitor/status-bar": "8.0.2",
     "@ionic/angular": "^8.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "html5-qrcode": "^2.3.8",
     "ionicons": "^7.0.0",
+    "mongoose": "^9.6.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -62,5 +66,15 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.9.0"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anika-Patrick/CAPSTONE_PROJECT.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anika-Patrick/CAPSTONE_PROJECT/issues"
+  }
 }

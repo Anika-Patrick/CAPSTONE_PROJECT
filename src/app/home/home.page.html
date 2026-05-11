@@ -1,21 +1,44 @@
-<ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen class="login-page">
 
-<ion-content class="ion-padding">
+  <div class="overlay">
+  <div class="login-card">
 
-  <div class="card">
-    <h2>Login</h2>
+    <h1>Welcome!</h1>
 
-    <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
-    <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+    <p>Login to continue your fitness journey</p>
 
-    <ion-button expand="block" (click)="login()" routerLink="/tabs/tab1">Login</ion-button>
+    <ion-input
+      fill="outline"
+      placeholder="Username"
+      [(ngModel)]="username">
+    </ion-input>
+
+    <br>
+
+    <ion-input
+      fill="outline"
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password">
+    </ion-input>
+
+    <br>
+
+    <ion-button expand="block" color="success" (click)="login()">
+      Login
+    </ion-button>
+
+    <div class="bottom-text">
+
+      <p>New User?</p>
+
+      <ion-button fill="clear" (click)="goSignup()">
+        Create Account
+      </ion-button>
+
+    </div>
+
   </div>
-  <ion-button expand="block" color="medium" (click)="register()">
-  Register New User
-</ion-button>
+  </div>
 
 </ion-content>

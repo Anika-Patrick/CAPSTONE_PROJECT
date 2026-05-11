@@ -3,200 +3,361 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FitnessService {
 
+  // USER PROFILE
+  profile: any = {
+    name: '',
+    age: '',
+    gender: '',
+    weight: 0,
+    height: 0
+  };
+
+  // FITNESS STATS
   calories = 0;
+
   tokens = 0;
+
   goal = 500;
 
-  workouts: any[] = [];
-  profile: any = null;
-
-  // 📊 GRAPH HISTORY (7 DAYS)
   history: number[] = [];
 
+  workouts: any[] = [];
+
+  // NEW FEATURES
+  streak = 0;
+
+  totalWorkouts = 0;
+
+  rank = '';
+
+  weeklyCalories = [0, 0, 0, 0, 0, 0, 0];
+
+  lastLoginDate = '';
+
   constructor() {
-    this.loadStats();
-    this.loadWorkouts();
+
     this.loadProfile();
+
     this.loadHistory();
+
+    this.loadWorkouts();
+
+    this.loadExtraData();
   }
 
-  // =======================
-  // 📊 STATS
-  // =======================
-  loadStats() {
-    this.calories = Number(localStorage.getItem('calories') || 0);
-    this.tokens = Number(localStorage.getItem('tokens') || 0);
-    this.goal = Number(localStorage.getItem('goal') || 500);
-  }
+  // =========================
+  // PROFILE
+  // =========================
 
-  saveStats() {
-    localStorage.setItem('calories', this.calories.toString());
-    localStorage.setItem('tokens', this.tokens.toString());
-    localStorage.setItem('goal', this.goal.toString());
-  }
+  saveProfile(data: any) {
 
-  // =======================
-  // 🏋️ WORKOUTS
-  // =======================
-  loadWorkouts() {
-    const data = localStorage.getItem('workouts');
-    this.workouts = data ? JSON.parse(data) : [];
-  }
+    this.profile = data;
 
-  saveWorkouts() {
-    localStorage.setItem('workouts', JSON.stringify(this.workouts));
-  }
-
-  // =======================
-  // 👤 PROFILE
-  // =======================
-  loadProfile() {
-    const data = localStorage.getItem('fitness_profile');
-    this.profile = data ? JSON.parse(data) : null;
-  }
-
-  saveProfile() {
     localStorage.setItem(
       'fitness_profile',
-      JSON.stringify(this.profile)
+      JSON.stringify(data)
     );
   }
 
-  setProfile(data: any) {
-    this.profile = data;
-    this.saveProfile();
+  loadProfile() {
+
+    const data = localStorage.getItem('fitness_profile');
+
+    if (data) {
+
+      this.profile = JSON.parse(data);
+    }
   }
 
-  // =======================
-  // 🧠 FITNESS PLAN LOGIC
-  // =======================
-  calculatePlan(weight: number, goalType: string) {
-    let days =
-      goalType === 'fat'
-        ? Math.round(weight * 2)
-        : Math.round(weight * 1.5);
+  // =========================
+  // CALORIES + TOKENS
+  // =========================
 
-    let level =
-      weight < 60
-        ? 'Beginner'
-        : weight < 80
-        ? 'Moderate'
-        : 'Advanced';
+  addWorkout(calories: number, tokens: number) {
 
-    return {
-      days,
-      level
-    };
+    this.calories += calories;
+
+    this.tokens += tokens;
+
+    this.totalWorkouts++;
+
+    // ADD TO GRAPH
+    const day = new Date().getDay();
+
+    this.weeklyCalories[day] += calories;
+
+    this.history.push(calories);
+
+    this.saveHistory();
+
+    this.saveExtraData();
   }
 
-  // =======================
-  // 📊 GRAPH HISTORY
-  // =======================
-  loadHistory() {
-    const data = localStorage.getItem('history');
-
-    this.history = data
-      ? JSON.parse(data)
-      : [0, 0, 0, 0, 0, 0, 0];
-  }
+  // =========================
+  // HISTORY
+  // =========================
 
   saveHistory() {
+
     localStorage.setItem(
-      'history',
+      'fitness_history',
       JSON.stringify(this.history)
     );
   }
 
-  // =======================
-  // 🎯 SET GOAL
-  // =======================
-  setGoal(val: number) {
-    this.goal = val;
-    this.saveStats();
-  }
+  loadHistory() {
 
-  // =======================
-  // 📏 BMI LOGIC
-  // =======================
-  getBMI(weight: number, height: number) {
-    if (!weight || !height) return 0;
+    const data = localStorage.getItem(
+      'fitness_history'
+    );
 
-    const heightInMeters = height / 100;
+    if (data) {
 
-    const bmi =
-      weight / (heightInMeters * heightInMeters);
-
-    return Number(bmi.toFixed(1));
-  }
-
-  getBMIStatus(bmi: number) {
-    if (bmi < 18.5) {
-      return 'Underweight ⚠️';
-    }
-
-    if (bmi >= 18.5 && bmi < 25) {
-      return 'Healthy ✅';
-    }
-
-    if (bmi >= 25 && bmi < 30) {
-      return 'Overweight ⚡';
-    }
-
-    return 'Obese 🚨';
-  }
-
-  // =======================
-  // ✅ COMPLETE WORKOUT
-  // =======================
-  completeWorkout(workout: any) {
-    if (!workout.completed) {
-      workout.completed = true;
-
-      // calories update
-      this.calories += workout.calories;
-
-      // token reward
-      this.tokens += 1;
-
-      // 📊 Graph update for today
-      const today = new Date().getDay(); // 0–6
-      this.history[today] += workout.calories;
-
-      // save everything
-      this.saveHistory();
-      this.saveWorkouts();
-      this.saveStats();
+      this.history = JSON.parse(data);
     }
   }
 
-  // =======================
-  // 💬 ADMIN CHAT ACCESS
-  // =======================
-  useChat() {
+  // =========================
+  // WORKOUTS
+  // =========================
+
+  saveWorkouts() {
+
+    localStorage.setItem(
+      'fitness_workouts',
+      JSON.stringify(this.workouts)
+    );
+  }
+
+  loadWorkouts() {
+
+    const data = localStorage.getItem(
+      'fitness_workouts'
+    );
+
+    if (data) {
+
+      this.workouts = JSON.parse(data);
+    }
+  }
+
+  // =========================
+  // EXTRA FITNESS DATA
+  // =========================
+
+  saveExtraData() {
+
+    localStorage.setItem(
+      'fitness_extra',
+      JSON.stringify({
+
+        calories: this.calories,
+
+        tokens: this.tokens,
+
+        streak: this.streak,
+
+        totalWorkouts: this.totalWorkouts,
+
+        rank: this.rank,
+
+        weeklyCalories: this.weeklyCalories,
+
+        lastLoginDate: this.lastLoginDate
+      })
+    );
+  }
+
+  loadExtraData() {
+
+    const data = localStorage.getItem(
+      'fitness_extra'
+    );
+
+    if (data) {
+
+      const parsed = JSON.parse(data);
+
+      this.calories = parsed.calories || 0;
+
+      this.tokens = parsed.tokens || 0;
+
+      this.streak = parsed.streak || 0;
+
+      this.totalWorkouts =
+        parsed.totalWorkouts || 0;
+
+      this.rank = parsed.rank || '';
+
+      this.weeklyCalories =
+        parsed.weeklyCalories ||
+        [0, 0, 0, 0, 0, 0, 0];
+
+      this.lastLoginDate =
+        parsed.lastLoginDate || '';
+    }
+  }
+
+  // =========================
+  // CHAT LOCK
+  // =========================
+    // =========================
+  // BMI PLAN CALCULATOR
+  // =========================
+
+  // =========================
+// BMI PLAN CALCULATOR
+// =========================
+
+calculatePlan(
+   weight: number,
+  height: number,
+  goal?: string,
+  age?: number,
+  gender?: string
+) {
+
+  const h = height / 100;
+
+  const bmi = weight / (h * h);
+
+  let bmiStatus = '';
+
+  if (bmi < 18.5) {
+
+    bmiStatus = 'Underweight';
+
+  } else if (bmi < 25) {
+
+    bmiStatus = 'Healthy';
+
+  } else if (bmi < 30) {
+
+    bmiStatus = 'Overweight';
+
+  } else {
+
+    bmiStatus = 'Obese';
+  }
+
+  // DEFAULTS
+
+  let calories = 2000;
+
+  let days = 90;
+
+  let level = 'Beginner';
+
+  if (goal === 'Weight Loss') {
+
+    calories = 1500;
+
+    days = 120;
+
+    level = 'Fat Burn';
+
+  } else if (goal === 'Muscle Gain') {
+
+    calories = 2500;
+
+    days = 150;
+
+    level = 'Muscle Builder';
+
+  }
+
+  return {
+
+    bmi: bmi.toFixed(1),
+
+    bmiStatus,
+
+    calories,
+
+    days,
+
+    level
+  };
+}
+
+  // =========================
+  // SET PROFILE
+  // =========================
+
+  setProfile(data: any) {
+
+    this.profile = data;
+
+    this.saveProfile(data);
+  }
+
+  // =========================
+  // SET GOAL
+  // =========================
+
+  setGoal(goalCalories: number) {
+
+    this.goal = goalCalories;
+
+    this.saveExtraData();
+  }
+
+  // =========================
+  // SAVE STATS
+  // =========================
+
+  saveStats() {
+
+    this.saveExtraData();
+
+    this.saveHistory();
+
+    this.saveWorkouts();
+  }
+  useChat(): boolean {
+
     if (this.tokens >= 50) {
+
       this.tokens -= 50;
-      this.saveStats();
+
+      this.saveExtraData();
+
       return true;
     }
 
     return false;
   }
 
-  // =======================
-  // 🧹 RESET EVERYTHING
-  // =======================
+  // =========================
+  // RESET
+  // =========================
+
   resetAll() {
-    this.calories = 0;
-    this.tokens = 0;
-    this.goal = 500;
-
-    this.workouts = [];
-    this.profile = null;
-
-    this.history = [0, 0, 0, 0, 0, 0, 0];
 
     localStorage.clear();
+
+    this.calories = 0;
+
+    this.tokens = 0;
+
+    this.goal = 500;
+
+    this.history = [];
+
+    this.workouts = [];
+
+    this.streak = 0;
+
+    this.totalWorkouts = 0;
+
+    this.rank = '';
+
+    this.weeklyCalories =
+      [0, 0, 0, 0, 0, 0, 0];
+
+    this.lastLoginDate = '';
   }
 }

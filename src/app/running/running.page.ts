@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, ToastController } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-running',
   templateUrl: './running.page.html',
   styleUrls: ['./running.page.scss'],
   standalone: true,
-  imports: [IonicModule, RouterModule, CommonModule]
+
+  imports: [
+    IonicModule,
+    CommonModule
+  ]
 })
+
 export class RunningPage implements OnInit {
 
   distance = 0;
@@ -23,7 +27,9 @@ export class RunningPage implements OnInit {
 
   interval: any;
 
-  constructor(private toastController: ToastController) {}
+  constructor(
+    private toastController: ToastController
+  ) {}
 
   ngOnInit() {}
 
@@ -55,33 +61,53 @@ export class RunningPage implements OnInit {
   }
 
   boostSpeed() {
+
     this.pace += 2;
+
     this.energy -= 5;
+
     this.showToast('⚡ Speed Boost!');
   }
 
   updateCoach() {
 
     if (this.energy > 70) {
-      this.coachMessage = '🔥 Strong pace, keep it up!';
+
+      this.coachMessage =
+        '🔥 Strong pace, keep it up!';
+
     } else if (this.energy > 40) {
-      this.coachMessage = '⚠️ Maintain rhythm';
+
+      this.coachMessage =
+        '⚠️ Maintain rhythm';
+
     } else {
-      this.coachMessage = '🛑 Slow down, low energy';
+
+      this.coachMessage =
+        '🛑 Slow down, low energy';
     }
   }
 
   async finishRun() {
+
     this.status = 'Run Completed 🏁';
-    this.showToast(`🏁 Finished ${this.distance.toFixed(2)} KM`);
+
+    this.showToast(
+      `🏁 Finished ${this.distance.toFixed(2)} KM`
+    );
   }
 
   async showToast(msg: string) {
 
-    const toast = await this.toastController.create({
+    const toast =
+      await this.toastController.create({
+
       message: msg,
+
       duration: 1800,
+
       position: 'top',
+
       color: 'dark'
     });
 
@@ -89,6 +115,7 @@ export class RunningPage implements OnInit {
   }
 
   ionViewWillLeave() {
+
     clearInterval(this.interval);
   }
 }

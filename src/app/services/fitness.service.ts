@@ -6,10 +6,21 @@ import { Injectable } from '@angular/core';
 
 export class FitnessService {
 
-  calories: number = 0;
+  calories = 0;
 
-  duration: number = 0;
+tokens = 0;
 
-  bpm: number = 0;
+goal = 500;
+
+history: number[] = [];
+
+// 🏆 NEW VARIABLES
+streak = 0;
+
+rank = '';
+
+totalWorkouts = 0;
+
+weeklyCalories = [0, 0, 0, 0, 0, 0, 0];
 
 }

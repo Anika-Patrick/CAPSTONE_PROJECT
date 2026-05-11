@@ -61,9 +61,9 @@ export class BmiPage {
   // 🚀 SAVE + OPEN TAB 1
   savePlan() {
     const result = this.fitness.calculatePlan(
-      this.weight,
-      this.goalType
-    );
+  this.weight,
+  this.height
+);
 
     this.fitness.setProfile({
       weight: this.weight,
@@ -73,10 +73,19 @@ export class BmiPage {
       days: result.days,
       level: result.level
     });
+    {
+  console.log('Navigating to tab1');
+
+  this.router.navigate(['/tabs/tab1']).then(success => {
+    console.log('Navigation success:', success);
+  }).catch(err => {
+    console.error('Navigation error:', err);
+  });
+}
 
     this.fitness.setGoal(this.goalCalories);
 
     // open tabs after BMI
-    this.router.navigate(['/tabs/tab1']);
+    this.router.navigate(['tabs','tab1']);
   }
 }

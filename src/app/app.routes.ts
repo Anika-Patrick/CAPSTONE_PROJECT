@@ -2,11 +2,20 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
 
-  // 🔐 Default → Login
+  // 👋 Default Route
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'welcome',
     pathMatch: 'full'
+  },
+
+  // 👋 Welcome Page
+  {
+    path: 'welcome',
+    loadComponent: () =>
+      import('./welcome/welcome.page').then(
+        m => m.WelcomePage
+      )
   },
 
   // 🔐 Login Page
@@ -18,21 +27,21 @@ export const routes: Routes = [
       )
   },
 
-  // 📏 BMI PAGE (AFTER HOME)
+  // 📝 Signup Page
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./signup/signup.page').then(
+        m => m.SignupPage
+      )
+  },
+
+  // 📏 BMI Page
   {
     path: 'bmi',
     loadComponent: () =>
       import('./bmi/bmi.page').then(
         m => m.BmiPage
-      )
-  },
-
-  // 🛠️ Admin
-  {
-    path: 'admin',
-    loadComponent: () =>
-      import('./admin/admin.page').then(
-        m => m.AdminPage
       )
   },
 
@@ -45,6 +54,15 @@ export const routes: Routes = [
       )
   },
 
+  // 🛠️ Admin
+  {
+    path: 'admin',
+    loadComponent: () =>
+      import('./admin/admin.page').then(
+        m => m.AdminPage
+      )
+  },
+
   // 💬 Chat
   {
     path: 'chat',
@@ -54,7 +72,7 @@ export const routes: Routes = [
       )
   },
 
-  // 🔥 Exercise Route (WITH PARAM)
+  // 🔥 Exercise Details
   {
     path: 'exercise/:id',
     loadComponent: () =>
@@ -63,62 +81,64 @@ export const routes: Routes = [
       )
   },
 
-  // 🚨 Fallback (ALWAYS LAST)
-  {
-    path: '**',
-    redirectTo: 'home'
-  },
-  {
-    path: 'tab4',
-    loadComponent: () => import('./tab4/tab4.page').then( m => m.Tab4Page)
-  },
-  {
-    path: 'cardio',
-    loadComponent: () => import('./cardio/cardio.page').then( m => m.CardioPage)
-  },
-  {
-    path: 'strength',
-    loadComponent: () => import('./strength/strength.page').then( m => m.StrengthPage)
-  },
-  
+  // 🏃 Running
   {
     path: 'running',
-    loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
+    loadComponent: () =>
+      import('./running/running.page').then(
+        m => m.RunningPage
+      )
   },
-  {
-    path: 'cardio',
-    loadComponent: () => import('./cardio/cardio.page').then( m => m.CardioPage)
-  },
+
+  // 💪 Strength
   {
     path: 'strength',
-    loadComponent: () => import('./strength/strength.page').then( m => m.StrengthPage)
+    loadComponent: () =>
+      import('./strength/strength.page').then(
+        m => m.StrengthPage
+      )
   },
-  
+
+  // ❤️ Cardio
   {
-    path: 'running',
-    loadComponent: () => import('./running/running.page').then( m => m.RunningPage)
+    path: 'cardio',
+    loadComponent: () =>
+      import('./cardio/cardio.page').then(
+        m => m.CardioPage
+      )
   },
+
+  // 🧘 Yoga
   {
-    path: 'tab5',
-    loadComponent: () => import('./tab5/tab5.page').then( m => m.Tab5Page)
+    path: 'yoga',
+    loadComponent: () =>
+      import('./yoga/yoga.page').then(
+        m => m.YogaPage
+      )
   },
-  {
-    path: 'tab5',
-    loadComponent: () => import('./tab5/tab5.page').then( m => m.Tab5Page)
-  },
-  {
-    path: 'chat',
-    loadComponent: () => import('./chat/chat.page').then( m => m.ChatPage)
-  },
+
+  // 👤 Profile
   {
     path: 'profile',
-    loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
+    loadComponent: () =>
+      import('./profile/profile.page').then(
+        m => m.ProfilePage
+      )
   },
+
+  // 🧠 Fitness Mode
   {
     path: 'fitness-mode',
-    loadComponent: () => import('./fitness-mode/fitness-mode.page').then( m => m.FitnessModePage)
+    loadComponent: () =>
+      import('./fitness-mode/fitness-mode.page').then(
+        m => m.FitnessModePage
+      )
   },
- 
 
+  // 🚨 Fallback
+  {
+    path: '**',
+    redirectTo: 'welcome'
+  }
 
 ];

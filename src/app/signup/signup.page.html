@@ -1,0 +1,25 @@
+<ion-content fullscreen class="signup-page">
+
+  <div class="signup-card">
+
+    <h1>Create Account 🚀</h1>
+
+    <ion-input fill="outline" placeholder="Username"
+      [(ngModel)]="username">
+    </ion-input>
+
+    <br>
+
+    <ion-input fill="outline" type="password" placeholder="Create Password"
+      [(ngModel)]="password">
+    </ion-input>
+
+    <br>
+
+    <ion-button expand="block" color="success" (click)="signup()">
+      Sign Up
+    </ion-button>
+
+  </div>
+
+</ion-content>
