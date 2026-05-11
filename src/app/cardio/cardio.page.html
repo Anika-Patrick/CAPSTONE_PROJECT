@@ -1,0 +1,115 @@
+
+<ion-header>
+  <ion-toolbar class="cardio-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Cardio Zone</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="cardio-bg">
+
+  <!-- HERO -->
+  <div class="hero-section">
+
+    <div class="pulse-circle"></div>
+
+    <ion-icon name="flash" class="hero-icon"></ion-icon>
+
+    <h1>Cardio Training</h1>
+
+    <p>
+      Burn calories, improve stamina and boost your heart health 🔥
+    </p>
+
+    <ion-button expand="block" class="start-btn" (click)="startWorkout()">
+      Start Workout
+    </ion-button>
+
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-container">
+
+  <ion-card class="stat-card">
+    <h2>{{ calories }}</h2>
+    <p>Calories</p>
+  </ion-card>
+
+  <ion-card class="stat-card">
+    <h2>{{ duration }}m</h2>
+    <p>Duration</p>
+  </ion-card>
+
+  <ion-card class="stat-card">
+    <h2>{{ bpm }}</h2>
+    <p>BPM</p>
+  </ion-card>
+
+</div>
+
+  <!-- WORKOUTS -->
+  <div class="section-title">
+    <h2>Popular Cardio Workouts</h2>
+  </div>
+
+  <ion-card class="workout-card" (click)="playWorkout('HIIT Blast')">
+    <div class="workout-content">
+
+      <div>
+        <h3>HIIT Blast</h3>
+        <p>20 min intense fat burning workout</p>
+      </div>
+
+      <ion-icon name="play-circle"></ion-icon>
+
+    </div>
+  </ion-card>
+
+  <ion-card class="workout-card" (click)="playWorkout('Treadmill Run')">
+    <div class="workout-content">
+
+      <div>
+        <h3>Treadmill Run</h3>
+        <p>Increase endurance & stamina</p>
+      </div>
+
+      <ion-icon name="play-circle"></ion-icon>
+
+    </div>
+  </ion-card>
+
+  <ion-card class="workout-card" (click)="playWorkout('Jump Rope')">
+    <div class="workout-content">
+
+      <div>
+        <h3>Jump Rope</h3>
+        <p>Quick cardio & coordination exercise</p>
+      </div>
+
+      <ion-icon name="play-circle"></ion-icon>
+
+    </div>
+  </ion-card>
+
+  <!-- NOW PLAYING -->
+  <ion-card class="now-playing-card" *ngIf="currentWorkout">
+
+    <div class="now-playing-content">
+
+      <ion-icon name="musical-notes"></ion-icon>
+
+      <div>
+        <h2>Now Playing</h2>
+        <p>{{ currentWorkout }}</p>
+      </div>
+
+    </div>
+
+  </ion-card>
+
+</ion-content>
+
+

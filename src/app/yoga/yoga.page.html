@@ -1,21 +1,158 @@
-<ion-content>
-  <div class="page-container">
+<ion-header>
+  <ion-toolbar class="yoga-toolbar">
 
-    <div class="title">🧘 Yoga Session</div>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
 
-    <div class="card">
-      <h3>Beginner Flow</h3>
-      <p>• Breathing Exercise</p>
-      <p>• Mountain Pose</p>
-      <p>• Child Pose</p>
-    </div>
+    <ion-title>Yoga Harmony</ion-title>
 
-    <div class="card">
-      <h3>Relax Mode</h3>
-      <p>5 min meditation timer</p>
-    </div>
+  </ion-toolbar>
+</ion-header>
 
-    <div class="btn">Start Meditation</div>
+<ion-content class="yoga-bg">
+
+  <!-- HERO -->
+  <div class="hero-section">
+
+    <div class="lotus-glow"></div>
+
+    <ion-icon
+      name="leaf"
+      class="hero-icon">
+
+    </ion-icon>
+
+    <h1>Inner Peace</h1>
+
+    <p>
+      Relax your body, calm your mind and improve flexibility 🧘
+    </p>
+
+    <ion-button
+      expand="block"
+      class="meditate-btn"
+      (click)="startMeditation()">
+
+      Start Meditation
+
+    </ion-button>
 
   </div>
+
+  <!-- LIVE STATS -->
+  <div class="stats-container">
+
+    <ion-card class="stat-card">
+
+      <ion-icon name="heart"></ion-icon>
+
+      <h2>{{ calmLevel }}%</h2>
+
+      <p>Calm Level</p>
+
+    </ion-card>
+
+    <ion-card class="stat-card">
+
+      <ion-icon name="moon"></ion-icon>
+
+      <h2>{{ focus }}</h2>
+
+      <p>Focus Score</p>
+
+    </ion-card>
+
+    <ion-card class="stat-card">
+
+      <ion-icon name="timer"></ion-icon>
+
+      <h2>{{ sessionTime }}m</h2>
+
+      <p>Session Time</p>
+
+    </ion-card>
+
+  </div>
+
+  <!-- DAILY AFFIRMATION -->
+  <div class="affirmation-box">
+
+    <h2>Daily Affirmation ✨</h2>
+
+    <p>
+      "{{ affirmations[currentAffirmation] }}"
+    </p>
+
+    <ion-button
+      expand="block"
+      class="affirm-btn"
+      (click)="nextAffirmation()">
+
+      New Affirmation
+
+    </ion-button>
+
+  </div>
+
+  <!-- YOGA POSES -->
+  <div class="section-title">
+
+    <h2>Yoga Poses</h2>
+
+  </div>
+
+  <div class="poses-container">
+
+    <ion-card
+      class="pose-card"
+      (click)="selectPose('Lotus Pose')">
+
+      <ion-icon name="flower"></ion-icon>
+
+      <h3>Lotus Pose</h3>
+
+      <p>Improves concentration</p>
+
+    </ion-card>
+
+    <ion-card
+      class="pose-card"
+      (click)="selectPose('Tree Pose')">
+
+      <ion-icon name="body"></ion-icon>
+
+      <h3>Tree Pose</h3>
+
+      <p>Enhances balance</p>
+
+    </ion-card>
+
+    <ion-card
+      class="pose-card"
+      (click)="selectPose('Cobra Pose')">
+
+      <ion-icon name="sunny"></ion-icon>
+
+      <h3>Cobra Pose</h3>
+
+      <p>Boosts flexibility</p>
+
+    </ion-card>
+
+  </div>
+
+  <!-- ACTIVE POSE -->
+  <ion-card
+    class="active-pose-card"
+    *ngIf="activePose">
+
+    <ion-icon name="sparkles"></ion-icon>
+
+    <h2>{{ activePose }}</h2>
+
+    <p>Pose Activated Successfully 🌿</p>
+
+  </ion-card>
+
 </ion-content>

@@ -1,0 +1,229 @@
+.cardio-bg {
+  --background: linear-gradient(to bottom, #2c2c54, #40407a);
+  color: white;
+}
+
+/* TOOLBAR */
+.cardio-toolbar {
+  --background: #3b3b6d;
+  --color: white;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-icon {
+  font-size: 90px;
+  color: #ff9f43;
+
+  z-index: 2;
+  position: relative;
+
+  animation: pulse 2s infinite;
+}
+
+.hero-section h1 {
+  font-size: 34px;
+  font-weight: bold;
+
+  margin-top: 15px;
+
+  color: #ffffff;
+}
+
+.hero-section p {
+  color: #f1f2f6;
+
+  margin: 15px 0 25px;
+
+  font-size: 16px;
+}
+
+/* GLOW EFFECT */
+.pulse-circle {
+  width: 170px;
+  height: 170px;
+
+  background: rgba(255, 159, 67, 0.25);
+
+  border-radius: 50%;
+
+  position: absolute;
+
+  top: 10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  filter: blur(20px);
+
+  animation: glow 2s infinite alternate;
+}
+
+/* BUTTON */
+.start-btn {
+  --background: linear-gradient(to right, #ff9f43, #ff6b6b);
+
+  --border-radius: 18px;
+
+  height: 52px;
+
+  font-weight: bold;
+
+  font-size: 16px;
+}
+
+/* STATS */
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+
+  padding: 10px 15px;
+}
+
+.stat-card {
+  width: 100px;
+
+  text-align: center;
+
+  border-radius: 20px;
+
+  padding: 10px;
+
+  background: rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  color: white;
+}
+
+.stat-card h2 {
+  color: #ffdd59;
+
+  font-size: 28px;
+
+  margin-bottom: 5px;
+}
+
+/* SECTION */
+.section-title {
+  padding: 20px 20px 10px;
+}
+
+.section-title h2 {
+  font-size: 24px;
+  font-weight: bold;
+
+  color: white;
+}
+
+/* WORKOUT CARD */
+.workout-card {
+  margin: 15px;
+
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.workout-card:hover {
+  transform: scale(1.02);
+}
+
+.workout-content {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+}
+
+.workout-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+
+  color: white;
+}
+
+.workout-content p {
+  color: #f1f2f6;
+
+  margin-top: 5px;
+}
+
+.workout-content ion-icon {
+  font-size: 50px;
+  color: #ff9f43;
+}
+
+/* NOW PLAYING */
+.now-playing-card {
+  margin: 20px;
+
+  border-radius: 24px;
+
+  background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+
+  color: white;
+}
+
+.now-playing-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 18px;
+}
+
+.now-playing-content ion-icon {
+  font-size: 45px;
+}
+
+.now-playing-content h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.now-playing-content p {
+  margin-top: 5px;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

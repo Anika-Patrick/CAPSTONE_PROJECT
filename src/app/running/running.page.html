@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar class="run-toolbar">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Running Pro Mode</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="run-bg">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <ion-icon name="walk" class="hero-icon"></ion-icon>
+
+    <h1>Urban Runner</h1>
+
+    <p>{{ status }}</p>
+
+    <ion-button class="run-btn" expand="block" (click)="startRun()">
+      Start Run
+    </ion-button>
+
+  </div>
+
+  <!-- LIVE STATS -->
+  <div class="stats">
+
+    <ion-card>
+      <h2>{{ distance.toFixed(2) }} km</h2>
+      <p>Distance</p>
+    </ion-card>
+
+    <ion-card>
+      <h2>{{ pace }} km/h</h2>
+      <p>Pace</p>
+    </ion-card>
+
+    <ion-card>
+      <h2>{{ energy }}%</h2>
+      <p>Energy</p>
+    </ion-card>
+
+  </div>
+
+  <!-- PROGRESS TRACK -->
+  <div class="track-box">
+
+    <h2>Route Progress</h2>
+
+    <div class="track-line">
+
+      <div class="runner" [style.left.%]="progress">
+        🏃‍♂️
+      </div>
+
+    </div>
+
+    <ion-button expand="block" class="boost-btn" (click)="boostSpeed()">
+      Boost Speed ⚡
+    </ion-button>
+
+  </div>
+
+  <!-- COACH PANEL -->
+  <div class="coach-box">
+
+    <h2>AI Coach 🧠</h2>
+
+    <p>{{ coachMessage }}</p>
+
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+
+    <div>
+      🔥 Calories: {{ calories }}
+    </div>
+
+    <div>
+      🏁 Progress: {{ progress }}%
+    </div>
+
+  </div>
+
+</ion-content>

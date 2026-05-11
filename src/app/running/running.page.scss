@@ -1,0 +1,157 @@
+.run-bg {
+  --background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+/* HEADER */
+.run-toolbar {
+  --background: #0b1220;
+  --color: white;
+}
+
+/* HERO SECTION (COLORED + MODERN) */
+.hero {
+  text-align: center;
+  padding: 20px;
+
+  background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+  margin: 10px;
+  border-radius: 20px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.hero-icon {
+  font-size: 80px;
+  color: #fff;
+  animation: run 2s infinite;
+}
+
+.hero h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.hero p {
+  color: #e2e8f0;
+}
+
+/* BUTTON */
+.run-btn {
+  --background: linear-gradient(135deg, #22c55e, #16a34a);
+  --border-radius: 14px;
+  font-weight: bold;
+}
+
+/* STATS (COLORFUL CARDS) */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.stats ion-card {
+  width: 30%;
+  text-align: center;
+  padding: 12px;
+  border-radius: 18px;
+
+  color: white;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.stats ion-card:nth-child(1) {
+  background: linear-gradient(135deg, #f97316, #fb7185);
+}
+
+.stats ion-card:nth-child(2) {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+}
+
+.stats ion-card:nth-child(3) {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+}
+
+.stats h2 {
+  font-size: 18px;
+}
+
+.stats p {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* TRACK BOX */
+.track-box {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 20px;
+
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.track-line {
+  height: 6px;
+  background: #374151;
+  border-radius: 10px;
+  position: relative;
+  margin: 15px 0;
+}
+
+.runner {
+  position: absolute;
+  top: -12px;
+  font-size: 20px;
+  transition: 0.3s ease;
+}
+
+/* BOOST BUTTON */
+.boost-btn {
+  --background: linear-gradient(135deg, #facc15, #f97316);
+  color: black;
+  font-weight: bold;
+}
+
+/* COACH BOX (BRIGHT CARD) */
+.coach-box {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 18px;
+
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  color: white;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.coach-box h2 {
+  font-size: 18px;
+}
+
+.coach-box p {
+  color: #e0f2fe;
+}
+
+/* SUMMARY (FINAL CLEAN PANEL) */
+.summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+  padding: 12px;
+
+  background: linear-gradient(135deg, #111827, #1f2937);
+  border-radius: 15px;
+
+  color: white;
+}
+
+/* ANIMATION */
+@keyframes run {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
