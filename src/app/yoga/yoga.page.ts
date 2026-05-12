@@ -71,11 +71,11 @@ export class YogaPage implements OnInit {
     'PCOD': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiUTqBYizqW7GTPyjep0JupxSJPZ-6qxkXmA&s',
     'Sleep': 'https://img.favpng.com/25/17/23/sleep-cartoon-animation-clip-art-png-favpng-vY1ZQcWy8grZ73FFc1NcFpunT.jpg',
     'Stress Relief': 'https://static.vecteezy.com/system/resources/previews/042/113/887/non_2x/meditating-girl-female-becalmed-character-in-yoga-lotus-posture-stress-relief-and-meditation-practice-flat-illustration-set-healthy-lifestyle-meditation-cartoon-concept-vector.jpg',
-    'Weight Loss': 'https://img.freepik.com/premium-vector/vector-illustration-weight-loss-cartoon-scene-with-girl-who-lost-weight-fruits-salads-water-white-background_812561-661.jpg',
+    'Weight Loss': 'https://previews.123rf.com/images/dmitrynew/dmitrynew2007/dmitrynew200700087/152111564-weight-loss-before-and-after-cartoon-fat-and-thin-woman-comparsion-vector-fitness-or-diet.jpg',
     'Back Pain': 'https://www.shutterstock.com/shutterstock/photos/2071984802/display_1500/stock-vector-suffering-from-chronic-back-pain-concept-young-woman-standing-holding-her-lower-back-suffering-2071984802.jpg',
-    'Flexibility': 'https://thumbs.dreamstime.com/b/young-attractive-woman-practicing-yoga-sitting-one-leg-king-pigeon-flexibility-stretching-exercise-yoga-king-pigeon-exercise-101756852.jpg',
+    'Flexibility': 'https://previews.123rf.com/images/logo3in1/logo3in11510/logo3in1151000005/46717149-woman-sitting-to-cool-down-stretches-after-exercise.jpg',
     'Anxiety': 'https://thumbs.dreamstime.com/b/woman-fears-phobias-anxiety-despair-pain-anxiety-woman-fears-phobias-thoughts-get-confused-crushed-isolated-girl-203608015.jpg',
-    'Meditation': 'https://static.vecteezy.com/system/resources/previews/055/337/931/non_2x/a-woman-meditates-in-nature-and-leaves-conceptual-illustration-for-yoga-meditation-relaxation-rest-healthy-lifestyle-illustration-in-flat-artoon-vector.jpg'
+    'Meditation': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ9_Tl1kIBLOQXAZ6Thod1BD8rq5uRGb13kQ&s'
   };
 
   // ================= ASANA GIFS =================
