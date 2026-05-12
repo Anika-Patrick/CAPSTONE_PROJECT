@@ -7,69 +7,88 @@
 ion-content {
   --background: linear-gradient(
     135deg,
-    #0f172a,
-    #1e293b,
-    #111827
+    #0b1120 0%,
+    #111827 40%,
+    #1e1b4b 100%
   );
 
   font-family: 'Poppins', sans-serif;
 }
 
+
 .tab1-page {
-  --background: #0f172a;
   color: white;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 }
 
-/* HEADER */
+/* HERO */
 
 .dashboard-header {
   padding: 32px 22px 20px;
   text-align: center;
+  padding: 30px 20px;
   position: relative;
+  overflow: hidden;
 }
 
-.dashboard-header h1 {
-  font-size: 30px;
+/* HERO TEXT */
+
+.hero-section h1 {
+  font-size: 28px;
   font-weight: 800;
   margin-bottom: 10px;
-  background: linear-gradient(
-    90deg,
-    #60a5fa,
-    #8b5cf6
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
-.dashboard-header h2 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.dashboard-header p {
+.hero-section p {
   color: #cbd5e1;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15px;
 }
 
-/* MAIN CARD */
+/* FLOATING ICONS */
 
-.card {
+.floating-icon {
+  position: absolute;
+  font-size: 28px;
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+.icon1 {
+  top: 20px;
+  left: 20px;
+}
+
+.icon2 {
+  top: 30px;
+  right: 30px;
+}
+
+.icon3 {
+  bottom: 20px;
+  left: 40px;
+}
+
+.icon4 {
+  bottom: 10px;
+  right: 20px;
+}
+
+/* CARDS */
+
+.main-card,
+.stat-card {
   background: rgba(255,255,255,0.06);
-  border-radius: 24px;
-  margin: 18px;
-  padding: 22px;
+  border-radius: 22px;
+  padding: 20px;
+  margin: 16px;
   backdrop-filter: blur(14px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
-  animation: fadeUp 0.7s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: fadeUp 0.8s ease;
 }
 
-.card h2 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 18px;
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
 }
 
 /* GRID */
@@ -80,14 +99,13 @@ ion-content {
   gap: 14px;
 }
 
-/* MINI CARDS */
+/* MINI BOX */
 
-.mini-card {
+.mini-box {
   background: rgba(255,255,255,0.05);
-  border-radius: 18px;
-  padding: 16px;
+  padding: 14px;
+  border-radius: 16px;
   text-align: center;
-  transition: 0.3s ease;
 }
 
 .mini-card:hover {
@@ -97,78 +115,35 @@ ion-content {
 
 .mini-card h3 {
   font-size: 14px;
-  color: #cbd5e1;
   margin-bottom: 8px;
-  font-weight: 600;
 }
 
-.mini-card p {
-  font-size: 18px;
-  font-weight: 800;
-  color: white;
-}
-
-/* BMI */
-
-.card h1 {
-  font-size: 52px;
-  font-weight: 800;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.card p {
-  color: #cbd5e1;
-  font-size: 14px;
-}
-
-/* BUTTONS */
-
-ion-button {
-  margin-top: 18px;
-  --border-radius: 16px;
+.mini-box p {
+  font-size: 15px;
   font-weight: 700;
-  height: 48px;
-  text-transform: none;
-}
-
-ion-button[color="primary"] {
-  --background: linear-gradient(
-    135deg,
-    #2563eb,
-    #7c3aed
-  );
-}
-
-ion-button[color="tertiary"] {
-  --background: linear-gradient(
-    135deg,
-    #0891b2,
-    #7c3aed
-  );
-}
-
-ion-button[color="danger"] {
-  --background: linear-gradient(
-    135deg,
-    #dc2626,
-    #ef4444
-  );
 }
 
 /* PROGRESS BAR */
 
-ion-progress-bar {
-  margin: 18px 0;
+.progress-bar {
+  width: 100%;
   height: 14px;
+  background: rgba(255,255,255,0.08);
   border-radius: 20px;
   overflow: hidden;
-  --progress-background: linear-gradient(
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(
     90deg,
-    #3b82f6,
-    #8b5cf6
+    #38bdf8,
+    #8b5cf6,
+    #ec4899
   );
-  --buffer-background: rgba(255,255,255,0.08);
+  animation: progressAnim 2s ease;
 }
 
 /* GRAPH */
@@ -194,7 +169,8 @@ ion-progress-bar {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  height: 240px;
+  margin-top: 20px;
+  height: 220px;
 }
 
 .bar {
@@ -205,63 +181,55 @@ ion-progress-bar {
   height: 100%;
 }
 
-.fill {
-  width: 32px;
-  min-height: 20px;
-  border-radius: 20px 20px 8px 8px;
+.bar {
+  width: 28px;
+  border-radius: 20px;
   background: linear-gradient(
     180deg,
-    #60a5fa,
-    #7c3aed
+    #38bdf8,
+    #8b5cf6,
+    #ec4899
   );
-  animation: growBar 1s ease;
-  box-shadow: 0 10px 20px rgba(96,165,250,0.3);
+  animation: growBar 1.2s ease;
 }
 
-.bar p {
-  margin-top: 10px;
+.bar-box span {
+  margin-top: 8px;
   font-size: 12px;
-  font-weight: 600;
   color: #cbd5e1;
 }
 
-/* RANK SLIDER */
+/* BMI */
 
-.rank-slider {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  padding: 10px 0 4px;
-  scroll-behavior: smooth;
+.bmi-card h1 {
+  font-size: 44px;
+  margin: 10px 0;
 }
 
-.rank-slider::-webkit-scrollbar {
-  display: none;
-}
+/* FAB */
 
-.rank-card {
-  min-width: 170px;
-  background: linear-gradient(
+ion-fab-button {
+  --background: linear-gradient(
     135deg,
-    rgba(59,130,246,0.2),
-    rgba(124,58,237,0.2)
+    #2563eb,
+    #7c3aed
   );
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
-  font-weight: 700;
-  color: white;
-  flex-shrink: 0;
-  line-height: 1.7;
-  transition: 0.3s ease;
+  --box-shadow: 0 10px 25px rgba(37,99,235,0.4);
 }
 
-.rank-card:hover {
-  transform: scale(1.04);
-}
+/* KEYFRAMES */
 
-/* ANIMATIONS */
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 
 @keyframes fadeUp {
 
