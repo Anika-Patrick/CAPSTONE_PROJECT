@@ -3,11 +3,11 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FitnessService } from '../services/fitness';
 import { RouterLink } from '@angular/router';
-
+import { AppHeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-tab2',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule,AppHeaderComponent],
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss']
 })

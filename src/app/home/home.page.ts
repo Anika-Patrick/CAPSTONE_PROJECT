@@ -8,59 +8,68 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [IonicModule, FormsModule, CommonModule],
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
 
   username = '';
   password = '';
-
   users: any[] = [];
 
   constructor(private router: Router) {}
 
+  // ================= INIT =================
   ngOnInit() {
     this.loadUsers();
   }
 
-  // 📥 Load users from localStorage
+  // ================= LOAD USERS =================
   loadUsers() {
     const data = localStorage.getItem('fitness_users');
     this.users = data ? JSON.parse(data) : [];
   }
 
-  // 💾 Save users to localStorage
+  // ================= SAVE USERS =================
   saveUsers() {
-    localStorage.setItem(
-      'fitness_users',
-      JSON.stringify(this.users)
-    );
+    localStorage.setItem('fitness_users', JSON.stringify(this.users));
   }
 
-  // 🔐 LOGIN
+  // ================= SET CURRENT USER =================
+  setCurrentUser(user: any) {
+
+    localStorage.setItem('current_user', JSON.stringify(user));
+
+    localStorage.setItem('current_profile', JSON.stringify({
+      username: user.username,
+      loginTime: new Date().toISOString()
+    }));
+  }
+
+  // ================= LOGIN =================
   login() {
 
-    // ✅ Admin Login
-    if (
-      this.username === 'admin' &&
-      this.password === '5678'
-    ) {
+    // ADMIN
+    if (this.username === 'admin' && this.password === '5678') {
+
+      const admin = { username: 'admin' };
+      this.setCurrentUser(admin);
+
       this.router.navigate(['/admin']);
       return;
     }
 
-    // ✅ Default User Login
-    if (
-      this.username === 'user' &&
-      this.password === '1234'
-    ) {
-      // 🔥 Go to BMI first
+    // DEFAULT USER
+    if (this.username === 'user' && this.password === '1234') {
+
+      const user = { username: 'user' };
+      this.setCurrentUser(user);
+
       this.router.navigateByUrl('/bmi');
       return;
     }
 
-    // ✅ Registered Users Login
+    // REGISTERED USERS
     const user = this.users.find(
       u =>
         u.username === this.username &&
@@ -68,16 +77,17 @@ export class HomePage implements OnInit {
     );
 
     if (user) {
-      // 🔥 Go to BMI first
+
+      this.setCurrentUser(user);
+
       this.router.navigateByUrl('/bmi');
+
     } else {
-      alert(
-        'User not found. Please register first.'
-      );
+      alert('User not found. Please register first.');
     }
   }
 
-  // 🆕 REGISTER
+  // ================= REGISTER =================
   register() {
 
     if (!this.username || !this.password) {
@@ -94,18 +104,20 @@ export class HomePage implements OnInit {
       return;
     }
 
-    this.users.push({
+    const newUser = {
       username: this.username,
-      password: this.password
-    });
+      password: this.password,
+      createdAt: new Date().toISOString()
+    };
 
+    this.users.push(newUser);
     this.saveUsers();
 
-    alert(
-      'Registered successfully! Now login.'
-    );
+    // 🔥 IMPORTANT FIX: auto set current user after register
+    this.setCurrentUser(newUser);
 
-    // Clear fields
+    alert('Registered successfully! Now login.');
+
     this.username = '';
     this.password = '';
   }

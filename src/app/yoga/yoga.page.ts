@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FitnessService } from '../services/fitness';
+import { AppHeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-yoga',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule,AppHeaderComponent],
   templateUrl: './yoga.page.html',
   styleUrls: ['./yoga.page.scss']
 })

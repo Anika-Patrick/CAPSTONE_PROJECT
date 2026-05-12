@@ -1,44 +1,41 @@
-import { Component } from '@angular/core';
-import { IonicModule, AlertController, NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule],
+  templateUrl: './profile.page.html',
+  styleUrls: ['./profile.page.scss']
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit {
 
-  constructor(
-    private alertCtrl: AlertController,
-    private navCtrl: NavController
-  ) {}
+  currentUser: any = null;
+  allUsers: any[] = [];
 
-  async confirmLogout() {
+  constructor(private router: Router) {}
 
-    const alert = await this.alertCtrl.create({
-      header: 'Logout',
-      message: 'Are you sure you want to logout?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            this.logout();
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+  ngOnInit() {
+    this.loadProfile();
   }
 
+  // ================= LOAD PROFILE =================
+  loadProfile() {
+
+    // 🔥 FIX: always parse JSON safely
+    const profile = localStorage.getItem('current_profile');
+    this.currentUser = profile ? JSON.parse(profile) : null;
+
+    const users = localStorage.getItem('fitness_users');
+    this.allUsers = users ? JSON.parse(users) : [];
+  }
+
+  // ================= LOGOUT =================
   logout() {
-    this.navCtrl.navigateRoot('/login'); // or '/tabs/tab1'
+    localStorage.removeItem('current_user');
+    localStorage.removeItem('current_profile');
+    this.router.navigate(['/home']);
   }
 }

@@ -5,9 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { FitnessService } from '../services/fitness';
 
-
-
-
+// ✅ ADD THIS IMPORT
+import { AppHeaderComponent } from '../header/header.component';
 
 
 @Component({
@@ -17,7 +16,8 @@ import { FitnessService } from '../services/fitness';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    AppHeaderComponent
   ],
   templateUrl: './tab1.page.html',
   styleUrls: ['./tab1.page.scss']

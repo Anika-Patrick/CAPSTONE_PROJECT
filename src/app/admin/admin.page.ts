@@ -1,22 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [IonicModule, FormsModule, CommonModule], // ✅ FIXED
+  imports: [IonicModule, CommonModule, FormsModule],
   templateUrl: './admin.page.html',
-  styleUrls: ['./admin.page.scss'],
+  styleUrls: ['./admin.page.scss']
 })
 export class AdminPage implements OnInit {
 
   messages: any[] = [];
   adminMsg = '';
-
-  constructor(private router: Router) {}
 
   ngOnInit() {
     this.loadChat();
@@ -32,21 +29,26 @@ export class AdminPage implements OnInit {
   }
 
   sendReply() {
-    if (!this.adminMsg) return;
 
-    const time = new Date().toLocaleTimeString();
+    if (!this.adminMsg.trim()) return;
+
     this.messages.push({
-      sender: 'Admin',
+      sender: 'admin',
+      username: 'Fitness Coach',
       text: this.adminMsg,
-      time
+      time: new Date().toLocaleTimeString()
     });
 
     this.adminMsg = '';
     this.saveChat();
-    this.loadChat();
   }
 
-  logout() {
-    this.router.navigate(['/home']);
+  getRatings() {
+    return JSON.parse(localStorage.getItem('fitness_ratings') || '{}');
+  }
+
+  clearAllChats() {
+    this.messages = [];
+    this.saveChat();
   }
 }

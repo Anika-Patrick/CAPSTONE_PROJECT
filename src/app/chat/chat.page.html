@@ -1,20 +1,58 @@
-<ion-header>
-  <ion-toolbar class="header">
-    <ion-title>Chat with Coach 💬</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="chat-page">
 
-<ion-content class="bg ion-padding">
-
-  <!-- 💬 Chat Box -->
-  <div class="chat-box">
+  <div class="chat-container">
 
     <div *ngFor="let msg of messages"
-         [ngClass]="msg.sender === 'User' ? 'user-msg' : 'admin-msg'">
+         class="message"
+         [ngClass]="msg.sender">
+
+      <div class="avatar">
+        {{ msg.sender === 'user' ? '👤' : '🤖' }}
+      </div>
 
       <div class="bubble">
-        {{msg.text}}
-        <div class="time">{{msg.time}}</div>
+
+        <div class="name">{{ msg.username }}</div>
+
+        <div class="text">{{ msg.text }}</div>
+
+        <div class="time">{{ msg.time }}</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- INPUT -->
+  <div class="chat-input">
+
+    <input [(ngModel)]="userMsg"
+           placeholder="Type message..."
+           (keyup.enter)="sendMsg()" />
+
+    <button (click)="sendMsg()">➤</button>
+
+  </div>
+
+  <!-- END CHAT -->
+  <div class="end-chat">
+    <button (click)="endChat()">End Chat</button>
+  </div>
+
+  <!-- RATING -->
+  <div class="rating-modal" *ngIf="showRating">
+
+    <div class="rating-box">
+
+      <h3>Rate Fitness Coach</h3>
+
+      <div class="stars">
+        <span (click)="submitRating(1)">⭐</span>
+        <span (click)="submitRating(2)">⭐</span>
+        <span (click)="submitRating(3)">⭐</span>
+        <span (click)="submitRating(4)">⭐</span>
+        <span (click)="submitRating(5)">⭐</span>
       </div>
 
     </div>
@@ -22,11 +60,3 @@
   </div>
 
 </ion-content>
-
-<!-- 📨 Input -->
-<ion-footer>
-  <div class="input-area">
-    <ion-input placeholder="Type a message..." [(ngModel)]="userMsg"></ion-input>
-    <ion-button (click)="sendMsg()">Send</ion-button>
-  </div>
-</ion-footer>

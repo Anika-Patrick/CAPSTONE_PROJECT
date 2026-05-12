@@ -4,13 +4,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { AppHeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-fitness-mode',
   templateUrl: './fitness-mode.page.html',
   styleUrls: ['./fitness-mode.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule,AppHeaderComponent]
 })
 export class FitnessModePage {
 

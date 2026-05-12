@@ -86,6 +86,8 @@
 
 .chat-container {
   padding: 20px;
+  padding-bottom: 140px; /* space for input */
+  overflow-y: auto;
 }
 
 .message {
@@ -126,12 +128,9 @@
 /* =========================
    INPUT BOX
 ========================= */
-
 .chat-input-box {
-  position: fixed;
+  position: sticky;
   bottom: 0;
-  left: 0;
-  right: 0;
   padding: 14px;
   background: #0f172a;
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -202,4 +201,7 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+ion-content {
+  --overflow: auto;
 }
