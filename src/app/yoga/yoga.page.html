@@ -1,0 +1,156 @@
+<ion-content class="yoga-page ion-padding">
+
+  <!-- HEADER -->
+  <ion-header>
+    <ion-toolbar>
+
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+      <ion-title>Yoga</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- HEADER TEXT -->
+  <div class="header">
+    <h1>🧘 Find Your Inner Peace</h1>
+    <p>Breathe. Stretch. Relax.</p>
+  </div>
+
+  <!-- RESET -->
+  <ion-button color="success" fill="outline" (click)="clearYogaData()">
+    Reset Yoga
+  </ion-button>
+
+  <!-- LEVEL SELECTOR -->
+  <div class="level-select">
+
+    <div
+      class="level-chip"
+      *ngFor="let l of levels"
+      [class.active]="selectedLevel === l"
+      (click)="changeLevel(l)"
+    >
+      {{ l }}
+    </div>
+
+  </div>
+
+  <!-- CATEGORY CHIPS -->
+  <div class="category-scroll">
+
+    <div
+      class="category-chip"
+      *ngFor="let c of categories"
+      [class.active]="selectedCategory === c.name"
+      (click)="openCategory(c.name)"
+    >
+      {{ c.emoji }} {{ c.name }}
+    </div>
+
+  </div>
+
+  <!-- YOGA CARDS -->
+  <div class="cards">
+
+    <div class="exercise-card" *ngFor="let c of categories">
+
+      <!-- GIF -->
+      <div class="exercise-gif">
+
+        <img
+          [src]="categoryGifs[c.name]"
+          (error)="onGifError($event)"
+          alt="yoga gif"
+        />
+
+      </div>
+
+      <h2>{{ c.name }}</h2>
+
+      <!-- LEVEL -->
+      <p class="level-text">
+        🌿 Level: {{ selectedLevel }}
+      </p>
+
+      <ion-button
+        expand="block"
+        color="success"
+        (click)="startYoga(c.name)"
+      >
+        Start Yoga
+      </ion-button>
+
+    </div>
+
+  </div>
+
+  <!-- FLOATING ICONS -->
+  <div class="floating-bg">
+
+    <span class="bg-icon i1">🧘</span>
+    <span class="bg-icon i2">🌸</span>
+    <span class="bg-icon i3">☮️</span>
+    <span class="bg-icon i4">🌿</span>
+    <span class="bg-icon i5">💫</span>
+    <span class="bg-icon i6">😌</span>
+    <span class="bg-icon i7">✨</span>
+    <span class="bg-icon i8">🪷</span>
+
+  </div>
+
+  <!-- YOGA OVERLAY -->
+  <div class="workout-overlay" *ngIf="isYogaMode">
+
+    <div class="workout-box">
+
+      <h2>{{ selectedCategory }} Yoga</h2>
+
+      <!-- ASANA GIF -->
+      <img
+        class="workout-gif"
+        [src]="asanaGifs[
+          yogaExercises[selectedCategory]?.[selectedLevel]?.[currentAsanaIndex]?.name
+        ]"
+        (error)="onGifError($event)"
+      />
+
+      <!-- ASANA NAME -->
+      <h3>
+        {{
+          yogaExercises[selectedCategory]?.[selectedLevel]?.[currentAsanaIndex]?.name
+        }}
+      </h3>
+
+      <!-- DETAILS -->
+      <p>🌬 Breaths: {{ breaths }}</p>
+      <p>⏱ Time: {{ timeLeft }}s</p>
+
+      <!-- CONTROLS -->
+      <div class="controls">
+
+        <button (click)="prevAsana()">
+          ⬅ Prev
+        </button>
+
+        <button (click)="nextAsana()">
+          Next ➡
+        </button>
+
+      </div>
+
+      <!-- EXIT -->
+      <button
+        class="exit-btn"
+        (click)="exitYoga()"
+      >
+        Exit Yoga
+      </button>
+
+    </div>
+
+  </div>
+
+</ion-content>

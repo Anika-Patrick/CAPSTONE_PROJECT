@@ -1,3 +1,5 @@
+// fitness-mode.page.ts
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -14,14 +16,13 @@ export class FitnessModePage {
 
   constructor(private router: Router) {}
 
-  // 🏋️ WEIGHTLIFTING → ORIGINAL TAB2 PAGE
+  // 🏋️ WEIGHT LIFTING
   goToGym() {
     this.router.navigate(['/tabs/weightlifting']);
   }
 
-  // 🧘 YOGA → YOGA PAGE
+  // 🧘 YOGA
   goToYoga() {
-    this.router.navigate(['/tabs/yoga']);
+    this.router.navigate(['/yoga']);
   }
-
 }

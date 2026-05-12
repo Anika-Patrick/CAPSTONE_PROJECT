@@ -79,6 +79,13 @@ export const routes: Routes = [
       import('./fitness-mode/fitness-mode.page').then(m => m.FitnessModePage)
   },
 
+  // YOGA
+  {
+    path: 'yoga',
+    loadComponent: () =>
+      import('./yoga/yoga.page').then(m => m.YogaPage)
+  },
+
   // FALLBACK MUST BE LAST
   {
     path: '**',
