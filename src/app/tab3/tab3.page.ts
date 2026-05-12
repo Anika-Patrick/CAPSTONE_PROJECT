@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FitnessService } from '../services/fitness';
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
+import { AppHeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-tab3',
@@ -13,7 +14,8 @@ import { SpeechRecognition } from '@capacitor-community/speech-recognition';
   imports: [
     IonicModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppHeaderComponent
   ],
   templateUrl: './tab3.page.html',
   styleUrls: ['./tab3.page.scss']

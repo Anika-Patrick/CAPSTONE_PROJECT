@@ -33,16 +33,29 @@ ion-content {
 
 /* HERO TEXT */
 
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 34px 20px 16px;
+  position: relative;
+}
+
 .hero-section h1 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin: 0 0 12px;
 }
 
 .hero-section p {
   color: #cbd5e1;
   font-size: 15px;
+  margin: 4px 0;
 }
+
+
 
 /* FLOATING ICONS */
 
@@ -87,8 +100,31 @@ ion-content {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.graph-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+  align-items: end;
+}
+
+@media (max-width: 680px) {
+  .profile-grid,
+  .stats-grid,
+  .graph-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* GRID */
@@ -273,100 +309,5 @@ ion-fab-button {
 
   .fill {
     width: 26px;
-  }
-}
-/* STREAK POPUP */
-
-.popup-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.6);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  z-index: 999999;
-
-  backdrop-filter: blur(8px);
-
-  animation: fadePopup 0.3s ease;
-}
-
-.streak-popup {
-
-  width: 85%;
-  max-width: 330px;
-
-  background: #111827;
-
-  border-radius: 28px;
-
-  padding: 28px;
-
-  text-align: center;
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.45);
-
-  animation: popupScale 0.35s ease;
-}
-
-.streak-popup h1 {
-  font-size: 52px;
-  margin-bottom: 12px;
-}
-
-.streak-popup h2 {
-  color: white;
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-
-.streak-popup p {
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin-bottom: 22px;
-}
-
-.streak-popup ion-button {
-
-  --background: linear-gradient(
-    135deg,
-    #2563eb,
-    #7c3aed
-  );
-
-  --border-radius: 16px;
-
-  font-weight: 700;
-}
-
-@keyframes popupScale {
-
-  from {
-    transform: scale(0.75);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes fadePopup {
-
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }

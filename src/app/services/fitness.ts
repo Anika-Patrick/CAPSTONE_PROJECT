@@ -37,6 +37,8 @@ export class FitnessService {
 
   lastLoginDate = '';
 
+  activeDays = 0;
+
   constructor() {
 
     this.loadProfile();
@@ -52,19 +54,47 @@ export class FitnessService {
   // PROFILE
   // =========================
 
+  private getCurrentUsername(): string | null {
+    const current = localStorage.getItem('current_user');
+    if (!current) {
+      return null;
+    }
+
+    try {
+      const user = JSON.parse(current);
+      return user?.username || null;
+    } catch {
+      return null;
+    }
+  }
+
+  private getStorageKey(base: string) {
+    const username = this.getCurrentUsername();
+    return username ? `${username}_${base}` : base;
+  }
+
+  loadCurrentUserData() {
+    this.loadProfile();
+    this.loadHistory();
+    this.loadWorkouts();
+    this.loadExtraData();
+  }
+
   saveProfile(data: any) {
 
     this.profile = data;
 
     localStorage.setItem(
-      'fitness_profile',
+      this.getStorageKey('fitness_profile'),
       JSON.stringify(data)
     );
   }
 
   loadProfile() {
 
-    const data = localStorage.getItem('fitness_profile');
+    const data = localStorage.getItem(
+      this.getStorageKey('fitness_profile')
+    );
 
     if (data) {
 
@@ -96,6 +126,39 @@ export class FitnessService {
     this.saveExtraData();
   }
 
+  updateStreakOnLogin() {
+    const username = this.getCurrentUsername();
+    if (!username) {
+      return;
+    }
+
+    const today = new Date().toISOString().slice(0, 10);
+
+    if (!this.lastLoginDate) {
+      this.streak = 1;
+      this.activeDays = 1;
+    } else if (this.lastLoginDate === today) {
+      // already updated today
+    } else {
+      const lastDate = new Date(this.lastLoginDate);
+      const diffDays = Math.round(
+        (new Date(today).getTime() - lastDate.getTime()) /
+          86400000
+      );
+
+      if (diffDays === 1) {
+        this.streak += 1;
+        this.activeDays += 1;
+      } else {
+        this.streak = 1;
+        this.activeDays += 1;
+      }
+    }
+
+    this.lastLoginDate = today;
+    this.saveExtraData();
+  }
+
   // =========================
   // HISTORY
   // =========================
@@ -103,7 +166,7 @@ export class FitnessService {
   saveHistory() {
 
     localStorage.setItem(
-      'fitness_history',
+      this.getStorageKey('fitness_history'),
       JSON.stringify(this.history)
     );
   }
@@ -111,7 +174,7 @@ export class FitnessService {
   loadHistory() {
 
     const data = localStorage.getItem(
-      'fitness_history'
+      this.getStorageKey('fitness_history')
     );
 
     if (data) {
@@ -127,7 +190,7 @@ export class FitnessService {
   saveWorkouts() {
 
     localStorage.setItem(
-      'fitness_workouts',
+      this.getStorageKey('fitness_workouts'),
       JSON.stringify(this.workouts)
     );
   }
@@ -135,7 +198,7 @@ export class FitnessService {
   loadWorkouts() {
 
     const data = localStorage.getItem(
-      'fitness_workouts'
+      this.getStorageKey('fitness_workouts')
     );
 
     if (data) {
@@ -151,7 +214,7 @@ export class FitnessService {
   saveExtraData() {
 
     localStorage.setItem(
-      'fitness_extra',
+      this.getStorageKey('fitness_extra'),
       JSON.stringify({
 
         calories: this.calories,
@@ -166,7 +229,9 @@ export class FitnessService {
 
         weeklyCalories: this.weeklyCalories,
 
-        lastLoginDate: this.lastLoginDate
+        lastLoginDate: this.lastLoginDate,
+
+        activeDays: this.activeDays
       })
     );
   }
@@ -174,7 +239,7 @@ export class FitnessService {
   loadExtraData() {
 
     const data = localStorage.getItem(
-      'fitness_extra'
+      this.getStorageKey('fitness_extra')
     );
 
     if (data) {
@@ -198,6 +263,8 @@ export class FitnessService {
 
       this.lastLoginDate =
         parsed.lastLoginDate || '';
+
+      this.activeDays = parsed.activeDays || 0;
     }
   }
 
@@ -336,8 +403,23 @@ calculatePlan(
   // =========================
 
   resetAll() {
-
-    localStorage.clear();
+    const username = this.getCurrentUsername();
+    if (username) {
+      localStorage.removeItem(
+        `${username}_fitness_profile`
+      );
+      localStorage.removeItem(
+        `${username}_fitness_history`
+      );
+      localStorage.removeItem(
+        `${username}_fitness_extra`
+      );
+      localStorage.removeItem(
+        `${username}_fitness_workouts`
+      );
+    } else {
+      localStorage.clear();
+    }
 
     this.calories = 0;
 
@@ -359,5 +441,7 @@ calculatePlan(
       [0, 0, 0, 0, 0, 0, 0];
 
     this.lastLoginDate = '';
+
+    this.activeDays = 0;
   }
 }

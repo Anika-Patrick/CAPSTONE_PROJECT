@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,57 +17,39 @@ export class SignupPage {
   username = '';
   password = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   ionViewWillEnter() {
-  window.scrollTo(0, 0);
-}
+    window.scrollTo(0, 0);
+  }
+
   signup() {
+    const username = this.username.trim();
+    const password = this.password.trim();
 
-    console.log('Signup clicked');
-
-    if (!this.username || !this.password) {
+    if (!username || !password) {
       alert('Fill all fields');
       return;
     }
 
-    let users = JSON.parse(localStorage.getItem('fitness_users') || '[]');
+    const user = this.auth.register(username, password);
 
-    const exists = users.find((u: any) => u.username === this.username);
-
-    if (exists) {
+    if (!user) {
       alert('User already exists');
       return;
     }
 
-    users.push({
-      username: this.username,
-      password: this.password,
-      // FITNESS DATA
-  caloriesBurned: 0,
+    this.auth.setCurrentUser(user);
+    this.username = '';
+    this.password = '';
 
-  tokens: 0,
+    alert('Registered successfully! You are now logged in.');
 
-  streak: 0,
-
-  totalWorkouts: 0,
-
-  lastLoginDate: '',
-
-  rank: '',
-
-  weeklyCalories: [0, 0, 0, 0, 0, 0, 0]
-
-    });
-
-    localStorage.setItem('fitness_users', JSON.stringify(users));
-
-    alert('Registered successfully!');
-
-    // 🔥 SAFE NAVIGATION (same fix style as welcome)
     setTimeout(() => {
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/bmi');
     }, 100);
   }
-  
 }

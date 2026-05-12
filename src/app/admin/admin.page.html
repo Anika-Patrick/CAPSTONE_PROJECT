@@ -1,25 +1,41 @@
-<ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>Admin Portal</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="admin-page">
 
-<ion-content class="ion-padding dark-bg">
+  <div class="chat-box">
 
-  <div class="card">
-    <h2>Admin Panel</h2>
+    <div *ngFor="let msg of messages"
+         class="msg"
+         [ngClass]="msg.sender">
 
-    <div class="chat-box">
-      <div *ngFor="let msg of messages" [ngClass]="msg.sender" class="message">
-        <strong>{{msg.sender}}</strong>: {{msg.text}}
-        <div class="time">{{msg.time}}</div>
-      </div>
+      <b>{{ msg.username }}</b>
+      <div>{{ msg.text }}</div>
+      <small>{{ msg.time }}</small>
+
     </div>
 
-    <ion-input placeholder="Reply" [(ngModel)]="adminMsg"></ion-input>
-    <ion-button expand="block" (click)="sendReply()">Send</ion-button>
+  </div>
 
-    <ion-button color="danger" expand="block" (click)="logout()">Logout</ion-button>
+  <ion-input [(ngModel)]="adminMsg"
+             placeholder="Reply"></ion-input>
+
+  <ion-button expand="block" (click)="sendReply()">
+    Send
+  </ion-button>
+
+  <ion-button color="danger"
+              expand="block"
+              (click)="clearAllChats()">
+    Response Granted (Clear Chat)
+  </ion-button>
+
+  <!-- RATINGS -->
+  <div class="ratings">
+
+    <h3>User Ratings ⭐</h3>
+
+    <div *ngFor="let r of getRatings() | keyvalue">
+      👤 {{ r.key }} → ⭐ {{ r.value }}
+    </div>
+
   </div>
 
 </ion-content>

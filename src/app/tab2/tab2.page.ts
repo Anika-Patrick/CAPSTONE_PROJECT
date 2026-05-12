@@ -3,11 +3,11 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FitnessService } from '../services/fitness';
 import { RouterLink } from '@angular/router';
-
+import { AppHeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-tab2',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule,AppHeaderComponent],
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss']
 })
@@ -127,52 +127,144 @@ exerciseGifs: any = {
 'Muscle Up': 'assets/workouts/back/Muscle-up.gif',
 
   // ================= LEGS =================
-  'Bodyweight Squats': 'assets/workouts/legs.gif',
-  'Step Ups': 'assets/workouts/legs.gif',
-  'Glute Bridge': 'assets/workouts/legs.gif',
-  'Wall Sit': 'assets/workouts/legs.gif',
-  'Calf Raises': 'assets/workouts/legs.gif',
-  'Squats': 'assets/workouts/legs.gif',
-  'Lunges': 'assets/workouts/legs.gif',
-  'Leg Press': 'assets/workouts/legs.gif',
-  'Step Lunges': 'assets/workouts/legs.gif',
-  'Hip Thrust': 'assets/workouts/legs.gif',
-  'Barbell Squats': 'assets/workouts/legs.gif',
-  'Jump Squats': 'assets/workouts/legs.gif',
-  'Bulgarian Split Squat': 'assets/workouts/legs.gif',
-  'Sprints': 'assets/workouts/legs.gif',
+'Bodyweight Squats': 'assets/workouts/legs/bodyweight-squat.gif',
+'Step Ups': 'assets/workouts/legs/stepups.gif',
+'Glute Bridge': 'assets/workouts/legs/glute-Bridge.gif',
+'Wall Sit': 'assets/workouts/legs/wallsit.gif',
+'Calf Raises': 'assets/workouts/calves.gif', 
+'Squats': 'assets/workouts/legs/bodyweight-squat.gif',
+'Lunges': 'assets/workouts/legs/Bulgarian-Split-Squat.gif',
+'Leg Press': 'assets/workouts/legs/BARBELL-SQUAT.gif', // fallback
+'Step Lunges': 'assets/workouts/legs/stepups.gif',
+'Hip Thrust': 'assets/workouts/legs/glute-Bridge.gif',
+'Barbell Squats': 'assets/workouts/legs/BARBELL-SQUAT.gif',
+'Jump Squats': 'assets/workouts/legs/Jump-Squat.gif',
+'Bulgarian Split Squat': 'assets/workouts/legs/Bulgarian-Split-Squat.gif',
+'Sprints': 'assets/workouts/legs/Jump-Squat.gif',
 
   // ================= SHOULDERS =================
-  'Shoulder Press': 'assets/workouts/shoulders.gif',
-  'Front Raise': 'assets/workouts/shoulders.gif',
-  'Arm Circles': 'assets/workouts/shoulders.gif',
-  'Wall Press': 'assets/workouts/shoulders.gif',
-  'Light Lateral Raise': 'assets/workouts/shoulders.gif',
-  'Dumbbell Press': 'assets/workouts/shoulders.gif',
-  'Lateral Raise': 'assets/workouts/shoulders.gif',
-  'Rear Delt Fly': 'assets/workouts/shoulders.gif',
-  'Arnold Press': 'assets/workouts/shoulders.gif',
-  'Cable Raise': 'assets/workouts/shoulders.gif',
-  'Heavy Press': 'assets/workouts/shoulders.gif',
-  'Handstand Pushup': 'assets/workouts/shoulders.gif',
-  'Upright Row': 'assets/workouts/shoulders.gif',
-  'Plate Raise': 'assets/workouts/shoulders.gif',
-  'Explosive Press': 'assets/workouts/shoulders.gif',
+'Shoulder Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
+'Front Raise': 'assets/workouts/shoulders/frontraise.gif',
+'Arm Circles': 'assets/workouts/shoulders/Armcircles.gif',
+'Wall Press': 'assets/workouts/shoulders/wallpress.gif',
+'Light Lateral Raise': 'assets/workouts/shoulders/lateralraise.gif',
+'Dumbbell Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
+'Lateral Raise': 'assets/workouts/shoulders/lateralraise.gif',
+'Rear Delt Fly': 'assets/workouts/shoulders/reardeltfly.gif',
+'Arnold Press': 'assets/workouts/shoulders/Arnold-Press.gif',
+'Cable Raise': 'assets/workouts/shoulders/lateralraise.gif',
+'Heavy Press': 'assets/workouts/shoulders/heavypress.gif',
+'Handstand Pushup': 'assets/workouts/arms/handstandhold.gif',
+'Upright Row': 'assets/workouts/shoulders/heavypress.gif',
+'Plate Raise': 'assets/workouts/shoulders/plateraise.gif',
+'Explosive Press': 'assets/workouts/shoulders/heavypress.gif',
 
-  // ================= ABS =================
-  'Crunches': 'assets/workouts/abs.gif',
-  'Leg Raise': 'assets/workouts/abs.gif',
-  'Plank': 'assets/workouts/abs.gif',
-  'Sit Ups': 'assets/workouts/abs.gif',
-  'Toe Touch': 'assets/workouts/abs.gif',
-  'Bicycle Crunch': 'assets/workouts/abs.gif',
-  'Hanging Knee Raise': 'assets/workouts/abs.gif',
-  'Russian Twist': 'assets/workouts/abs.gif',
-  'Reverse Crunch': 'assets/workouts/abs.gif',
-  'Dragon Flag': 'assets/workouts/abs.gif',
-  'Hanging Leg Raise': 'assets/workouts/abs.gif',
-  'V Ups': 'assets/workouts/abs.gif',
-  'Toe to Bar': 'assets/workouts/abs.gif'
+// ================= ABS =================
+'Crunches': 'assets/workouts/abs/Crunches.gif',
+'Leg Raise': 'assets/workouts/abs/legraise.gif',
+'Plank': 'assets/workouts/abs/plank.gif',
+'Sit Ups': 'assets/workouts/abs/situps.gif',
+'Toe Touch': 'assets/workouts/abs/Crunches.gif',
+'Bicycle Crunch': 'assets/workouts/abs/Bicyclecrunch.gif',
+'Hanging Knee Raise': 'assets/workouts/abs/HangingKneeraise.gif',
+'Russian Twist': 'assets/workouts/abs/Bicyclecrunch.gif',
+'Reverse Crunch': 'assets/workouts/abs/Crunches.gif',
+'Dragon Flag': 'assets/workouts/abs/dragonflag.gif',
+'Hanging Leg Raise': 'assets/workouts/abs/HangingKneeraise.gif',
+'V Ups': 'assets/workouts/abs/legraise.gif',
+'Toe to Bar': 'assets/workouts/abs/HangingKneeraise.gif',
+
+// ================= ARMS =================
+'Wall Arm Push': 'assets/workouts/shoulders/wallpress.gif',
+'Light Dumbbell Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
+'Standing Punches': 'assets/workouts/arms/standingpunches.gif',
+'Dumbbell Shoulder Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
+'Tricep Kickbacks': 'assets/workouts/shoulders/reardeltfly.gif',
+'Battle Rope Waves': 'assets/workouts/arms/battleropewaves.gif',
+'Pike Push Ups': 'assets/workouts/chest/pushups.gif',
+'Handstand Hold': 'assets/workouts/arms/handstandhold.gif',
+'Heavy Dumbbell Press': 'assets/workouts/shoulders/heavypress.gif',
+'Explosive Battle Ropes': 'assets/workouts/arms/explosivebattleropes.gif',
+'Military Press': 'assets/workouts/shoulders/heavypress.gif',
+
+// ================= BICEPS =================
+'Light Dumbbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Resistance Band Curl': 'assets/workouts/back/resistancebandpull.gif',
+'Seated Dumbbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Hammer Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Concentration Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Barbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Incline Dumbbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Cable Curl': 'assets/workouts/chest/cablepress.gif',
+'Reverse Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'EZ Bar Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Preacher Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Spider Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'21s Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Heavy Barbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Chin Ups': 'assets/workouts/back/pullups.gif',
+
+// ================= QUADS =================
+// ================= QUADS =================
+'Static Lunges': 'assets/workouts/quads/walkinglunges.gif',
+'Chair Squats': 'assets/workouts/legs/bodyweight-squat.gif',
+'Goblet Squats': 'assets/workouts/quads/GobletSquat.gif',
+'Bulgarian Split Squats': 'assets/workouts/legs/Bulgarian-Split-Squat.gif',
+'Walking Lunges': 'assets/workouts/quads/walkinglunges.gif',
+'Front Squats': 'assets/workouts/legs/BARBELL-SQUAT.gif', // fallback
+'Pistol Squats': 'assets/workouts/quads/stepdown.gif',
+'Weighted Jump Squats': 'assets/workouts/legs/Jump-Squat.gif',
+'Hack Squats': 'assets/workouts/legs/BARBELL-SQUAT.gif',
+
+/// ================= HAMSTRINGS =================
+'Glute Bridges': 'assets/workouts/legs/glute-Bridge.gif',
+'Standing Leg Curl': 'assets/workouts/hamstrings/gm.gif', // fallback
+'Good Mornings (Light)': 'assets/workouts/hamstrings/gm.gif',
+'Bridge Hold': 'assets/workouts/legs/glute-Bridge.gif',
+'Resistance Band Deadlift': 'assets/workouts/hamstrings/Cable-Pull-Through.gif',
+'Romanian Deadlift': 'assets/workouts/hamstrings/gm.gif',
+'Swiss Ball Leg Curl': 'assets/workouts/hamstrings/gm.gif', // fallback
+'Kettlebell Deadlift': 'assets/workouts/hamstrings/kettlebellswing.gif',
+'Single Leg Deadlift': 'assets/workouts/hamstrings/gm.gif',
+'Hamstring Curl Machine': 'assets/workouts/hamstrings/Cable-Pull-Through.gif',
+'Barbell Deadlift': 'assets/workouts/legs/BARBELL-SQUAT.gif',
+'Nordic Hamstring Curl': 'assets/workouts/hamstrings/gm.gif', // fallback
+'Stiff Leg Deadlift': 'assets/workouts/hamstrings/gm.gif',
+'Single Leg Romanian Deadlift': 'assets/workouts/hamstrings/gm.gif',
+
+// ================= CALVES =================
+'Standing Calf Raises': 'assets/workouts/calves/standingcalfraise.gif',
+'Seated Calf Raises': 'assets/workouts/calves/Donkey-Calf-Raise.gif',
+'Toe Walk': 'assets/workouts/calves/standingcalfraise.gif',
+'Single Leg Calf Raise': 'assets/workouts/calves/Donkey-Calf-Raise.gif',
+'Wall Calf Stretch': 'assets/workouts/calves/standingcalfraise.gif',
+'Weighted Calf Raises': 'assets/workouts/calves/Donkey-Calf-Raise.gif',
+'Jump Rope': 'assets/workouts/calves/Skip-Jump-Rope.gif',
+'Box Jumps': 'assets/workouts/calves/explohops.gif',
+'Farmer Walk on Toes': 'assets/workouts/calves/standingcalfraise.gif',
+'Calf Press Machine': 'assets/workouts/calves/Donkey-Calf-Raise.gif',
+'Explosive Calf Jumps': 'assets/workouts/calves/explohops.gif',
+'Single Leg Weighted Raise': 'assets/workouts/calves/Donkey-Calf-Raise.gif',
+'Hill Sprints': 'assets/workouts/calves/explohops.gif',
+'Heavy Calf Press': 'assets/workouts/calves/Donkey-Calf-Raise.gif',
+'Plyometric Hops': 'assets/workouts/calves/explohops.gif',
+
+/// ================= FOREARMS =================
+'Wrist Curls': 'assets/workouts/forearms/wristroller.gif',
+'Reverse Wrist Curls': 'assets/workouts/forearms/wristroller.gif',
+'Grip Squeeze': 'assets/workouts/forearms/farmerwalk.gif',
+'Finger Extensions': 'assets/workouts/forearms/wristroller.gif',
+'Light Farmer Carry': 'assets/workouts/forearms/farmerwalk.gif',
+'Hammer Curl Hold': 'assets/workouts/forearms/behindbackcurl.gif',
+'Plate Pinch Hold': 'assets/workouts/forearms/farmerwalk.gif',
+'Heavy Wrist Curl': 'assets/workouts/forearms/wristroller.gif',
+'Reverse Barbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Towel Grip Hang': 'assets/workouts/forearms/farmerwalk.gif',
+'Dead Hang': 'assets/workouts/forearms/farmerwalk.gif',
+'Heavy Farmer Walk': 'assets/workouts/forearms/farmerwalk.gif',
+'Behind Back Wrist Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Fat Grip Holds': 'assets/workouts/forearms/farmerwalk.gif',
+'Finger Push Ups': 'assets/workouts/forearms/wristroller.gif',
 };
 onGifError(event: any) {
   event.target.src =
@@ -352,7 +444,7 @@ Forearms: {
       { name: 'Incline Push Ups', reps: 10, time: 30 },
       { name: 'Knee Push Ups', reps: 10, time: 30 },
       { name: 'Push Ups', reps: 8, time: 30 },
-      { name: 'Chest Press (Light Machine)', reps: 10, time: 30 }
+      { name: 'Chest Press light', reps: 10, time: 30 }
     ],
     Moderate: [
       { name: 'Bench Press', reps: 10, time: 35 },
@@ -375,7 +467,7 @@ Forearms: {
       { name: 'Superman Hold', reps: 10, time: 30 },
       { name: 'Bird Dog', reps: 12, time: 30 },
       { name: 'Wall Slides', reps: 10, time: 30 },
-      { name: 'Resistance Band Pull Apart', reps: 12, time: 30 },
+      { name: 'Resistance Band Pull', reps: 12, time: 30 },
       { name: 'Reverse Snow Angels', reps: 10, time: 30 }
     ],
     Moderate: [
@@ -551,18 +643,10 @@ Forearms: {
     clearInterval(this.workoutTimer);
 
     if (this.completedExercises >= this.totalExercises) {
-
       const calories = this.totalExercises * 20;
       const tokens = Math.floor(this.totalExercises / 2);
 
-      this.fitness.calories += calories;
-      this.fitness.tokens += tokens;
-
-      const today = new Date().getDay();
-      this.fitness.history[today] += calories;
-
-      this.fitness.saveStats();
-      this.fitness.saveHistory();
+      this.fitness.addWorkout(calories, tokens);
 
       alert(`🔥 Workout Completed!
 +${calories} Calories

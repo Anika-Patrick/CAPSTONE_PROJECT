@@ -1,79 +1,33 @@
-/* 🌌 Same gradient */
-ion-content {
-  --background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+.admin-page {
+  --background: #0b1220;
+  color: white;
+  padding: 10px;
 }
 
-/* 🧊 Card */
-.card {
-  margin-top: 20px;
-  padding: 25px;
-  border-radius: 20px;
-
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-/* 💬 Chat */
 .chat-box {
-  height: 300px;
+  height: 60vh;
   overflow-y: auto;
+  background: rgba(255,255,255,0.05);
   padding: 10px;
-  margin: 15px 0;
-
   border-radius: 12px;
-  background: rgba(0,0,0,0.4);
 }
 
-/* 💬 Messages */
-.message {
+.msg {
+  margin-bottom: 10px;
   padding: 10px;
-  margin: 8px 0;
-  border-radius: 12px;
-  animation: fadeIn 0.3s ease;
+  border-radius: 10px;
 }
 
-.User {
-  background: linear-gradient(45deg, #3b82f6, #2563eb);
+.msg.user {
+  background: #2563eb;
 }
 
-.Admin {
-  background: linear-gradient(45deg, #22c55e, #16a34a);
+.msg.admin {
+  background: rgba(255,255,255,0.08);
 }
 
-/* ⏱ Time */
-.time {
-  font-size: 10px;
-  text-align: right;
-  opacity: 0.7;
-}
-
-/* 🔘 Buttons */
-ion-button {
-  margin-top: 10px;
-  border-radius: 12px;
-
-  --background: linear-gradient(45deg, #22c55e, #16a34a);
-}
-
-ion-button:hover {
-  transform: scale(1.05);
-}
-
-/* ✨ Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.ratings {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
 }

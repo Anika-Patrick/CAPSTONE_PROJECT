@@ -1,40 +1,55 @@
-<ion-content class="bg">
+<ion-content class="ion-padding profile-page">
 
-  <!-- PROFILE CARD -->
-  <div class="profile-card">
-
-    <div class="avatar">💪</div>
-
-    <h2>FitFreak User</h2>
-    <p>Level: Beast Mode 🔥</p>
-
-  </div>
-
-  <!-- INFO SECTION -->
-  <div class="info">
-
-    <div class="box">
-      <h3>🏃 Workouts</h3>
-      <p>Cardio • Strength • Yoga</p>
+  <div class="profile-hero">
+    <div>
+      <h1>{{ currentUser?.username || 'Guest' }}</h1>
+      <p>Welcome back to your fitness profile. Keep your streak alive.</p>
     </div>
-
-    <div class="box">
-      <h3>⚡ Status</h3>
-      <p>Active Member</p>
-    </div>
-
-    <div class="box">
-      <h3>🏆 Achievements</h3>
-      <p>Gold Runner Badge</p>
-    </div>
-
-  </div>
-
-  <!-- LOGOUT BUTTON -->
-  <div class="logout">
-    <ion-button color="danger" expand="block" (click)="confirmLogout()">
+    <ion-button fill="outline" color="light" size="small" (click)="logout()">
       Logout
     </ion-button>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span>🔥</span>
+      <h2>{{ fitness.streak }}</h2>
+      <p>Current streak</p>
+    </div>
+    <div class="stat-box">
+      <span>📅</span>
+      <h2>{{ fitness.activeDays }}</h2>
+      <p>Days logged in</p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h2>Profile Details</h2>
+    <div class="info-row">
+      <span>Username</span>
+      <strong>{{ currentUser?.username || 'Guest' }}</strong>
+    </div>
+    <div class="info-row">
+      <span>Login time</span>
+      <strong>{{ currentUser?.loginTime | date:'medium' }}</strong>
+    </div>
+    <div class="info-row">
+      <span>Calories burned</span>
+      <strong>{{ fitness.calories }}</strong>
+    </div>
+    <div class="info-row">
+      <span>Tokens</span>
+      <strong>{{ fitness.tokens }}</strong>
+    </div>
+  </div>
+
+  <hr />
+
+  <h3>All Users</h3>
+  <div class="users-list">
+    <div *ngFor="let u of allUsers" class="user-item">
+      • {{ u.username }}
+    </div>
   </div>
 
 </ion-content>
