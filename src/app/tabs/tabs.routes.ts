@@ -49,8 +49,11 @@ export const routes: Routes = [
       {
         path: 'running',
         loadComponent: () => import('../running/running.page').then(m => m.RunningPage)
-      },
 
+      },
+      
+
+      
       
       // DEFAULT REDIRECT
       {

@@ -1,0 +1,69 @@
+<ion-content class="bg">
+
+  <!-- TOP USER CARD -->
+  <div class="user-card">
+
+    <div class="avatar">⚙️</div>
+
+    <h2>{{ userName }}</h2>
+    <p>Customize your FitFreak experience</p>
+
+  </div>
+
+  <!-- SETTINGS GRID -->
+  <div class="grid">
+
+    <div class="tile">
+      <span>👤</span>
+      <h3>Account</h3>
+      <p>Profile settings</p>
+    </div>
+
+    <div class="tile">
+      <span>🔔</span>
+      <h3>Alerts</h3>
+      <p>Notifications</p>
+    </div>
+
+    <div class="tile">
+      <span>🌙</span>
+      <h3>Theme</h3>
+      <p>Light / Dark</p>
+    </div>
+
+    <div class="tile">
+      <span>🏋️</span>
+      <h3>Fitness</h3>
+      <p>Workout config</p>
+    </div>
+
+  </div>
+
+  <!-- SETTINGS OPTIONS -->
+  <div class="card">
+
+    <div class="row">
+      <span>Daily Reminder</span>
+      <ion-toggle [(ngModel)]="reminder"></ion-toggle>
+    </div>
+
+    <div class="row">
+      <span>Notifications</span>
+      <ion-toggle [(ngModel)]="notifications"></ion-toggle>
+    </div>
+
+    <div class="row">
+      <span>Auto Tracking</span>
+      <ion-toggle [(ngModel)]="tracking"></ion-toggle>
+    </div>
+
+  </div>
+
+  <!-- LOGOUT -->
+  <div class="logout">
+    <ion-button color="danger" expand="block" (click)="logout()">
+      Logout
+    </ion-button>
+  </div>
+
+</ion-content>

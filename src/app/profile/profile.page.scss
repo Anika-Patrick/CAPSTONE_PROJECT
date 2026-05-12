@@ -1,24 +1,57 @@
-.profile-page {
-  --background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
+.bg {
+  --background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  color: #0f172a;
 }
 
+/* PROFILE CARD */
 .profile-card {
   text-align: center;
+  padding: 30px 15px;
+  background: white;
+  margin: 15px;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.avatar {
+  font-size: 70px;
+  margin-bottom: 10px;
+  animation: float 2s infinite ease-in-out;
+  background: #f1f5f9;
+  width: 90px;
+  height: 90px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-card h2 {
+  color: #2563eb;
+}
+
+/* INFO BOXES */
+.info {
+  padding: 10px 15px;
+}
+
+.box {
+  background: white;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* LOGOUT */
+.logout {
   padding: 20px;
 }
 
-ion-avatar {
-  margin: 0 auto 15px;
-  width: 100px;
-  height: 100px;
-}
-
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-p {
-  color: #94a3b8;
+/* ANIMATION */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }

@@ -9,6 +9,7 @@ import { FitnessService } from '../services/fitness';
 
 
 
+
 @Component({
   selector: 'app-tab1',
   standalone: true,

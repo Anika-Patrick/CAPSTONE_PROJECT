@@ -1,5 +1,17 @@
 /* src/app/tab1/tab1.page.scss */
 
+ion-content {
+  --background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b,
+    #111827
+  );
+
+  font-family: 'Poppins', sans-serif;
+}
+
+
 .tab1-page {
   --background: #0f172a;
   color: white;
