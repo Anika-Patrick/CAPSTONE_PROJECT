@@ -82,60 +82,60 @@ export class YogaPage implements OnInit {
   asanaGifs: any = {
 
     // ================= PCOD =================
-    'Butterfly Pose': 'assets/yoga/butterfly.gif',
-    'Cobra Pose': 'assets/yoga/cobra.gif',
-    'Cat Cow Pose': 'assets/yoga/catcow.gif',
-    'Child Pose': 'assets/yoga/childpose.gif',
-    'Bridge Pose': 'assets/yoga/bridgepose.gif',
+    'Butterfly Pose': 'https://www.shutterstock.com/image-vector/woman-doing-seated-butterfly-pose-260nw-2187437167.jpg',
+    'Cobra Pose': 'https://www.shutterstock.com/image-vector/woman-training-yoga-asana-cobra-600nw-2277302037.jpg',
+    'Cat Cow Pose': 'https://media.istockphoto.com/id/1094565462/vector/woman-doing-exercise-with-cat-cow-pose-to-stretch-back-muscle-and-promote-spinal-flexibility.jpg?s=612x612&w=0&k=20&c=edxRjFsiKWo3ZOnZxcSOorlayT9Obzalg9uSN_DQSgU=',
+    'Child Pose': 'https://www.shutterstock.com/image-vector/woman-child-pose-flat-yoga-600nw-2657571339.jpg',
+    'Bridge Pose': 'https://www.shutterstock.com/image-vector/young-woman-perfoming-bridge-pose-600nw-2278699905.jpg',
 
     // ================= SLEEP =================
-    'Legs Up Wall': 'assets/yoga/legsupwall.gif',
-    'Corpse Pose': 'assets/yoga/corpsepose.gif',
-    'Happy Baby Pose': 'assets/yoga/happybaby.gif',
-    'Forward Fold': 'assets/yoga/forwardfold.gif',
-    'Supine Twist': 'assets/yoga/supinetwist.gif',
+    'Legs Up Wall': 'https://www.shutterstock.com/image-vector/legs-wall-bolster-yoga-pose-260nw-2001858446.jpg',
+    'Corpse Pose': 'https://cdni.iconscout.com/illustration/premium/thumb/corpse-pose-illustration-svg-download-png-2965776.png',
+    'Happy Baby Pose': 'https://t4.ftcdn.net/jpg/10/30/93/61/360_F_1030936171_06ex7TfCSLY548JpQ7gfhd1WZx0mLtae.jpg',
+    'Forward Fold': 'https://www.shutterstock.com/image-vector/upward-forward-fold-half-standing-260nw-2412140057.jpg',
+    'Supine Twist': 'https://www.shutterstock.com/image-vector/girl-sitting-half-spinal-twist-260nw-1622224627.jpg',
 
     // ================= STRESS =================
-    'Lotus Pose': 'assets/yoga/lotuspose.gif',
-    'Tree Pose': 'assets/yoga/treepose.gif',
-    'Seated Forward Bend': 'assets/yoga/seatedforwardbend.gif',
-    'Mountain Pose': 'assets/yoga/mountainpose.gif',
-    'Easy Pose': 'assets/yoga/easypose.gif',
+    'Lotus Pose': 'https://i.pinimg.com/736x/8d/8d/a4/8d8da474e3f6a09f27e501e3680e3ff9.jpg',
+    'Tree Pose': 'https://png.pngtree.com/png-clipart/20221025/original/pngtree-cartoon-yoga-tree-pose-png-image_8719055.png',
+    'Seated Forward Bend': 'https://thumbs.dreamstime.com/b/forward-bend-yoga-pose-exercise-body-stretch-fitness-forward-bend-yoga-pose-exercise-body-stretch-fitness-workout-161160740.jpg',
+    'Mountain Pose': 'https://thumbs.dreamstime.com/b/flat-vector-illustration-young-woman-performing-mountain-pose-her-arms-raised-yoga-practice-session-young-432921559.jpg',
+    'Easy Pose': 'https://thumbs.dreamstime.com/b/cartoon-woman-easy-pose-yoga-position-wellness-meditation-illustration-sitting-376262031.jpg',
 
     // ================= WEIGHT LOSS =================
-    'Boat Pose': 'assets/yoga/boatpose.gif',
-    'Plank Pose': 'assets/yoga/plankpose.gif',
-    'Warrior Pose': 'assets/yoga/warriorpose.gif',
-    'Chair Pose': 'assets/yoga/chairpose.gif',
-    'Bow Pose': 'assets/yoga/bowpose.gif',
+    'Boat Pose': 'https://static.vecteezy.com/system/resources/previews/022/444/361/non_2x/plump-woman-doing-yoga-meditating-fat-active-exercise-for-balance-weight-loss-flat-graphics-vector.jpg',
+    'Plank Pose': 'https://www.shutterstock.com/image-vector/plank-pose-kumbhakasana-beautiful-girl-260nw-2112202385.jpg',
+    'Warrior Pose': 'https://cdn.vectorstock.com/i/1000v/06/64/woman-practicing-yoga-warrior-pose-outdoors-under-vector-58610664.jpg',
+    'Chair Pose': 'https://static.vecteezy.com/system/resources/previews/028/242/485/non_2x/woman-practicing-chair-pose-utkatasana-yoga-exercise-vector.jpg',
+    'Bow Pose': 'https://www.shutterstock.com/image-vector/young-woman-perfoming-yoga-exercise-260nw-2290312461.jpg',
 
     // ================= BACK PAIN =================
-    'Sphinx Pose': 'assets/yoga/sphinxpose.gif',
-    'Downward Dog': 'assets/yoga/downwarddog.gif',
-    'Thread Needle Pose': 'assets/yoga/threadneedle.gif',
-    'Puppy Pose': 'assets/yoga/puppypose.gif',
-    'Triangle Pose': 'assets/yoga/trianglepose.gif',
+    'Sphinx Pose': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMdfojf95J0_zCMgibBMMX-ehwGwI4jomuWA&s',
+    'Downward Dog': 'https://png.pngtree.com/png-clipart/20210516/original/pngtree-downward-facing-dog-pose-yoga-png-image_6292116.png',
+    'Thread Needle Pose': 'https://www.shutterstock.com/image-vector/thread-needle-pose-young-woman-260nw-2418860655.jpg',
+    'Puppy Pose': 'https://img.freepik.com/premium-vector/puppy-pose-young-woman-practicing-yoga-pose-woman-workout-fitness-aerobic-exercise_476141-2685.jpg?w=360',
+    'Triangle Pose': 'https://static.vecteezy.com/system/resources/previews/005/311/073/non_2x/woman-doing-extended-triangle-pose-or-utthita-trikonasana-exercise-flat-illustration-isolated-on-white-background-free-vector.jpg',
 
     // ================= FLEXIBILITY =================
-    'Camel Pose': 'assets/yoga/camelpose.gif',
-    'Split Stretch': 'assets/yoga/splitstretch.gif',
-    'Wide Leg Fold': 'assets/yoga/widelegfold.gif',
-    'Lizard Pose': 'assets/yoga/lizardpose.gif',
-    'King Pigeon Pose': 'assets/yoga/pigeonpose.gif',
+    'Camel Pose': 'https://thumbs.dreamstime.com/b/woman-standing-camel-yoga-pose-stretch-exercise-woman-standing-camel-yoga-pose-stretch-exercise-body-health-158160732.jpg',
+    'Split Stretch': 'https://img.freepik.com/premium-vector/girl-is-exercising-with-her-hands_118167-10586.jpg',
+    'Wide Leg Fold': 'https://thumbs.dreamstime.com/b/woman-doing-intense-leg-stretch-pose-d-wide-legged-forward-fold-pose-d-woman-doing-intense-leg-stretch-pose-d-wide-legged-forward-255520764.jpg',
+    'Lizard Pose': 'https://cdni.iconscout.com/illustration/premium/thumb/girl-doing-lizard-pose-yoga-illustration-svg-download-png-7629580.png',
+    'King Pigeon Pose': 'https://static.vecteezy.com/system/resources/previews/066/606/089/non_2x/woman-doing-one-legged-king-pigeon-pose-illustration-vector.jpg',
 
     // ================= ANXIETY =================
-    'Breathing Pose': 'assets/yoga/breathingpose.gif',
-    'Moon Pose': 'assets/yoga/moonpose.gif',
-    'Garland Pose': 'assets/yoga/garlandpose.gif',
-    'Fish Pose': 'assets/yoga/fishpose.gif',
-    'Standing Forward Fold': 'assets/yoga/forwardfold.gif',
+    'Breathing Pose': 'https://media.istockphoto.com/id/1437408403/vector/woman-practicing-breathing-exercise-in-flat-design-on-white-background.jpg?s=612x612&w=0&k=20&c=d1zTqFnrTVWLmqy9VEAWYPY1O9GFeEBe4Ely6zMvvNw=',
+    'Moon Pose': 'https://thumbs.dreamstime.com/b/woman-doing-half-moon-pose-ardha-chandrasana-exercise-woman-doing-half-moon-pose-ardha-chandrasana-exercise-flat-vector-246510924.jpg',
+    'Garland Pose': 'https://www.yogaclassplan.com/wp-content/uploads/2021/06/10-garland-pose.jpg',
+    'Fish Pose': 'https://cdn.prod.website-files.com/683b218dcc58f93d54ce8e1d/69a185d6ba86e27084004bda_matsyasana_2x.webp',
+    'Standing Forward Fold': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvgLenqhWVcOrNCc3HoFouHuWPQH5dJ-78XQ&s',
 
     // ================= MEDITATION =================
-    'Zen Pose': 'assets/yoga/zenpose.gif',
-    'Pranayama': 'assets/yoga/pranayama.gif',
-    'Alternate Nostril Breathing': 'assets/yoga/breathingpose.gif',
-    'Mindfulness Pose': 'assets/yoga/mindfulness.gif',
-    'Deep Relaxation': 'assets/yoga/deeprelaxation.gif'
+    'Zen Pose': 'https://static.vecteezy.com/system/resources/thumbnails/053/447/781/small/yoga-and-spiritual-practice-woman-meditating-relaxing-peaceful-female-during-meditation-in-lotus-pose-illustration-isolated-on-white-background-vector.jpg',
+    'Pranayama': 'https://img.freepik.com/free-photo/women-enjoying-mental-health_23-2151904398.jpg?semt=ais_hybrid&w=740&q=80',
+    'Alternate Nostril Breathing': 'https://img.freepik.com/premium-vector/illustration-woman-doing-yoga-parvatasana-position_207579-960.jpg',
+    'Mindfulness Pose': 'https://img.freepik.com/premium-vector/vector-cartoon-illustration-yoga-pose-utthita-parshvakonasana_194552-1109.jpg',
+    'Deep Relaxation': 'https://img.freepik.com/premium-vector/meditating-woman-lotus-position-relaxation-tranquility_1031747-188.jpg'
   };
 
   onGifError(event: any) {
