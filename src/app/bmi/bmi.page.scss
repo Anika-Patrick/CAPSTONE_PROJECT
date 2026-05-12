@@ -1,93 +1,343 @@
+/* ================= BMI PAGE ================= */
+
 .bmi-page {
   --background: linear-gradient(
-    180deg,
-    #0f172a,
-    #111827,
-    #1e293b
+    135deg,
+    #0b1120 0%,
+    #111827 45%,
+    #1e1b4b 100%
   );
+
   color: white;
+
   padding: 20px;
+
+  font-family: 'Poppins', sans-serif;
+
+  position: relative;
+  overflow: hidden;
 }
+
+/* ================= HERO SECTION ================= */
 
 .hero-section {
   text-align: center;
+
   margin-top: 30px;
+
   animation: fadeInDown 1s ease;
+
+  position: relative;
 }
+
+/* GLOW EFFECT */
+
+.hero-section::before {
+  content: '';
+
+  position: absolute;
+
+  top: -80px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 240px;
+  height: 240px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    rgba(59,130,246,0.3),
+    transparent
+  );
+
+  filter: blur(40px);
+
+  z-index: 0;
+}
+
+/* TITLE */
 
 .hero-section h1 {
-  font-size: 30px;
+  position: relative;
+  z-index: 2;
+
+  font-size: 34px;
+
   font-weight: 800;
-  margin-bottom: 10px;
+
+  margin-bottom: 12px;
+
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #7dd3fc,
+    #c084fc
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 18px rgba(255,255,255,0.1);
 }
 
+/* SUBTITLE */
+
 .hero-section p {
-  color: #cbd5e1;
+  position: relative;
+  z-index: 2;
+
+  color: #f1f5f9;
+
   font-size: 15px;
+
+  line-height: 1.7;
+
+  font-weight: 500;
 }
+
+/* ================= FORM CARD ================= */
 
 .form-card {
   margin-top: 30px;
-  padding: 20px;
-  border-radius: 24px;
+
+  padding: 24px;
+
+  border-radius: 30px;
+
   background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.3),
+    inset 0 1px 1px rgba(255,255,255,0.08);
+
   animation: fadeInUp 1s ease;
+
+  transition: 0.35s ease;
+
+  position: relative;
+
+  overflow: hidden;
 }
+
+/* CARD GLOW */
+
+.form-card::before {
+  content: '';
+
+  position: absolute;
+
+  top: -50px;
+  right: -50px;
+
+  width: 140px;
+  height: 140px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.08);
+
+  filter: blur(25px);
+}
+
+/* HOVER */
+
+.form-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 14px 40px rgba(59,130,246,0.22),
+    0 10px 24px rgba(168,85,247,0.18);
+}
+
+/* ================= INPUT ITEMS ================= */
 
 ion-item {
   --background: rgba(255,255,255,0.08);
-  margin-bottom: 14px;
-  border-radius: 14px;
+
+  margin-bottom: 16px;
+
+  border-radius: 18px;
+
   color: white;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+
+  --padding-start: 14px;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.15);
 }
 
+/* INPUT HOVER */
+
+ion-item:hover {
+  transform: translateY(-2px);
+
+  --background: rgba(255,255,255,0.12);
+}
+
+/* LABEL + INPUT TEXT */
+
+ion-label,
+ion-input,
+ion-select {
+  color: #ffffff !important;
+
+  font-weight: 500;
+}
+
+/* ================= BMI RESULT CARD ================= */
+
 .bmi-card {
-  margin-top: 20px;
-  padding: 24px;
-  border-radius: 22px;
+  margin-top: 24px;
+
+  padding: 28px;
+
+  border-radius: 28px;
+
   text-align: center;
+
   background: linear-gradient(
     135deg,
     #7c3aed,
-    #2563eb
+    #2563eb,
+    #06b6d4
   );
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
-  animation: pulseCard 2s infinite;
+
+  box-shadow:
+    0 16px 35px rgba(37,99,235,0.28);
+
+  animation: pulseCard 2.5s infinite;
+
+  position: relative;
+
+  overflow: hidden;
 }
+
+/* GLOW */
+
+.bmi-card::before {
+  content: '';
+
+  position: absolute;
+
+  top: -60px;
+  right: -60px;
+
+  width: 160px;
+  height: 160px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.12);
+
+  filter: blur(25px);
+}
+
+/* BMI TITLE */
 
 .bmi-card h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 24px;
+
+  margin-bottom: 12px;
+
+  color: white;
+
+  font-weight: 700;
+
+  position: relative;
+  z-index: 2;
 }
+
+/* BMI VALUE */
 
 .bmi-value {
-  font-size: 46px;
+  font-size: 54px;
+
   font-weight: 800;
-  margin: 10px 0;
+
+  margin: 14px 0;
+
+  color: white;
+
+  text-shadow:
+    0 0 20px rgba(255,255,255,0.3);
+
+  position: relative;
+  z-index: 2;
 }
+
+/* BMI STATUS */
 
 .bmi-status {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 17px;
+
+  font-weight: 700;
+
+  color: #f8fafc;
+
+  letter-spacing: 0.5px;
+
+  position: relative;
+  z-index: 2;
 }
+
+/* ================= SAVE BUTTON ================= */
 
 .save-btn {
-  margin-top: 24px;
+  margin-top: 26px;
+
   --border-radius: 18px;
-  height: 52px;
+
+  height: 54px;
+
   font-weight: 700;
+
+  font-size: 16px;
+
   animation: bounceIn 1.2s ease;
+
+  --background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+  );
+
+  --box-shadow:
+    0 12px 28px rgba(59,130,246,0.35);
+
+  transition: 0.3s ease;
 }
 
-/* KEYFRAMES */
+/* BUTTON HOVER */
+
+.save-btn:hover {
+  transform: scale(1.03);
+}
+
+/* ================= KEYFRAMES ================= */
 
 @keyframes fadeInDown {
+
   from {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -95,10 +345,12 @@ ion-item {
 }
 
 @keyframes fadeInUp {
+
   from {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -106,25 +358,31 @@ ion-item {
 }
 
 @keyframes pulseCard {
+
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.02);
   }
+
   100% {
     transform: scale(1);
   }
 }
 
 @keyframes bounceIn {
+
   0% {
     opacity: 0;
     transform: scale(0.8);
   }
+
   60% {
     transform: scale(1.05);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);

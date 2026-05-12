@@ -71,71 +71,79 @@ export class YogaPage implements OnInit {
     'PCOD': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiUTqBYizqW7GTPyjep0JupxSJPZ-6qxkXmA&s',
     'Sleep': 'https://img.favpng.com/25/17/23/sleep-cartoon-animation-clip-art-png-favpng-vY1ZQcWy8grZ73FFc1NcFpunT.jpg',
     'Stress Relief': 'https://static.vecteezy.com/system/resources/previews/042/113/887/non_2x/meditating-girl-female-becalmed-character-in-yoga-lotus-posture-stress-relief-and-meditation-practice-flat-illustration-set-healthy-lifestyle-meditation-cartoon-concept-vector.jpg',
+<<<<<<< HEAD
     'Weight Loss': 'https://img.freepik.com/premium-vector/vector-illustration-weight-loss-cartoon-scene-with-girl-who-lost-weight-fruits-salads-water-white-background_812561-661.jpg',
     'Back Pain': 'https://www.shutterstock.com/shutterstock/photos/2071984802/display_1500/stock-vector-suffering-from-chronic-back-pain-concept-young-woman-standing-holding-her-lower-back-suffering-2071984802.jpg',
     'Flexibility': 'https://thumbs.dreamstime.com/b/young-attractive-woman-practicing-yoga-sitting-one-leg-king-pigeon-flexibility-stretching-exercise-yoga-king-pigeon-exercise-101756852.jpg',
     'Anxiety': 'https://thumbs.dreamstime.com/b/woman-fears-phobias-anxiety-despair-pain-anxiety-woman-fears-phobias-thoughts-get-confused-crushed-isolated-girl-203608015.jpg',
     'Meditation': 'https://static.vecteezy.com/system/resources/previews/055/337/931/non_2x/a-woman-meditates-in-nature-and-leaves-conceptual-illustration-for-yoga-meditation-relaxation-rest-healthy-lifestyle-illustration-in-flat-artoon-vector.jpg'
+=======
+    'Weight Loss': 'https://previews.123rf.com/images/dmitrynew/dmitrynew2007/dmitrynew200700087/152111564-weight-loss-before-and-after-cartoon-fat-and-thin-woman-comparsion-vector-fitness-or-diet.jpg',
+    'Back Pain': 'https://www.shutterstock.com/shutterstock/photos/2071984802/display_1500/stock-vector-suffering-from-chronic-back-pain-concept-young-woman-standing-holding-her-lower-back-suffering-2071984802.jpg',
+    'Flexibility': 'https://previews.123rf.com/images/logo3in1/logo3in11510/logo3in1151000005/46717149-woman-sitting-to-cool-down-stretches-after-exercise.jpg',
+    'Anxiety': 'https://thumbs.dreamstime.com/b/woman-fears-phobias-anxiety-despair-pain-anxiety-woman-fears-phobias-thoughts-get-confused-crushed-isolated-girl-203608015.jpg',
+    'Meditation': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ9_Tl1kIBLOQXAZ6Thod1BD8rq5uRGb13kQ&s'
+>>>>>>> aebf3ce
   };
 
   // ================= ASANA GIFS =================
   asanaGifs: any = {
 
     // ================= PCOD =================
-    'Butterfly Pose': 'assets/yoga/butterfly.gif',
-    'Cobra Pose': 'assets/yoga/cobra.gif',
-    'Cat Cow Pose': 'assets/yoga/catcow.gif',
-    'Child Pose': 'assets/yoga/childpose.gif',
-    'Bridge Pose': 'assets/yoga/bridgepose.gif',
+    'Butterfly Pose': 'https://www.shutterstock.com/image-vector/woman-doing-seated-butterfly-pose-260nw-2187437167.jpg',
+    'Cobra Pose': 'https://www.shutterstock.com/image-vector/woman-training-yoga-asana-cobra-600nw-2277302037.jpg',
+    'Cat Cow Pose': 'https://media.istockphoto.com/id/1094565462/vector/woman-doing-exercise-with-cat-cow-pose-to-stretch-back-muscle-and-promote-spinal-flexibility.jpg?s=612x612&w=0&k=20&c=edxRjFsiKWo3ZOnZxcSOorlayT9Obzalg9uSN_DQSgU=',
+    'Child Pose': 'https://www.shutterstock.com/image-vector/woman-child-pose-flat-yoga-600nw-2657571339.jpg',
+    'Bridge Pose': 'https://www.shutterstock.com/image-vector/young-woman-perfoming-bridge-pose-600nw-2278699905.jpg',
 
     // ================= SLEEP =================
-    'Legs Up Wall': 'assets/yoga/legsupwall.gif',
-    'Corpse Pose': 'assets/yoga/corpsepose.gif',
-    'Happy Baby Pose': 'assets/yoga/happybaby.gif',
-    'Forward Fold': 'assets/yoga/forwardfold.gif',
-    'Supine Twist': 'assets/yoga/supinetwist.gif',
+    'Legs Up Wall': 'https://www.shutterstock.com/image-vector/legs-wall-bolster-yoga-pose-260nw-2001858446.jpg',
+    'Corpse Pose': 'https://cdni.iconscout.com/illustration/premium/thumb/corpse-pose-illustration-svg-download-png-2965776.png',
+    'Happy Baby Pose': 'https://t4.ftcdn.net/jpg/10/30/93/61/360_F_1030936171_06ex7TfCSLY548JpQ7gfhd1WZx0mLtae.jpg',
+    'Forward Fold': 'https://www.shutterstock.com/image-vector/upward-forward-fold-half-standing-260nw-2412140057.jpg',
+    'Supine Twist': 'https://www.shutterstock.com/image-vector/girl-sitting-half-spinal-twist-260nw-1622224627.jpg',
 
     // ================= STRESS =================
-    'Lotus Pose': 'assets/yoga/lotuspose.gif',
-    'Tree Pose': 'assets/yoga/treepose.gif',
-    'Seated Forward Bend': 'assets/yoga/seatedforwardbend.gif',
-    'Mountain Pose': 'assets/yoga/mountainpose.gif',
-    'Easy Pose': 'assets/yoga/easypose.gif',
+    'Lotus Pose': 'https://i.pinimg.com/736x/8d/8d/a4/8d8da474e3f6a09f27e501e3680e3ff9.jpg',
+    'Tree Pose': 'https://png.pngtree.com/png-clipart/20221025/original/pngtree-cartoon-yoga-tree-pose-png-image_8719055.png',
+    'Seated Forward Bend': 'https://thumbs.dreamstime.com/b/forward-bend-yoga-pose-exercise-body-stretch-fitness-forward-bend-yoga-pose-exercise-body-stretch-fitness-workout-161160740.jpg',
+    'Mountain Pose': 'https://thumbs.dreamstime.com/b/flat-vector-illustration-young-woman-performing-mountain-pose-her-arms-raised-yoga-practice-session-young-432921559.jpg',
+    'Easy Pose': 'https://thumbs.dreamstime.com/b/cartoon-woman-easy-pose-yoga-position-wellness-meditation-illustration-sitting-376262031.jpg',
 
     // ================= WEIGHT LOSS =================
-    'Boat Pose': 'assets/yoga/boatpose.gif',
-    'Plank Pose': 'assets/yoga/plankpose.gif',
-    'Warrior Pose': 'assets/yoga/warriorpose.gif',
-    'Chair Pose': 'assets/yoga/chairpose.gif',
-    'Bow Pose': 'assets/yoga/bowpose.gif',
+    'Boat Pose': 'https://static.vecteezy.com/system/resources/previews/022/444/361/non_2x/plump-woman-doing-yoga-meditating-fat-active-exercise-for-balance-weight-loss-flat-graphics-vector.jpg',
+    'Plank Pose': 'https://www.shutterstock.com/image-vector/plank-pose-kumbhakasana-beautiful-girl-260nw-2112202385.jpg',
+    'Warrior Pose': 'https://cdn.vectorstock.com/i/1000v/06/64/woman-practicing-yoga-warrior-pose-outdoors-under-vector-58610664.jpg',
+    'Chair Pose': 'https://static.vecteezy.com/system/resources/previews/028/242/485/non_2x/woman-practicing-chair-pose-utkatasana-yoga-exercise-vector.jpg',
+    'Bow Pose': 'https://www.shutterstock.com/image-vector/young-woman-perfoming-yoga-exercise-260nw-2290312461.jpg',
 
     // ================= BACK PAIN =================
-    'Sphinx Pose': 'assets/yoga/sphinxpose.gif',
-    'Downward Dog': 'assets/yoga/downwarddog.gif',
-    'Thread Needle Pose': 'assets/yoga/threadneedle.gif',
-    'Puppy Pose': 'assets/yoga/puppypose.gif',
-    'Triangle Pose': 'assets/yoga/trianglepose.gif',
+    'Sphinx Pose': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMdfojf95J0_zCMgibBMMX-ehwGwI4jomuWA&s',
+    'Downward Dog': 'https://png.pngtree.com/png-clipart/20210516/original/pngtree-downward-facing-dog-pose-yoga-png-image_6292116.png',
+    'Thread Needle Pose': 'https://www.shutterstock.com/image-vector/thread-needle-pose-young-woman-260nw-2418860655.jpg',
+    'Puppy Pose': 'https://img.freepik.com/premium-vector/puppy-pose-young-woman-practicing-yoga-pose-woman-workout-fitness-aerobic-exercise_476141-2685.jpg?w=360',
+    'Triangle Pose': 'https://static.vecteezy.com/system/resources/previews/005/311/073/non_2x/woman-doing-extended-triangle-pose-or-utthita-trikonasana-exercise-flat-illustration-isolated-on-white-background-free-vector.jpg',
 
     // ================= FLEXIBILITY =================
-    'Camel Pose': 'assets/yoga/camelpose.gif',
-    'Split Stretch': 'assets/yoga/splitstretch.gif',
-    'Wide Leg Fold': 'assets/yoga/widelegfold.gif',
-    'Lizard Pose': 'assets/yoga/lizardpose.gif',
-    'King Pigeon Pose': 'assets/yoga/pigeonpose.gif',
+    'Camel Pose': 'https://thumbs.dreamstime.com/b/woman-standing-camel-yoga-pose-stretch-exercise-woman-standing-camel-yoga-pose-stretch-exercise-body-health-158160732.jpg',
+    'Split Stretch': 'https://img.freepik.com/premium-vector/girl-is-exercising-with-her-hands_118167-10586.jpg',
+    'Wide Leg Fold': 'https://thumbs.dreamstime.com/b/woman-doing-intense-leg-stretch-pose-d-wide-legged-forward-fold-pose-d-woman-doing-intense-leg-stretch-pose-d-wide-legged-forward-255520764.jpg',
+    'Lizard Pose': 'https://cdni.iconscout.com/illustration/premium/thumb/girl-doing-lizard-pose-yoga-illustration-svg-download-png-7629580.png',
+    'King Pigeon Pose': 'https://static.vecteezy.com/system/resources/previews/066/606/089/non_2x/woman-doing-one-legged-king-pigeon-pose-illustration-vector.jpg',
 
     // ================= ANXIETY =================
-    'Breathing Pose': 'assets/yoga/breathingpose.gif',
-    'Moon Pose': 'assets/yoga/moonpose.gif',
-    'Garland Pose': 'assets/yoga/garlandpose.gif',
-    'Fish Pose': 'assets/yoga/fishpose.gif',
-    'Standing Forward Fold': 'assets/yoga/forwardfold.gif',
+    'Breathing Pose': 'https://media.istockphoto.com/id/1437408403/vector/woman-practicing-breathing-exercise-in-flat-design-on-white-background.jpg?s=612x612&w=0&k=20&c=d1zTqFnrTVWLmqy9VEAWYPY1O9GFeEBe4Ely6zMvvNw=',
+    'Moon Pose': 'https://thumbs.dreamstime.com/b/woman-doing-half-moon-pose-ardha-chandrasana-exercise-woman-doing-half-moon-pose-ardha-chandrasana-exercise-flat-vector-246510924.jpg',
+    'Garland Pose': 'https://www.yogaclassplan.com/wp-content/uploads/2021/06/10-garland-pose.jpg',
+    'Fish Pose': 'https://cdn.prod.website-files.com/683b218dcc58f93d54ce8e1d/69a185d6ba86e27084004bda_matsyasana_2x.webp',
+    'Standing Forward Fold': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvgLenqhWVcOrNCc3HoFouHuWPQH5dJ-78XQ&s',
 
     // ================= MEDITATION =================
-    'Zen Pose': 'assets/yoga/zenpose.gif',
-    'Pranayama': 'assets/yoga/pranayama.gif',
-    'Alternate Nostril Breathing': 'assets/yoga/breathingpose.gif',
-    'Mindfulness Pose': 'assets/yoga/mindfulness.gif',
-    'Deep Relaxation': 'assets/yoga/deeprelaxation.gif'
+    'Zen Pose': 'https://static.vecteezy.com/system/resources/thumbnails/053/447/781/small/yoga-and-spiritual-practice-woman-meditating-relaxing-peaceful-female-during-meditation-in-lotus-pose-illustration-isolated-on-white-background-vector.jpg',
+    'Pranayama': 'https://img.freepik.com/free-photo/women-enjoying-mental-health_23-2151904398.jpg?semt=ais_hybrid&w=740&q=80',
+    'Alternate Nostril Breathing': 'https://img.freepik.com/premium-vector/illustration-woman-doing-yoga-parvatasana-position_207579-960.jpg',
+    'Mindfulness Pose': 'https://img.freepik.com/premium-vector/vector-cartoon-illustration-yoga-pose-utthita-parshvakonasana_194552-1109.jpg',
+    'Deep Relaxation': 'https://img.freepik.com/premium-vector/meditating-woman-lotus-position-relaxation-tranquility_1031747-188.jpg'
   };
 
   onGifError(event: any) {
@@ -146,84 +154,341 @@ export class YogaPage implements OnInit {
   // ================= YOGA WORKOUTS =================
   yogaExercises: any = {
 
-    PCOD: {
-      Beginner: [
-        { name: 'Butterfly Pose', breaths: 10, time: 30 },
-        { name: 'Cobra Pose', breaths: 10, time: 30 },
-        { name: 'Cat Cow Pose', breaths: 10, time: 30 },
-        { name: 'Child Pose', breaths: 10, time: 30 },
-        { name: 'Bridge Pose', breaths: 10, time: 30 }
-      ],
+   
 
-      Moderate: [
-        { name: 'Butterfly Pose', breaths: 15, time: 40 },
-        { name: 'Bridge Pose', breaths: 15, time: 40 },
-        { name: 'Cobra Pose', breaths: 15, time: 40 },
-        { name: 'Cat Cow Pose', breaths: 15, time: 40 },
-        { name: 'Child Pose', breaths: 15, time: 40 }
-      ],
+  // ================= PCOD =================
+  PCOD: {
+    Beginner: [
+      {
+        name: 'Butterfly Pose',
+        breaths: 10,
+        time: 40,
+        desc: 'Helps improve pelvic blood flow and reduces menstrual discomfort.'
+      },
+      {
+        name: 'Cat Cow Pose',
+        breaths: 10,
+        time: 45,
+        desc: 'Improves spine flexibility and regulates hormonal balance.'
+      },
+      {
+        name: 'Cobra Pose',
+        breaths: 8,
+        time: 40,
+        desc: 'Strengthens reproductive organs and reduces stress in abdomen.'
+      },
+      {
+        name: 'Child Pose',
+        breaths: 10,
+        time: 50,
+        desc: 'Relaxes the nervous system and reduces fatigue.'
+      },
+      {
+        name: 'Bridge Pose',
+        breaths: 8,
+        time: 45,
+        desc: 'Stimulates thyroid and improves hormonal activity.'
+      }
+    ],
 
-      Advanced: [
-        { name: 'Bridge Pose', breaths: 20, time: 50 },
-        { name: 'Butterfly Pose', breaths: 20, time: 50 },
-        { name: 'Cobra Pose', breaths: 20, time: 50 },
-        { name: 'Child Pose', breaths: 20, time: 50 },
-        { name: 'Cat Cow Pose', breaths: 20, time: 50 }
-      ]
-    },
+    Moderate: [
+      {
+        name: 'Butterfly Pose (Deep Hold)',
+        breaths: 15,
+        time: 60,
+        desc: 'Improves hip flexibility and hormonal regulation.'
+      },
+      {
+        name: 'Bridge Pose',
+        breaths: 15,
+        time: 60,
+        desc: 'Enhances pelvic circulation and reduces PCOD symptoms.'
+      },
+      {
+        name: 'Cobra Pose',
+        breaths: 12,
+        time: 55,
+        desc: 'Boosts metabolism and relieves lower back stiffness.'
+      },
+      {
+        name: 'Seated Forward Bend',
+        breaths: 12,
+        time: 60,
+        desc: 'Calms mind and improves digestion.'
+      },
+      {
+        name: 'Cat Cow Flow',
+        breaths: 15,
+        time: 60,
+        desc: 'Balances hormones and improves spinal movement.'
+      }
+    ],
 
-    Sleep: {
-      Beginner: [
-        { name: 'Legs Up Wall', breaths: 10, time: 30 },
-        { name: 'Corpse Pose', breaths: 10, time: 40 },
-        { name: 'Happy Baby Pose', breaths: 10, time: 30 },
-        { name: 'Forward Fold', breaths: 10, time: 30 },
-        { name: 'Supine Twist', breaths: 10, time: 30 }
-      ],
+    Advanced: [
+      {
+        name: 'Bridge Pose Hold',
+        breaths: 20,
+        time: 75,
+        desc: 'Deep hormonal stimulation and pelvic strengthening.'
+      },
+      {
+        name: 'Cobra Flow',
+        breaths: 20,
+        time: 70,
+        desc: 'Improves energy flow and reduces stress hormones.'
+      },
+      {
+        name: 'Butterfly Pulse',
+        breaths: 20,
+        time: 70,
+        desc: 'Advanced hip opening for reproductive health.'
+      },
+      {
+        name: 'Child Pose Deep Relax',
+        breaths: 20,
+        time: 80,
+        desc: 'Deep nervous system reset and emotional balance.'
+      },
+      {
+        name: 'Cat Cow Extended Flow',
+        breaths: 20,
+        time: 75,
+        desc: 'Improves spine mobility and hormone balance.'
+      }
+    ]
+  },
 
-      Moderate: [
-        { name: 'Corpse Pose', breaths: 15, time: 45 },
-        { name: 'Legs Up Wall', breaths: 15, time: 45 },
-        { name: 'Forward Fold', breaths: 15, time: 40 },
-        { name: 'Supine Twist', breaths: 15, time: 40 },
-        { name: 'Happy Baby Pose', breaths: 15, time: 40 }
-      ],
+  // ================= SLEEP =================
+  Sleep: {
+    Beginner: [
+      {
+        name: 'Legs Up Wall',
+        breaths: 8,
+        time: 60,
+        desc: 'Improves blood circulation and relaxes nervous system.'
+      },
+      {
+        name: 'Corpse Pose',
+        breaths: 10,
+        time: 90,
+        desc: 'Deep relaxation for mental calmness and sleep.'
+      },
+      {
+        name: 'Happy Baby Pose',
+        breaths: 10,
+        time: 60,
+        desc: 'Releases lower back tension and stress.'
+      },
+      {
+        name: 'Forward Fold',
+        breaths: 8,
+        time: 60,
+        desc: 'Calms brain and reduces anxiety.'
+      },
+      {
+        name: 'Supine Twist',
+        breaths: 8,
+        time: 60,
+        desc: 'Releases spinal tension and aids digestion.'
+      }
+    ],
 
-      Advanced: [
-        { name: 'Corpse Pose', breaths: 20, time: 60 },
-        { name: 'Legs Up Wall', breaths: 20, time: 60 },
-        { name: 'Supine Twist', breaths: 20, time: 50 },
-        { name: 'Forward Fold', breaths: 20, time: 50 },
-        { name: 'Happy Baby Pose', breaths: 20, time: 50 }
-      ]
-    },
+    Moderate: [
+      {
+        name: 'Corpse Pose Deep',
+        breaths: 15,
+        time: 120,
+        desc: 'Deep meditation posture for insomnia relief.'
+      },
+      {
+        name: 'Legs Up Wall Hold',
+        breaths: 15,
+        time: 90,
+        desc: 'Reduces fatigue and improves sleep quality.'
+      },
+      {
+        name: 'Supine Twist Hold',
+        breaths: 12,
+        time: 80,
+        desc: 'Relieves tension before sleep.'
+      },
+      {
+        name: 'Forward Fold Relax',
+        breaths: 15,
+        time: 80,
+        desc: 'Improves oxygen flow to brain.'
+      },
+      {
+        name: 'Happy Baby Relax',
+        breaths: 12,
+        time: 70,
+        desc: 'Releases emotional stress from hips.'
+      }
+    ],
 
-    'Stress Relief': {
-      Beginner: [
-        { name: 'Lotus Pose', breaths: 10, time: 30 },
-        { name: 'Tree Pose', breaths: 10, time: 30 },
-        { name: 'Mountain Pose', breaths: 10, time: 30 },
-        { name: 'Easy Pose', breaths: 10, time: 30 },
-        { name: 'Child Pose', breaths: 10, time: 30 }
-      ],
+    Advanced: [
+      {
+        name: 'Yoga Nidra',
+        breaths: 25,
+        time: 180,
+        desc: 'Deep sleep meditation technique.'
+      },
+      {
+        name: 'Corpse Pose Extended',
+        breaths: 20,
+        time: 150,
+        desc: 'Full body relaxation for deep sleep.'
+      },
+      {
+        name: 'Legs Up Wall Advanced',
+        breaths: 20,
+        time: 120,
+        desc: 'Boosts recovery and sleep hormone balance.'
+      },
+      {
+        name: 'Supine Twist Deep',
+        breaths: 20,
+        time: 100,
+        desc: 'Deep spinal relaxation before sleep.'
+      },
+      {
+        name: 'Breathing Savasana',
+        breaths: 20,
+        time: 120,
+        desc: 'Breath control for mental shutdown.'
+      }
+    ]
+  },
 
-      Moderate: [
-        { name: 'Tree Pose', breaths: 15, time: 40 },
-        { name: 'Lotus Pose', breaths: 15, time: 40 },
-        { name: 'Seated Forward Bend', breaths: 15, time: 40 },
-        { name: 'Mountain Pose', breaths: 15, time: 40 },
-        { name: 'Easy Pose', breaths: 15, time: 40 }
-      ],
+  // ================= STRESS RELIEF =================
+  'Stress Relief': {
+    Beginner: [
+      {
+        name: 'Mountain Pose',
+        breaths: 10,
+        time: 40,
+        desc: 'Improves posture and mental stability.'
+      },
+      {
+        name: 'Child Pose',
+        breaths: 10,
+        time: 50,
+        desc: 'Calms nervous system instantly.'
+      },
+      {
+        name: 'Tree Pose',
+        breaths: 8,
+        time: 45,
+        desc: 'Improves focus and balance.'
+      },
+      {
+        name: 'Easy Pose',
+        breaths: 10,
+        time: 40,
+        desc: 'Basic meditation posture for calmness.'
+      },
+      {
+        name: 'Lotus Prep Pose',
+        breaths: 10,
+        time: 45,
+        desc: 'Prepares mind for meditation.'
+      }
+    ],
 
-      Advanced: [
-        { name: 'Lotus Pose', breaths: 20, time: 50 },
-        { name: 'Tree Pose', breaths: 20, time: 50 },
-        { name: 'Seated Forward Bend', breaths: 20, time: 50 },
-        { name: 'Mountain Pose', breaths: 20, time: 50 },
-        { name: 'Easy Pose', breaths: 20, time: 50 }
-      ]
-    }
-  };
+    Moderate: [
+      {
+        name: 'Tree Pose Balance',
+        breaths: 12,
+        time: 60,
+        desc: 'Improves concentration and mental control.'
+      },
+      {
+        name: 'Seated Forward Bend',
+        breaths: 12,
+        time: 60,
+        desc: 'Reduces stress and anxiety.'
+      },
+      {
+        name: 'Lotus Pose',
+        breaths: 15,
+        time: 70,
+        desc: 'Deep meditation posture for inner peace.'
+      },
+      {
+        name: 'Mountain Flow',
+        breaths: 12,
+        time: 60,
+        desc: 'Grounding posture for stability.'
+      },
+      {
+        name: 'Child Pose Relax',
+        breaths: 12,
+        time: 60,
+        desc: 'Releases emotional stress.'
+      }
+    ],
+
+    Advanced: [
+      {
+        name: 'Lotus Meditation',
+        breaths: 20,
+        time: 120,
+        desc: 'Deep meditative state for stress release.'
+      },
+      {
+        name: 'Tree Pose Hold',
+        breaths: 20,
+        time: 90,
+        desc: 'Advanced balance and focus training.'
+      },
+      {
+        name: 'Seated Forward Bend Deep',
+        breaths: 18,
+        time: 100,
+        desc: 'Deep emotional and physical release.'
+      },
+      {
+        name: 'Mountain Stillness',
+        breaths: 20,
+        time: 90,
+        desc: 'Mental grounding and stability.'
+      },
+      {
+        name: 'Zen Sitting Pose',
+        breaths: 20,
+        time: 120,
+        desc: 'Deep awareness and mindfulness practice.'
+      }
+    ]
+  },
+
+  // ================= NEW CATEGORY: WEIGHT LOSS YOGA =================
+  'Weight Loss Yoga': {
+    Beginner: [
+      { name: 'Sun Salutation A', breaths: 10, time: 60, desc: 'Full body warm-up and fat burning flow.' },
+      { name: 'Chair Pose', breaths: 10, time: 40, desc: 'Strengthens legs and burns calories.' },
+      { name: 'Warrior I', breaths: 10, time: 50, desc: 'Builds stamina and core strength.' },
+      { name: 'Bridge Pose', breaths: 10, time: 50, desc: 'Activates metabolism and core.' },
+      { name: 'Standing Forward Bend', breaths: 10, time: 45, desc: 'Improves digestion and fat loss.' }
+    ],
+
+    Moderate: [
+      { name: 'Sun Salutation Flow', breaths: 15, time: 90, desc: 'Continuous flow for calorie burn.' },
+      { name: 'Warrior II', breaths: 12, time: 60, desc: 'Strengthens lower body and core.' },
+      { name: 'Plank Pose', breaths: 12, time: 60, desc: 'Core strengthening for fat burn.' },
+      { name: 'Boat Pose', breaths: 12, time: 60, desc: 'Targets belly fat.' },
+      { name: 'Triangle Pose', breaths: 12, time: 60, desc: 'Improves digestion and metabolism.' }
+    ],
+
+    Advanced: [
+      { name: 'Power Sun Flow', breaths: 20, time: 120, desc: 'High intensity yoga fat burn.' },
+      { name: 'Side Plank', breaths: 15, time: 80, desc: 'Core and oblique strengthening.' },
+      { name: 'Warrior Flow', breaths: 20, time: 100, desc: 'Advanced endurance training.' },
+      { name: 'Boat Pose Hold', breaths: 18, time: 90, desc: 'Deep core activation.' },
+      { name: 'Jumping Sun Salutation', breaths: 20, time: 120, desc: 'Cardio + yoga fusion burn.' }
+    ]
+  }
+};
 
   // ================= INIT =================
   ngOnInit() {
