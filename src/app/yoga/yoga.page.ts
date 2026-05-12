@@ -463,31 +463,137 @@ export class YogaPage implements OnInit {
   },
 
   // ================= NEW CATEGORY: WEIGHT LOSS YOGA =================
-  'Weight Loss Yoga': {
+
+
+  // ================= WEIGHT LOSS =================
+  WeightLoss: {
     Beginner: [
-      { name: 'Sun Salutation A', breaths: 10, time: 60, desc: 'Full body warm-up and fat burning flow.' },
-      { name: 'Chair Pose', breaths: 10, time: 40, desc: 'Strengthens legs and burns calories.' },
-      { name: 'Warrior I', breaths: 10, time: 50, desc: 'Builds stamina and core strength.' },
-      { name: 'Bridge Pose', breaths: 10, time: 50, desc: 'Activates metabolism and core.' },
-      { name: 'Standing Forward Bend', breaths: 10, time: 45, desc: 'Improves digestion and fat loss.' }
+      { name: 'Sun Salutation A', breaths: 10, time: 60, desc: 'Full body warm-up to burn calories.' },
+      { name: 'Chair Pose', breaths: 8, time: 40, desc: 'Strengthens thighs and burns fat.' },
+      { name: 'High Plank', breaths: 10, time: 45, desc: 'Core activation and fat burn.' },
+      { name: 'Forward Bend', breaths: 10, time: 40, desc: 'Improves digestion.' },
+      { name: 'Mountain Pose', breaths: 10, time: 30, desc: 'Posture and balance.' }
     ],
-
     Moderate: [
-      { name: 'Sun Salutation Flow', breaths: 15, time: 90, desc: 'Continuous flow for calorie burn.' },
-      { name: 'Warrior II', breaths: 12, time: 60, desc: 'Strengthens lower body and core.' },
-      { name: 'Plank Pose', breaths: 12, time: 60, desc: 'Core strengthening for fat burn.' },
-      { name: 'Boat Pose', breaths: 12, time: 60, desc: 'Targets belly fat.' },
-      { name: 'Triangle Pose', breaths: 12, time: 60, desc: 'Improves digestion and metabolism.' }
+      { name: 'Warrior II', breaths: 12, time: 60, desc: 'Strength + calorie burn.' },
+      { name: 'Boat Pose', breaths: 12, time: 50, desc: 'Core fat reduction.' },
+      { name: 'Chair Twist', breaths: 12, time: 55, desc: 'Improves metabolism.' },
+      { name: 'Lunge Flow', breaths: 12, time: 60, desc: 'Leg strength + fat burn.' },
+      { name: 'Plank Flow', breaths: 15, time: 60, desc: 'Full body activation.' }
     ],
-
     Advanced: [
-      { name: 'Power Sun Flow', breaths: 20, time: 120, desc: 'High intensity yoga fat burn.' },
-      { name: 'Side Plank', breaths: 15, time: 80, desc: 'Core and oblique strengthening.' },
-      { name: 'Warrior Flow', breaths: 20, time: 100, desc: 'Advanced endurance training.' },
-      { name: 'Boat Pose Hold', breaths: 18, time: 90, desc: 'Deep core activation.' },
-      { name: 'Jumping Sun Salutation', breaths: 20, time: 120, desc: 'Cardio + yoga fusion burn.' }
+      { name: 'Sun Salutation B', breaths: 20, time: 90, desc: 'High intensity fat burn.' },
+      { name: 'Crow Pose', breaths: 15, time: 60, desc: 'Core + balance strength.' },
+      { name: 'Side Plank', breaths: 15, time: 60, desc: 'Oblique fat burn.' },
+      { name: 'Jump Back Flow', breaths: 20, time: 80, desc: 'Explosive calorie burn.' },
+      { name: 'Warrior Flow', breaths: 20, time: 90, desc: 'Full body conditioning.' }
     ]
-  }
+  },
+
+  // ================= BACK PAIN =================
+  BackPain: {
+    Beginner: [
+      { name: 'Cat Cow Pose', breaths: 10, time: 45, desc: 'Spine mobility.' },
+      { name: 'Child Pose', breaths: 10, time: 50, desc: 'Back relaxation.' },
+      { name: 'Pelvic Tilt', breaths: 10, time: 40, desc: 'Lower back strength.' },
+      { name: 'Knee to Chest', breaths: 10, time: 45, desc: 'Releases tension.' },
+      { name: 'Cobra Pose', breaths: 8, time: 40, desc: 'Spine flexibility.' }
+    ],
+    Moderate: [
+      { name: 'Bridge Pose', breaths: 12, time: 60, desc: 'Back strengthening.' },
+      { name: 'Sphinx Pose', breaths: 12, time: 50, desc: 'Gentle extension.' },
+      { name: 'Seated Twist', breaths: 12, time: 55, desc: 'Spinal release.' },
+      { name: 'Downward Dog', breaths: 12, time: 60, desc: 'Full back stretch.' },
+      { name: 'Locust Pose', breaths: 12, time: 55, desc: 'Lower back strength.' }
+    ],
+    Advanced: [
+      { name: 'Wheel Pose', breaths: 20, time: 70, desc: 'Deep spine flexibility.' },
+      { name: 'Bow Pose', breaths: 20, time: 70, desc: 'Full back strength.' },
+      { name: 'Cobra Flow', breaths: 20, time: 75, desc: 'Advanced spine mobility.' },
+      { name: 'King Cobra', breaths: 20, time: 80, desc: 'Deep backbend.' },
+      { name: 'Bridge Hold', breaths: 20, time: 75, desc: 'Lower back power.' }
+    ]
+  },
+
+  // ================= FLEXIBILITY =================
+  Flexibility: {
+    Beginner: [
+      { name: 'Butterfly Pose', breaths: 10, time: 40, desc: 'Hip opening.' },
+      { name: 'Forward Bend', breaths: 10, time: 45, desc: 'Hamstring stretch.' },
+      { name: 'Cat Cow', breaths: 10, time: 45, desc: 'Spine flexibility.' },
+      { name: 'Child Pose', breaths: 10, time: 50, desc: 'Relaxation stretch.' },
+      { name: 'Neck Rolls', breaths: 10, time: 30, desc: 'Neck mobility.' }
+    ],
+    Moderate: [
+      { name: 'Pigeon Pose', breaths: 12, time: 60, desc: 'Deep hip opening.' },
+      { name: 'Lunge Stretch', breaths: 12, time: 55, desc: 'Hip flexibility.' },
+      { name: 'Downward Dog', breaths: 12, time: 60, desc: 'Full body stretch.' },
+      { name: 'Seated Twist', breaths: 12, time: 55, desc: 'Spinal rotation.' },
+      { name: 'Cobra Pose', breaths: 12, time: 50, desc: 'Spine stretch.' }
+    ],
+    Advanced: [
+      { name: 'King Pigeon', breaths: 20, time: 75, desc: 'Advanced hip flexibility.' },
+      { name: 'Wheel Pose', breaths: 20, time: 70, desc: 'Deep backbend.' },
+      { name: 'Splits Stretch', breaths: 20, time: 80, desc: 'Extreme flexibility.' },
+      { name: 'Forearm Stand Prep', breaths: 20, time: 70, desc: 'Balance + flexibility.' },
+      { name: 'Deep Backbend Flow', breaths: 20, time: 80, desc: 'Full spine mobility.' }
+    ]
+  },
+
+  // ================= MEDITATION =================
+  Meditation: {
+    Beginner: [
+      { name: 'Breath Awareness', breaths: 10, time: 300, desc: 'Focus on breathing.' },
+      { name: 'Body Scan', breaths: 10, time: 300, desc: 'Relax body parts.' },
+      { name: 'Mantra Chanting', breaths: 10, time: 300, desc: 'Calms mind.' },
+      { name: 'Mindful Sitting', breaths: 10, time: 300, desc: 'Focus training.' },
+      { name: 'Gratitude Meditation', breaths: 10, time: 300, desc: 'Positive thinking.' }
+    ],
+    Moderate: [
+      { name: 'Focused Breath Count', breaths: 15, time: 600, desc: 'Improves concentration.' },
+      { name: 'Visualization Meditation', breaths: 15, time: 600, desc: 'Mental clarity.' },
+      { name: 'Sound Awareness', breaths: 15, time: 600, desc: 'Deep awareness.' },
+      { name: 'Walking Meditation', breaths: 15, time: 600, desc: 'Mindful movement.' },
+      { name: 'Mantra Repetition', breaths: 15, time: 600, desc: 'Deep focus.' }
+    ],
+    Advanced: [
+      { name: 'Silent Meditation', breaths: 20, time: 900, desc: 'Deep mental silence.' },
+      { name: 'Chakra Meditation', breaths: 20, time: 900, desc: 'Energy alignment.' },
+      { name: 'Advanced Breath Control', breaths: 20, time: 900, desc: 'Mind mastery.' },
+      { name: 'Deep Visualization', breaths: 20, time: 900, desc: 'Inner awareness.' },
+      { name: 'Detachment Practice', breaths: 20, time: 900, desc: 'Mental freedom.' }
+    ]
+  },
+
+  // ================= ANXIETY =================
+  Anxiety: {
+    Beginner: [
+      { name: 'Deep Breathing', breaths: 10, time: 300, desc: 'Instant calming.' },
+      { name: 'Child Pose', breaths: 10, time: 300, desc: 'Stress release.' },
+      { name: 'Grounding Pose', breaths: 10, time: 300, desc: 'Emotional stability.' },
+      { name: 'Legs Up Wall', breaths: 10, time: 300, desc: 'Nervous system calm.' },
+      { name: 'Box Breathing', breaths: 10, time: 300, desc: 'Anxiety control.' }
+    ],
+    Moderate: [
+      { name: 'Alternate Nostril Breathing', breaths: 15, time: 600, desc: 'Balances mind.' },
+      { name: 'Walking Meditation', breaths: 15, time: 600, desc: 'Reduces anxiety.' },
+      { name: 'Body Scan Relaxation', breaths: 15, time: 600, desc: 'Deep relaxation.' },
+      { name: 'Gentle Yoga Flow', breaths: 15, time: 600, desc: 'Stress release.' },
+      { name: 'Mindful Journaling', breaths: 15, time: 600, desc: 'Emotional clarity.' }
+    ],
+    Advanced: [
+      { name: 'Deep Silent Meditation', breaths: 20, time: 900, desc: 'Mental stillness.' },
+      { name: 'Extended Breath Control', breaths: 20, time: 900, desc: 'Anxiety mastery.' },
+      { name: 'Chakra Balancing', breaths: 20, time: 900, desc: 'Energy healing.' },
+      { name: 'Yoga Nidra', breaths: 20, time: 900, desc: 'Deep subconscious relaxation.' },
+      { name: 'Detachment Meditation', breaths: 20, time: 900, desc: 'Emotional control.' }
+    ]
+  },
+
+  // ================= SLEEP =================
+  
+  
+
 };
 
   // ================= INIT =================
