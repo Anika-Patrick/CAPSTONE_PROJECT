@@ -7,6 +7,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FitnessService } from '../services/fitness';
 import { ApiService } from '../services/api.service';
 
+
 @Component({
   selector: 'app-tab1',
   standalone: true,
@@ -51,69 +52,131 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // LOAD PROFILE
-    this.fitness.loadProfile();
+  // LOAD CURRENT USER
+  const storedUser = localStorage.getItem('current_user');
 
-    // LOAD HISTORY
-    this.fitness.loadHistory();
+  if (storedUser) {
 
-    this.history = this.fitness.history;
+    try {
 
-    // LOAD USERNAME
-    const storedUser = localStorage.getItem('current_user');
-    
-    const savedWeeklyCalories =
-  localStorage.getItem(
-    `weeklyCalories_${this.currentUsername}`
+      const parsedUser = JSON.parse(storedUser);
+
+      this.username =
+        parsedUser.username ||
+        parsedUser.name ||
+        parsedUser.email ||
+        'User';
+
+    } catch {
+
+      this.username = storedUser;
+    }
+
+  } else {
+
+    this.username = 'User';
+  }
+
+  this.currentUsername = this.username;
+  
+
+  // =========================
+  // LOAD USER SPECIFIC DATA
+  // =========================
+
+  this.loadUserFitnessData();
+
+  // LOAD PROFILE + HISTORY
+  this.fitness.loadProfile();
+  this.fitness.loadHistory();
+
+  this.history = this.fitness.history;
+
+  // DAILY LOGIN
+  this.handleDailyLogin();
+
+  // UPDATE RANK
+  this.updateRank();
+
+  // WEEK GRAPH
+  this.updateWeeklyGraph();
+
+  // QUOTES
+  this.startQuotes();
+}
+loadUserFitnessData() {
+
+  // CALORIES
+  const savedCalories = localStorage.getItem(
+    `calories_${this.currentUsername}`
   );
 
-if (savedWeeklyCalories) {
+  this.fitness.calories =
+    savedCalories ? Number(savedCalories) : 0;
+
+  // TOKENS
+  const savedTokens = localStorage.getItem(
+    `tokens_${this.currentUsername}`
+  );
+
+  this.fitness.tokens =
+    savedTokens ? Number(savedTokens) : 0;
+
+  // STREAK
+  const savedStreak = localStorage.getItem(
+    `streak_${this.currentUsername}`
+  );
+
+  this.fitness.streak =
+    savedStreak ? Number(savedStreak) : 0;
+
+  // RANK
+  const savedRank = localStorage.getItem(
+    `rank_${this.currentUsername}`
+  );
+
+  this.fitness.rank =
+    savedRank || 'Beginner 🌱';
+
+  // WEEKLY GRAPH
+  const savedWeeklyCalories =
+    localStorage.getItem(
+      `weeklyCalories_${this.currentUsername}`
+    );
 
   this.fitness.weeklyCalories =
-    JSON.parse(savedWeeklyCalories);
+    savedWeeklyCalories
+      ? JSON.parse(savedWeeklyCalories)
+      : [0,0,0,0,0,0,0];
 }
+saveUserFitnessData() {
 
-if (storedUser) {
+  localStorage.setItem(
+    `calories_${this.currentUsername}`,
+    this.fitness.calories.toString()
 
-  try {
+  );
 
-    const parsedUser = JSON.parse(storedUser);
+  localStorage.setItem(
+    `tokens_${this.currentUsername}`,
+    this.fitness.tokens.toString()
+  );
 
-console.log(parsedUser);
+  localStorage.setItem(
+    `streak_${this.currentUsername}`,
+    this.fitness.streak.toString()
+  );
 
-this.username =
+  localStorage.setItem(
+    `rank_${this.currentUsername}`,
+    this.fitness.rank
+  );
 
-  parsedUser.username ||
-
-  parsedUser.name ||
-
-  parsedUser.email ||
-
-  'User';
-
-  } catch {
-
-    this.username = storedUser;
-  }
-
-} else {
-
-  this.username = 'User';
+  localStorage.setItem(
+    `weeklyCalories_${this.currentUsername}`,
+    JSON.stringify(this.fitness.weeklyCalories)
+  );
 }
-this.currentUsername = this.username;
-
-    // CHECK LOGIN STREAK
-    this.handleDailyLogin();
-
-    // UPDATE RANK
-    this.updateRank();
-
-    this.updateWeeklyGraph();
-
-    // START QUOTES
-    this.startQuotes();
-  }
-
   ngOnDestroy() {
 
     clearInterval(this.quoteInterval);
@@ -122,80 +185,58 @@ this.currentUsername = this.username;
   // 🔥 DAILY LOGIN STREAK
   handleDailyLogin() {
 
-    const today = new Date().toDateString();
+  const today = new Date().toDateString();
 
-    const lastLogin =
-      localStorage.getItem(
-  `last_login_date_${this.currentUsername}`
-);
+  const lastLogin = localStorage.getItem(
+    `last_login_date_${this.currentUsername}`
+  );
 
-    let streak =
-      Number(localStorage.getItem(
-  `streak_${this.currentUsername}`
-)) || 0;
+  let streak =
+    Number(localStorage.getItem(
+      `streak_${this.currentUsername}`
+    )) || 0;
 
-    // NEW DAY LOGIN
-    if (lastLogin !== today) {
+  if (lastLogin !== today) {
 
-      streak++;
+    streak++;
 
-      localStorage.setItem(
-  `weeklyCalories_${this.currentUsername}`,
-  JSON.stringify(this.fitness.weeklyCalories)
-);
+    this.fitness.streak = streak;
 
-      localStorage.setItem(
-  `last_login_date_${this.currentUsername}`,
-  today
-);
+    localStorage.setItem(
+      `last_login_date_${this.currentUsername}`,
+      today
+    );
 
-      this.fitness.streak = streak;
+    this.streakMessage = `🔥 Day ${streak} Streak — Keep pushing!`;
 
-      // UPDATE TODAY CALORIES IN WEEKLY GRAPH
+    setTimeout(() => {
+      this.showStreakPopup = true;
+    }, 300);
 
-const todayIndex = new Date().getDay();
-
-// JS starts from Sunday = 0
-// Your graph is S M T W T F S
-
-this.fitness.weeklyCalories[todayIndex] =
-  this.fitness.calories;
-
-// SAVE
-localStorage.setItem(
-  'weeklyCalories',
-  JSON.stringify(this.fitness.weeklyCalories)
-);
-
-      // POPUP MESSAGE
-      this.streakMessage =
-  `🔥 Day ${streak} Streak — Keep pushing!`;
-
-setTimeout(() => {
-
-  this.showStreakPopup = true;
-
-}, 300);
-    } else {
-
-      this.fitness.streak = streak;
-    }
+    // ONLY ONE PLACE FOR GRAPH UPDATE
+    this.updateWeeklyGraph();
+    this.saveUserFitnessData();
+  } else {
+    this.fitness.streak = streak;
   }
+}
 
   updateWeeklyGraph() {
 
   const todayIndex = new Date().getDay();
 
-  this.fitness.weeklyCalories[todayIndex] =
-    this.fitness.calories;
+  const latestCalories = Number(this.fitness.calories);
+
+  // create new array (IMPORTANT for Angular change detection)
+  const updated = [...this.fitness.weeklyCalories];
+
+  updated[todayIndex] = latestCalories;
+
+  this.fitness.weeklyCalories = updated;
 
   localStorage.setItem(
-
     `weeklyCalories_${this.currentUsername}`,
-
-    JSON.stringify(
-      this.fitness.weeklyCalories
-    )
+    JSON.stringify(updated)
   );
 }
   // 🏆 UPDATE RANK
@@ -290,10 +331,28 @@ setTimeout(() => {
   // 🗑 RESET
   resetAll() {
 
-    localStorage.clear();
+  localStorage.removeItem(
+    `calories_${this.currentUsername}`
+  );
 
-    location.reload();
-  }
+  localStorage.removeItem(
+    `tokens_${this.currentUsername}`
+  );
+
+  localStorage.removeItem(
+    `streak_${this.currentUsername}`
+  );
+
+  localStorage.removeItem(
+    `rank_${this.currentUsername}`
+  );
+
+  localStorage.removeItem(
+    `weeklyCalories_${this.currentUsername}`
+  );
+
+  location.reload();
+}
 
   // 🔥 RANDOM QUOTES
   startQuotes() {
@@ -333,6 +392,7 @@ setTimeout(() => {
       next: (res: any) => {
 
         console.log('Saved', res);
+        this.saveUserFitnessData();
 
         alert('🔥 Data Saved Successfully');
       },
@@ -365,4 +425,12 @@ setTimeout(() => {
 
     await toast.present();
   }
+  updateAllStats() {
+  this.updateWeeklyGraph();
+  this.saveUserFitnessData();
+}
+completeWorkout() {
+  this.fitness.addWorkout(200, 20);
+  this.updateAllStats();   // 🔥 ADD THIS
+}
 }

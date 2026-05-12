@@ -1,0 +1,90 @@
+.bg {
+  --background: linear-gradient(135deg, #0b1220, #111827);
+  color: white;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 30px 15px;
+  color: white;
+}
+
+.icon {
+  font-size: 55px;
+  animation: float 2s infinite ease-in-out;
+}
+
+.hero h1 {
+  margin: 10px 0;
+  font-size: 32px;
+  color: #38bdf8;
+}
+
+.hero p {
+  opacity: 0.85;
+  color: white;
+}
+
+/* GLASS CARD */
+.glass {
+  margin: 15px;
+  padding: 18px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+}
+
+.glass h2 {
+  color: #22c55e;
+}
+
+.glass p {
+  color: white;
+  opacity: 0.9;
+}
+
+/* QUOTE */
+.quote {
+  margin: 20px;
+  padding: 15px;
+  text-align: center;
+  font-style: italic;
+  background: linear-gradient(90deg, #22c55e, #38bdf8);
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 15px;
+}
+
+.tile {
+  background: rgba(255,255,255,0.06);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+}
+
+.tile h3 {
+  color: #38bdf8;
+}
+
+.tile p {
+  color: white;
+  opacity: 0.85;
+}
+
+/* ANIMATION */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

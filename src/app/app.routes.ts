@@ -2,14 +2,12 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
 
-  // 👋 Default Route
   {
     path: '',
     redirectTo: 'welcome',
     pathMatch: 'full'
   },
 
-  // 👋 Welcome Page
   {
     path: 'welcome',
     loadComponent: () =>
@@ -18,7 +16,6 @@ export const routes: Routes = [
       )
   },
 
-  // 🔐 Login Page
   {
     path: 'home',
     loadComponent: () =>
@@ -27,7 +24,6 @@ export const routes: Routes = [
       )
   },
 
-  // 📝 Signup Page
   {
     path: 'signup',
     loadComponent: () =>
@@ -36,7 +32,6 @@ export const routes: Routes = [
       )
   },
 
-  // 📏 BMI Page
   {
     path: 'bmi',
     loadComponent: () =>
@@ -45,7 +40,6 @@ export const routes: Routes = [
       )
   },
 
-  // 📊 Tabs
   {
     path: 'tabs',
     loadChildren: () =>
@@ -54,7 +48,6 @@ export const routes: Routes = [
       )
   },
 
-  // 🛠️ Admin
   {
     path: 'admin',
     loadComponent: () =>
@@ -63,7 +56,6 @@ export const routes: Routes = [
       )
   },
 
-  // 💬 Chat
   {
     path: 'chat',
     loadComponent: () =>
@@ -72,7 +64,6 @@ export const routes: Routes = [
       )
   },
 
-  // 🔥 Exercise Details
   {
     path: 'exercise/:id',
     loadComponent: () =>
@@ -81,7 +72,6 @@ export const routes: Routes = [
       )
   },
 
-  // 🏃 Running
   {
     path: 'running',
     loadComponent: () =>
@@ -90,7 +80,6 @@ export const routes: Routes = [
       )
   },
 
-  // 💪 Strength
   {
     path: 'strength',
     loadComponent: () =>
@@ -99,7 +88,6 @@ export const routes: Routes = [
       )
   },
 
-  // ❤️ Cardio
   {
     path: 'cardio',
     loadComponent: () =>
@@ -108,7 +96,6 @@ export const routes: Routes = [
       )
   },
 
-  // 🧘 Yoga
   {
     path: 'yoga',
     loadComponent: () =>
@@ -117,7 +104,6 @@ export const routes: Routes = [
       )
   },
 
-  // 👤 Profile
   {
     path: 'profile',
     loadComponent: () =>
@@ -126,7 +112,22 @@ export const routes: Routes = [
       )
   },
 
-  // 🧠 Fitness Mode
+  {
+    path: 'settings',
+    loadComponent: () =>
+      import('./settings/settings.page').then(
+        m => m.SettingsPage
+      )
+  },
+
+  {
+    path: 'about',
+    loadComponent: () =>
+      import('./about/about.page').then(
+        m => m.AboutPage
+      )
+  },
+
   {
     path: 'fitness-mode',
     loadComponent: () =>
@@ -135,7 +136,6 @@ export const routes: Routes = [
       )
   },
 
-  // 🚨 Fallback
   {
     path: '**',
     redirectTo: 'welcome'

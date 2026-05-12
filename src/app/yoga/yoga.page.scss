@@ -1,15 +1,19 @@
-.strength-bg {
+.yoga-page {
   --background: linear-gradient(to bottom, #141e30, #243b55);
   color: white;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* TOOLBAR */
+
 .strength-toolbar {
   --background: #1c2833;
   --color: white;
 }
 
-/* HERO SECTION */
+/* HERO */
+
 .hero-section {
   padding: 30px 20px;
   text-align: center;
@@ -17,153 +21,181 @@
 
 .hero-icon {
   font-size: 90px;
-  color: #feca57;
-
+  color: #34d399;
   margin-top: 20px;
-
   animation: float 2s infinite;
 }
 
 .hero-section h1 {
   font-size: 34px;
   font-weight: bold;
-
   margin-top: 15px;
 }
 
 .hero-section p {
   color: #dfe6e9;
-
   margin: 15px 0 25px;
 }
 
 /* ENERGY BAR */
+
 .energy-bar {
   width: 100%;
   height: 16px;
-
   background: rgba(255,255,255,0.15);
-
   border-radius: 20px;
-
   overflow: hidden;
-
   margin-bottom: 20px;
 }
 
 .energy-fill {
   height: 100%;
-
-  background: linear-gradient(to right, #f7971e, #ffd200);
-
+  background: linear-gradient(to right, #10b981, #06b6d4);
   transition: 0.4s ease;
 }
 
 /* BUTTON */
+
 .train-btn {
-  --background: linear-gradient(to right, #f7971e, #ffd200);
-
+  --background: linear-gradient(to right, #10b981, #06b6d4);
   --border-radius: 18px;
-
   margin-top: 20px;
-
-  color: black;
-
+  color: white;
   font-weight: bold;
-
   height: 50px;
 }
 
-/* STATS GRID */
+/* STATS */
+
 .stats-grid {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 15px;
-
   padding: 15px;
 }
 
 .power-card {
   text-align: center;
-
   padding: 20px;
-
   border-radius: 24px;
-
-  background: rgba(255,255,255,0.1);
-
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
-
   color: white;
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .power-card ion-icon {
   font-size: 40px;
-
-  color: #feca57;
+  color: #34d399;
 }
 
 .power-card h2 {
   font-size: 28px;
-
   margin-top: 10px;
-
   font-weight: bold;
 }
 
-.power-card p {
-  color: #dfe6e9;
+/* LEVEL */
+
+.level-select {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  flex-wrap: wrap;
 }
 
-/* SECTION TITLE */
-.section-title {
-  padding: 0 20px;
+.level-chip {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.section-title h2 {
-  font-size: 24px;
+.level-chip.active {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+}
 
-  font-weight: bold;
+/* CATEGORY */
+
+.category-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.category-chip {
+  padding: 10px 18px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.08);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.category-chip.active {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+}
+
+/* CARDS */
+
+.exercise-card {
+  background: rgba(255,255,255,0.06);
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+}
+
+.exercise-gif {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.exercise-gif img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exercise-card h2 {
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+.level-text {
+  color: #d1fae5;
 }
 
 /* BADGES */
+
+.section-title h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+
 .badge-container {
   display: flex;
-
   justify-content: space-around;
-
   padding: 20px;
 }
 
 .badge {
   width: 90px;
   height: 90px;
-
   border-radius: 50%;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
-
   font-size: 30px;
-
   font-weight: bold;
-
-  color: white;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
 
 .badge span {
   font-size: 12px;
-
   margin-top: 5px;
 }
 
@@ -177,170 +209,87 @@
 
 .gold {
   background: #f1c40f;
-
   color: black;
 }
 
-/* ============================= */
-/* CHALLENGE SECTION */
-/* ============================= */
+/* OVERLAY */
 
-.challenge-box {
-
-  margin: 20px;
-
-  padding: 22px;
-
-  border-radius: 28px;
-
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.12),
-    rgba(255,255,255,0.05)
-  );
-
-  backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255,255,255,0.15);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
-  position: relative;
-
-  overflow: hidden;
+.workout-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
-/* TOP GLOW EFFECT */
-.challenge-box::before {
-
-  content: '';
-
-  position: absolute;
-
-  top: -50px;
-  right: -50px;
-
-  width: 140px;
-  height: 140px;
-
-  background: rgba(255,255,255,0.08);
-
-  border-radius: 50%;
-
-  filter: blur(10px);
-}
-
-.challenge-box h2 {
-
-  font-size: 26px;
-
-  font-weight: bold;
-
-  margin-bottom: 12px;
-
-  color: #ffffff;
-}
-
-.challenge-box p {
-
-  color: #f1f2f6;
-
-  margin-bottom: 18px;
-
-  line-height: 1.5;
-}
-
-/* PROGRESS TEXT */
-.challenge-box h3 {
-
-  margin-top: 18px;
-
-  font-size: 18px;
-
+.workout-box {
+  width: 90%;
+  max-width: 420px;
+  background: #111827;
+  padding: 24px;
+  border-radius: 24px;
   text-align: center;
-
-  color: #ffeaa7;
 }
 
-/* BUTTON */
-.challenge-btn {
-
-  --background: linear-gradient(
-    to right,
-    #00c6ff,
-    #0072ff
-  );
-
-  --border-radius: 16px;
-
-  margin-top: 18px;
-
-  height: 50px;
-
-  font-weight: bold;
-
-  font-size: 16px;
-
-  letter-spacing: 0.5px;
-}
-
-/* PROGRESS BAR */
-ion-progress-bar {
-
-  --progress-background: rgba(255,255,255,0.15);
-
-  --background: rgba(255,255,255,0.05);
-
-  height: 14px;
-
+.workout-gif {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
   border-radius: 20px;
-
-  overflow: hidden;
+  margin: 15px auto;
+  display: block;
 }
 
-/* ACHIEVEMENT BOX */
-.achievement-box {
+/* BUTTONS */
 
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
   margin-top: 20px;
-
-  padding: 15px;
-
-  border-radius: 18px;
-
-  text-align: center;
-
-  font-weight: bold;
-
-  font-size: 16px;
-
-  animation: pop 0.5s ease;
 }
 
-/* BRONZE */
-.bronze-achievement {
-
-  background: linear-gradient(
-    to right,
-    #cd7f32,
-    #b87333
-  );
-
+.controls button,
+.exit-btn {
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  background: linear-gradient(135deg, #10b981, #06b6d4);
   color: white;
 }
 
-/* GOLD */
-.gold-achievement {
-
-  background: linear-gradient(
-    to right,
-    #f7971e,
-    #ffd200
-  );
-
-  color: black;
+.exit-btn {
+  width: 100%;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #ef4444, #f97316);
 }
 
+/* FLOATING */
+
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg-icon {
+  position: absolute;
+  opacity: 0.15;
+  font-size: 28px;
+}
+
+.i1 { top: 10%; left: 5%; }
+.i2 { top: 20%; right: 10%; }
+.i3 { top: 35%; left: 20%; }
+.i4 { top: 50%; right: 15%; }
+.i5 { bottom: 20%; left: 10%; }
+.i6 { bottom: 10%; right: 25%; }
+
 /* ANIMATION */
+
 @keyframes float {
 
   0% {
@@ -353,18 +302,5 @@ ion-progress-bar {
 
   100% {
     transform: translateY(0);
-  }
-}
-
-@keyframes pop {
-
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
   }
 }

@@ -3,24 +3,32 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
 export class FitnessService {
 
   calories = 0;
+  tokens = 0;
+  goal = 500;
 
-tokens = 0;
+  history: number[] = [];
 
-goal = 500;
+  streak = 0;
+  rank = '';
+  totalWorkouts = 0;
 
-history: number[] = [];
+  weeklyCalories = [0, 0, 0, 0, 0, 0, 0];
 
-// 🏆 NEW VARIABLES
-streak = 0;
+  addWorkout(calories: number, tokens: number) {
 
-rank = '';
+    this.calories += calories;
 
-totalWorkouts = 0;
+    this.tokens += tokens;
 
-weeklyCalories = [0, 0, 0, 0, 0, 0, 0];
+    this.totalWorkouts++;
 
+    const day = new Date().getDay();
+
+    this.weeklyCalories[day] += calories;
+
+    this.history.push(calories);
+  }
 }

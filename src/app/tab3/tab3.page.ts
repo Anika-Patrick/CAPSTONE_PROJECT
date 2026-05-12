@@ -60,35 +60,7 @@ export class Tab3Page implements OnInit {
     public fitness: FitnessService
   ) {}
 
-  async startListening() {
-
-  // ASK MICROPHONE PERMISSION
-  const permission = await SpeechRecognition.requestPermissions();
-
-  if (permission.speechRecognition !== 'granted') {
-    return;
-  }
-
-  // START LISTENING
-  await SpeechRecognition.start({
-    language: 'en-US',
-    maxResults: 1,
-    partialResults: false,
-    prompt: 'Speak now'
-  });
-
-  // GET VOICE RESULT
-  SpeechRecognition.addListener('partialResults', (data: any) => {
-
-    if (data.matches && data.matches.length > 0) {
-
-      this.userQuestion = data.matches[0];
-
-    }
-
-  });
-
-}
+  
 
   // =========================
   // PAGE LOAD

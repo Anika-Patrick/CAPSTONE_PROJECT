@@ -1,0 +1,95 @@
+.bg {
+  --background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+/* USER CARD */
+.user-card {
+  text-align: center;
+  padding: 25px 15px;
+  margin: 15px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.avatar {
+  font-size: 60px;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  background: #eef2ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card h2 {
+  margin: 10px 0 0;
+  color: #1d4ed8;
+}
+
+.user-card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 15px;
+}
+
+.tile {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: 0.3s;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+}
+
+.tile span {
+  font-size: 22px;
+}
+
+.tile h3 {
+  margin: 5px 0;
+  color: #0f172a;
+}
+
+.tile p {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* SETTINGS CARD */
+.card {
+  margin: 15px;
+  background: white;
+  border-radius: 15px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* LOGOUT */
+.logout {
+  padding: 20px;
+}

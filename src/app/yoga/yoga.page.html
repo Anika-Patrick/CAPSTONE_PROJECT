@@ -10,21 +10,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="strength-bg">
+<ion-content class="yoga-page ion-padding">
 
   <!-- HERO -->
   <div class="hero-section">
 
     <div class="energy-bar">
-      <div class="energy-fill" [style.width.%]="powerLevel"></div>
+      <div
+        class="energy-fill"
+        [style.width.%]="powerLevel">
+      </div>
     </div>
 
-    <ion-icon name="barbell" class="hero-icon"></ion-icon>
+    <ion-icon
+      name="flower"
+      class="hero-icon">
+    </ion-icon>
 
-    <h1>Muscle Builder</h1>
+    <h1>Yoga Arena</h1>
 
     <p>
-      Push your limits and unlock beast mode 💪
+      Breathe • Stretch • Heal • Relax 🧘
     </p>
 
     <ion-button
@@ -32,7 +38,7 @@
       expand="block"
       (click)="boostPower()">
 
-      Boost Power
+      Boost Energy
 
     </ion-button>
 
@@ -55,9 +61,9 @@
 
       <ion-icon name="fitness"></ion-icon>
 
-      <h2>{{ sets }}</h2>
+      <h2>{{ completedAsanas }}</h2>
 
-      <p>Sets Completed</p>
+      <p>Asanas Done</p>
 
     </ion-card>
 
@@ -67,7 +73,7 @@
 
       <h2>{{ powerLevel }}%</h2>
 
-      <p>Power Level</p>
+      <p>Energy Level</p>
 
     </ion-card>
 
@@ -77,89 +83,172 @@
 
       <h2>{{ duration }}m</h2>
 
-      <p>Workout Time</p>
+      <p>Yoga Time</p>
 
     </ion-card>
 
   </div>
 
-  <!-- DAILY CHALLENGE -->
-  <div class="challenge-box">
+  <!-- RESET -->
+  <ion-button
+    color="success"
+    fill="outline"
+    expand="block"
+    (click)="clearYogaData()">
 
-    <h2>Today's Challenge 🏆</h2>
+    Reset Yoga Data
 
-    <p>
-      Complete 50 Push-Ups to unlock Power Badge
-    </p>
+  </ion-button>
 
-    <ion-progress-bar
-      [value]="challengeProgress / 100">
-
-    </ion-progress-bar>
-
-    <h3>
-      {{ challengeProgress }}% Completed
-    </h3>
-
-    <ion-button
-      expand="block"
-      class="challenge-btn"
-      (click)="increaseChallenge()">
-
-      Complete Challenge
-
-    </ion-button>
-
-    <!-- DYNAMIC ACHIEVEMENTS -->
+  <!-- LEVEL SELECTOR -->
+  <div class="level-select">
 
     <div
-      *ngIf="challengeProgress >= 50 && challengeProgress < 100"
-      class="achievement-box bronze-achievement">
+      class="level-chip"
+      *ngFor="let l of levels"
+      [class.active]="selectedLevel === l"
+      (click)="changeLevel(l)">
 
-      🥉 Bronze Warrior Badge Unlocked!
-
-    </div>
-
-    <div
-      *ngIf="challengeProgress >= 100"
-      class="achievement-box gold-achievement">
-
-      🏆 Ultimate Champion Badge Unlocked!
+      {{ l }}
 
     </div>
 
   </div>
 
-  <!-- ACHIEVEMENTS -->
+  <!-- CATEGORY -->
+  <div class="category-scroll">
+
+    <div
+      class="category-chip"
+      *ngFor="let c of categories"
+      [class.active]="selectedCategory === c.name"
+      (click)="openCategory(c.name)">
+
+      {{ c.emoji }} {{ c.name }}
+
+    </div>
+
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+
+    <div
+      class="exercise-card"
+      *ngFor="let c of categories">
+
+      <div class="exercise-gif">
+
+        <img
+          [src]="categoryGifs[c.name]"
+          (error)="onGifError($event)"
+        />
+
+      </div>
+
+      <h2>{{ c.name }}</h2>
+
+      <p class="level-text">
+        🌿 Level: {{ selectedLevel }}
+      </p>
+
+      <ion-button
+        expand="block"
+        color="success"
+        (click)="startYoga(c.name)">
+
+        Start Yoga
+
+      </ion-button>
+
+    </div>
+
+  </div>
+
+  <!-- BADGES -->
   <div class="section-title">
 
-    <h2>Achievements</h2>
+    <h2>Achievements 🏆</h2>
 
   </div>
 
   <div class="badge-container">
 
     <div class="badge bronze">
-
       🥉
-
       <span>Beginner</span>
-
     </div>
 
     <div class="badge silver">
-
       🥈
-
       <span>Intermediate</span>
-
     </div>
 
     <div class="badge gold">
-
       🥇
-
       <span>Elite</span>
+    </div>
+
+  </div>
+
+  <!-- FLOATING ICONS -->
+  <div class="floating-bg">
+
+    <span class="bg-icon i1">🧘</span>
+    <span class="bg-icon i2">🌸</span>
+    <span class="bg-icon i3">☮️</span>
+    <span class="bg-icon i4">🌿</span>
+    <span class="bg-icon i5">💫</span>
+    <span class="bg-icon i6">😌</span>
+
+  </div>
+
+  <!-- WORKOUT MODE -->
+  <div
+    class="workout-overlay"
+    *ngIf="isYogaMode">
+
+    <div class="workout-box">
+
+      <h2>{{ selectedCategory }} Yoga</h2>
+
+      <img
+        class="workout-gif"
+        [src]="asanaGifs[
+          yogaExercises[selectedCategory]?.[selectedLevel]?.[currentAsanaIndex]?.name
+        ]"
+        (error)="onGifError($event)"
+      />
+
+      <h3>
+        {{
+          yogaExercises[selectedCategory]?.[selectedLevel]?.[currentAsanaIndex]?.name
+        }}
+      </h3>
+
+      <p>🌬 Breaths: {{ breaths }}</p>
+
+      <p>⏱ Time: {{ timeLeft }}s</p>
+
+      <div class="controls">
+
+        <button (click)="prevAsana()">
+          ⬅ Prev
+        </button>
+
+        <button (click)="nextAsana()">
+          Next ➡
+        </button>
+
+      </div>
+
+      <button
+        class="exit-btn"
+        (click)="exitYoga()">
+
+        Exit Yoga
+
+      </button>
 
     </div>
 
