@@ -179,7 +179,173 @@ onGifError(event: any) {
     'https://cdn-icons-png.flaticon.com/512/1048/1048941.png';
 }
     workoutExercises: any = {
+Arms: {
+  Beginner: [
+    { name: 'Arm Circles', reps: 20, time: 30 },
+    { name: 'Wall Arm Push', reps: 12, time: 30 },
+    { name: 'Resistance Band Curl', reps: 10, time: 30 },
+    { name: 'Light Dumbbell Press', reps: 10, time: 30 },
+    { name: 'Standing Punches', reps: 20, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Dumbbell Shoulder Press', reps: 12, time: 35 },
+    { name: 'Hammer Curl', reps: 12, time: 35 },
+    { name: 'Tricep Kickbacks', reps: 12, time: 35 },
+    { name: 'Arnold Press', reps: 10, time: 40 },
+    { name: 'Battle Rope Waves', reps: 20, time: 40 }
+  ],
+  Advanced: [
+    { name: 'Pike Push Ups', reps: 15, time: 40 },
+    { name: 'Handstand Hold', reps: 1, time: 45 },
+    { name: 'Heavy Dumbbell Press', reps: 10, time: 45 },
+    { name: 'Explosive Battle Ropes', reps: 25, time: 45 },
+    { name: 'Military Press', reps: 10, time: 45 }
+  ]
+},
 
+Biceps: {
+  Beginner: [
+    { name: 'Light Dumbbell Curl', reps: 12, time: 30 },
+    { name: 'Resistance Band Curl', reps: 12, time: 30 },
+    { name: 'Seated Dumbbell Curl', reps: 10, time: 30 },
+    { name: 'Hammer Curl', reps: 10, time: 30 },
+    { name: 'Concentration Curl', reps: 10, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Barbell Curl', reps: 12, time: 35 },
+    { name: 'Incline Dumbbell Curl', reps: 10, time: 35 },
+    { name: 'Cable Curl', reps: 12, time: 35 },
+    { name: 'Reverse Curl', reps: 10, time: 35 },
+    { name: 'EZ Bar Curl', reps: 10, time: 40 }
+  ],
+  Advanced: [
+    { name: 'Preacher Curl', reps: 12, time: 40 },
+    { name: 'Spider Curl', reps: 12, time: 40 },
+    { name: '21s Curl', reps: 21, time: 45 },
+    { name: 'Heavy Barbell Curl', reps: 8, time: 45 },
+    { name: 'Chin Ups', reps: 12, time: 45 }
+  ]
+},
+
+Triceps: {
+  Beginner: [
+    { name: 'Bench Dips', reps: 10, time: 30 },
+    { name: 'Wall Tricep Push', reps: 12, time: 30 },
+    { name: 'Overhead Dumbbell Extension', reps: 10, time: 30 },
+    { name: 'Tricep Kickbacks', reps: 10, time: 30 },
+    { name: 'Resistance Band Pushdown', reps: 12, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Cable Pushdown', reps: 12, time: 35 },
+    { name: 'Close Grip Push Ups', reps: 12, time: 35 },
+    { name: 'Skull Crushers', reps: 10, time: 35 },
+    { name: 'Overhead Cable Extension', reps: 10, time: 35 },
+    { name: 'Parallel Bar Dips', reps: 10, time: 40 }
+  ],
+  Advanced: [
+    { name: 'Weighted Dips', reps: 12, time: 45 },
+    { name: 'Diamond Push Ups', reps: 15, time: 40 },
+    { name: 'Heavy Skull Crushers', reps: 8, time: 45 },
+    { name: 'Single Arm Pushdown', reps: 12, time: 40 },
+    { name: 'Explosive Bench Dips', reps: 15, time: 40 }
+  ]
+},
+
+Quads: {
+  Beginner: [
+    { name: 'Bodyweight Squats', reps: 15, time: 30 },
+    { name: 'Wall Sit', reps: 1, time: 30 },
+    { name: 'Step Ups', reps: 12, time: 30 },
+    { name: 'Static Lunges', reps: 10, time: 30 },
+    { name: 'Chair Squats', reps: 12, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Goblet Squats', reps: 12, time: 35 },
+    { name: 'Bulgarian Split Squats', reps: 10, time: 40 },
+    { name: 'Leg Press', reps: 12, time: 40 },
+    { name: 'Walking Lunges', reps: 14, time: 40 },
+    { name: 'Jump Squats', reps: 15, time: 35 }
+  ],
+  Advanced: [
+    { name: 'Barbell Squats', reps: 10, time: 45 },
+    { name: 'Front Squats', reps: 10, time: 45 },
+    { name: 'Pistol Squats', reps: 8, time: 45 },
+    { name: 'Weighted Jump Squats', reps: 12, time: 40 },
+    { name: 'Hack Squats', reps: 12, time: 45 }
+  ]
+},
+
+Hamstrings: {
+  Beginner: [
+    { name: 'Glute Bridges', reps: 15, time: 30 },
+    { name: 'Standing Leg Curl', reps: 12, time: 30 },
+    { name: 'Good Mornings (Light)', reps: 10, time: 30 },
+    { name: 'Bridge Hold', reps: 1, time: 30 },
+    { name: 'Resistance Band Deadlift', reps: 12, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Romanian Deadlift', reps: 12, time: 40 },
+    { name: 'Swiss Ball Leg Curl', reps: 12, time: 35 },
+    { name: 'Kettlebell Deadlift', reps: 12, time: 40 },
+    { name: 'Single Leg Deadlift', reps: 10, time: 40 },
+    { name: 'Hamstring Curl Machine', reps: 12, time: 35 }
+  ],
+  Advanced: [
+    { name: 'Barbell Deadlift', reps: 8, time: 45 },
+    { name: 'Nordic Hamstring Curl', reps: 10, time: 45 },
+    { name: 'Stiff Leg Deadlift', reps: 10, time: 45 },
+    { name: 'Single Leg Romanian Deadlift', reps: 12, time: 45 },
+    { name: 'Weighted Hip Thrust', reps: 12, time: 45 }
+  ]
+},
+
+Calves: {
+  Beginner: [
+    { name: 'Standing Calf Raises', reps: 15, time: 30 },
+    { name: 'Seated Calf Raises', reps: 15, time: 30 },
+    { name: 'Toe Walk', reps: 20, time: 30 },
+    { name: 'Single Leg Calf Raise', reps: 10, time: 30 },
+    { name: 'Wall Calf Stretch', reps: 1, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Weighted Calf Raises', reps: 15, time: 35 },
+    { name: 'Jump Rope', reps: 40, time: 40 },
+    { name: 'Box Jumps', reps: 12, time: 40 },
+    { name: 'Farmer Walk on Toes', reps: 20, time: 40 },
+    { name: 'Calf Press Machine', reps: 15, time: 35 }
+  ],
+  Advanced: [
+    { name: 'Explosive Calf Jumps', reps: 20, time: 45 },
+    { name: 'Single Leg Weighted Raise', reps: 15, time: 45 },
+    { name: 'Hill Sprints', reps: 10, time: 45 },
+    { name: 'Heavy Calf Press', reps: 12, time: 45 },
+    { name: 'Plyometric Hops', reps: 20, time: 45 }
+  ]
+},
+
+Forearms: {
+  Beginner: [
+    { name: 'Wrist Curls', reps: 15, time: 30 },
+    { name: 'Reverse Wrist Curls', reps: 15, time: 30 },
+    { name: 'Grip Squeeze', reps: 20, time: 30 },
+    { name: 'Finger Extensions', reps: 15, time: 30 },
+    { name: 'Light Farmer Carry', reps: 20, time: 30 }
+  ],
+  Moderate: [
+    { name: 'Hammer Curl Hold', reps: 12, time: 35 },
+    { name: 'Plate Pinch Hold', reps: 1, time: 40 },
+    { name: 'Heavy Wrist Curl', reps: 12, time: 35 },
+    { name: 'Reverse Barbell Curl', reps: 12, time: 35 },
+    { name: 'Towel Grip Hang', reps: 1, time: 40 }
+  ],
+  Advanced: [
+    { name: 'Dead Hang', reps: 1, time: 45 },
+    { name: 'Heavy Farmer Walk', reps: 25, time: 45 },
+    { name: 'Behind Back Wrist Curl', reps: 15, time: 45 },
+    { name: 'Fat Grip Holds', reps: 1, time: 45 },
+    { name: 'Finger Push Ups', reps: 10, time: 45 }
+  ]
+},
   Chest: {
     Beginner: [
       { name: 'Wall Push Ups', reps: 12, time: 30 },
