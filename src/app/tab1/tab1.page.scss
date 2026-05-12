@@ -1,88 +1,87 @@
-/* src/app/tab1/tab1.page.scss */
+/* ================= GLOBAL ================= */
 
 ion-content {
-  --background: linear-gradient(
-    135deg,
-    #0f172a,
-    #1e293b,
-    #111827
-  );
-
+  --background: linear-gradient(135deg, #050b18, #0f172a, #0b1220);
   font-family: 'Poppins', sans-serif;
-}
-
-
-.tab1-page {
-  --background: #0f172a;
   color: white;
-  padding-bottom: 100px;
 }
 
-/* HERO */
+/* MAIN PAGE */
+.tab1-page {
+  --background: transparent;
+  color: white;
+  padding-bottom: 120px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
 
 .hero-section {
   text-align: center;
-  padding: 30px 20px;
+  padding: 40px 20px;
   position: relative;
   overflow: hidden;
 }
 
 .hero-section h1 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 3s infinite alternate;
 }
 
 .hero-section p {
   color: #cbd5e1;
   font-size: 15px;
+  opacity: 0.8;
 }
 
-/* FLOATING ICONS */
+/* ================= FLOATING ICONS ================= */
 
 .floating-icon {
   position: absolute;
-  font-size: 28px;
-  animation: floatIcon 4s ease-in-out infinite;
+  font-size: 30px;
+  opacity: 0.15;
+  animation: floatIcon 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
 }
 
-.icon1 {
-  top: 20px;
-  left: 20px;
-}
+.icon1 { top: 20px; left: 20px; }
+.icon2 { top: 30px; right: 30px; }
+.icon3 { bottom: 20px; left: 40px; }
+.icon4 { bottom: 10px; right: 20px; }
 
-.icon2 {
-  top: 30px;
-  right: 30px;
-}
-
-.icon3 {
-  bottom: 20px;
-  left: 40px;
-}
-
-.icon4 {
-  bottom: 10px;
-  right: 20px;
-}
-
-/* CARDS */
+/* ================= GLASS CARDS ================= */
 
 .main-card,
 .stat-card {
-  background: rgba(255,255,255,0.06);
-  border-radius: 22px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 22px;
   margin: 16px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+  transition: 0.4s ease;
   animation: fadeUp 0.8s ease;
 }
+
+.main-card:hover,
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+/* ================= GRID ================= */
 
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
 }
 
 .profile-grid {
@@ -94,50 +93,56 @@ ion-content {
 
 .mini-box {
   background: rgba(255,255,255,0.05);
-  padding: 14px;
-  border-radius: 16px;
+  padding: 16px;
+  border-radius: 18px;
   text-align: center;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: 0.3s;
+}
+
+.mini-box:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.08);
 }
 
 .mini-box h3 {
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 13px;
+  color: #94a3b8;
 }
 
 .mini-box p {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
+  color: #fff;
 }
 
-/* PROGRESS */
+/* ================= PROGRESS ================= */
 
 .progress-bar {
   width: 100%;
   height: 14px;
   background: rgba(255,255,255,0.08);
-  border-radius: 20px;
+  border-radius: 50px;
   overflow: hidden;
   margin: 15px 0;
+  position: relative;
 }
 
 .progress-fill {
   height: 100%;
-  border-radius: 20px;
-  background: linear-gradient(
-    90deg,
-    #3b82f6,
-    #8b5cf6
-  );
-  animation: progressAnim 2s ease;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #3b82f6, #a855f7, #22d3ee);
+  box-shadow: 0 0 20px rgba(59,130,246,0.5);
+  animation: progressAnim 1.5s ease;
 }
 
-/* GRAPH */
+/* ================= GRAPH ================= */
 
 .graph-grid {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 20px;
+  margin-top: 25px;
   height: 220px;
 }
 
@@ -148,58 +153,53 @@ ion-content {
 }
 
 .bar {
-  width: 28px;
+  width: 26px;
   border-radius: 20px;
-  background: linear-gradient(
-    180deg,
-    #60a5fa,
-    #7c3aed
-  );
+  background: linear-gradient(180deg, #38bdf8, #8b5cf6);
+  box-shadow: 0 0 10px rgba(139,92,246,0.4);
   animation: growBar 1.2s ease;
+  transition: 0.3s;
+}
+
+.bar:hover {
+  transform: scaleY(1.05);
 }
 
 .bar-box span {
   margin-top: 8px;
   font-size: 12px;
-  color: #cbd5e1;
+  color: #94a3b8;
 }
 
-/* BMI */
+/* ================= BMI ================= */
 
 .bmi-card h1 {
-  font-size: 44px;
+  font-size: 46px;
   margin: 10px 0;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* FAB */
+/* ================= FAB ================= */
 
 ion-fab-button {
-  --background: linear-gradient(
-    135deg,
-    #2563eb,
-    #7c3aed
-  );
-  --box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+  --background: linear-gradient(135deg, #3b82f6, #a855f7);
+  --box-shadow: 0 10px 30px rgba(59,130,246,0.4);
 }
 
-/* KEYFRAMES */
+/* ================= ANIMATIONS ================= */
 
 @keyframes floatIcon {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px) scale(1.1); }
+  100% { transform: translateY(0); }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(35px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -208,13 +208,35 @@ ion-fab-button {
 }
 
 @keyframes growBar {
-  from {
-    height: 0;
-  }
+  from { height: 0; }
 }
 
 @keyframes progressAnim {
+  from { width: 0; }
+}
+
+@keyframes glowText {
   from {
-    width: 0;
+    text-shadow: 0 0 10px rgba(96,165,250,0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(167,139,250,0.6);
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+
+  .hero-section h1 {
+    font-size: 26px;
+  }
+
+  .mini-box p {
+    font-size: 16px;
+  }
+
+  .bar {
+    width: 20px;
   }
 }

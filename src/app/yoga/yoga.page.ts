@@ -146,84 +146,341 @@ export class YogaPage implements OnInit {
   // ================= YOGA WORKOUTS =================
   yogaExercises: any = {
 
-    PCOD: {
-      Beginner: [
-        { name: 'Butterfly Pose', breaths: 10, time: 30 },
-        { name: 'Cobra Pose', breaths: 10, time: 30 },
-        { name: 'Cat Cow Pose', breaths: 10, time: 30 },
-        { name: 'Child Pose', breaths: 10, time: 30 },
-        { name: 'Bridge Pose', breaths: 10, time: 30 }
-      ],
+   
 
-      Moderate: [
-        { name: 'Butterfly Pose', breaths: 15, time: 40 },
-        { name: 'Bridge Pose', breaths: 15, time: 40 },
-        { name: 'Cobra Pose', breaths: 15, time: 40 },
-        { name: 'Cat Cow Pose', breaths: 15, time: 40 },
-        { name: 'Child Pose', breaths: 15, time: 40 }
-      ],
+  // ================= PCOD =================
+  PCOD: {
+    Beginner: [
+      {
+        name: 'Butterfly Pose',
+        breaths: 10,
+        time: 40,
+        desc: 'Helps improve pelvic blood flow and reduces menstrual discomfort.'
+      },
+      {
+        name: 'Cat Cow Pose',
+        breaths: 10,
+        time: 45,
+        desc: 'Improves spine flexibility and regulates hormonal balance.'
+      },
+      {
+        name: 'Cobra Pose',
+        breaths: 8,
+        time: 40,
+        desc: 'Strengthens reproductive organs and reduces stress in abdomen.'
+      },
+      {
+        name: 'Child Pose',
+        breaths: 10,
+        time: 50,
+        desc: 'Relaxes the nervous system and reduces fatigue.'
+      },
+      {
+        name: 'Bridge Pose',
+        breaths: 8,
+        time: 45,
+        desc: 'Stimulates thyroid and improves hormonal activity.'
+      }
+    ],
 
-      Advanced: [
-        { name: 'Bridge Pose', breaths: 20, time: 50 },
-        { name: 'Butterfly Pose', breaths: 20, time: 50 },
-        { name: 'Cobra Pose', breaths: 20, time: 50 },
-        { name: 'Child Pose', breaths: 20, time: 50 },
-        { name: 'Cat Cow Pose', breaths: 20, time: 50 }
-      ]
-    },
+    Moderate: [
+      {
+        name: 'Butterfly Pose (Deep Hold)',
+        breaths: 15,
+        time: 60,
+        desc: 'Improves hip flexibility and hormonal regulation.'
+      },
+      {
+        name: 'Bridge Pose',
+        breaths: 15,
+        time: 60,
+        desc: 'Enhances pelvic circulation and reduces PCOD symptoms.'
+      },
+      {
+        name: 'Cobra Pose',
+        breaths: 12,
+        time: 55,
+        desc: 'Boosts metabolism and relieves lower back stiffness.'
+      },
+      {
+        name: 'Seated Forward Bend',
+        breaths: 12,
+        time: 60,
+        desc: 'Calms mind and improves digestion.'
+      },
+      {
+        name: 'Cat Cow Flow',
+        breaths: 15,
+        time: 60,
+        desc: 'Balances hormones and improves spinal movement.'
+      }
+    ],
 
-    Sleep: {
-      Beginner: [
-        { name: 'Legs Up Wall', breaths: 10, time: 30 },
-        { name: 'Corpse Pose', breaths: 10, time: 40 },
-        { name: 'Happy Baby Pose', breaths: 10, time: 30 },
-        { name: 'Forward Fold', breaths: 10, time: 30 },
-        { name: 'Supine Twist', breaths: 10, time: 30 }
-      ],
+    Advanced: [
+      {
+        name: 'Bridge Pose Hold',
+        breaths: 20,
+        time: 75,
+        desc: 'Deep hormonal stimulation and pelvic strengthening.'
+      },
+      {
+        name: 'Cobra Flow',
+        breaths: 20,
+        time: 70,
+        desc: 'Improves energy flow and reduces stress hormones.'
+      },
+      {
+        name: 'Butterfly Pulse',
+        breaths: 20,
+        time: 70,
+        desc: 'Advanced hip opening for reproductive health.'
+      },
+      {
+        name: 'Child Pose Deep Relax',
+        breaths: 20,
+        time: 80,
+        desc: 'Deep nervous system reset and emotional balance.'
+      },
+      {
+        name: 'Cat Cow Extended Flow',
+        breaths: 20,
+        time: 75,
+        desc: 'Improves spine mobility and hormone balance.'
+      }
+    ]
+  },
 
-      Moderate: [
-        { name: 'Corpse Pose', breaths: 15, time: 45 },
-        { name: 'Legs Up Wall', breaths: 15, time: 45 },
-        { name: 'Forward Fold', breaths: 15, time: 40 },
-        { name: 'Supine Twist', breaths: 15, time: 40 },
-        { name: 'Happy Baby Pose', breaths: 15, time: 40 }
-      ],
+  // ================= SLEEP =================
+  Sleep: {
+    Beginner: [
+      {
+        name: 'Legs Up Wall',
+        breaths: 8,
+        time: 60,
+        desc: 'Improves blood circulation and relaxes nervous system.'
+      },
+      {
+        name: 'Corpse Pose',
+        breaths: 10,
+        time: 90,
+        desc: 'Deep relaxation for mental calmness and sleep.'
+      },
+      {
+        name: 'Happy Baby Pose',
+        breaths: 10,
+        time: 60,
+        desc: 'Releases lower back tension and stress.'
+      },
+      {
+        name: 'Forward Fold',
+        breaths: 8,
+        time: 60,
+        desc: 'Calms brain and reduces anxiety.'
+      },
+      {
+        name: 'Supine Twist',
+        breaths: 8,
+        time: 60,
+        desc: 'Releases spinal tension and aids digestion.'
+      }
+    ],
 
-      Advanced: [
-        { name: 'Corpse Pose', breaths: 20, time: 60 },
-        { name: 'Legs Up Wall', breaths: 20, time: 60 },
-        { name: 'Supine Twist', breaths: 20, time: 50 },
-        { name: 'Forward Fold', breaths: 20, time: 50 },
-        { name: 'Happy Baby Pose', breaths: 20, time: 50 }
-      ]
-    },
+    Moderate: [
+      {
+        name: 'Corpse Pose Deep',
+        breaths: 15,
+        time: 120,
+        desc: 'Deep meditation posture for insomnia relief.'
+      },
+      {
+        name: 'Legs Up Wall Hold',
+        breaths: 15,
+        time: 90,
+        desc: 'Reduces fatigue and improves sleep quality.'
+      },
+      {
+        name: 'Supine Twist Hold',
+        breaths: 12,
+        time: 80,
+        desc: 'Relieves tension before sleep.'
+      },
+      {
+        name: 'Forward Fold Relax',
+        breaths: 15,
+        time: 80,
+        desc: 'Improves oxygen flow to brain.'
+      },
+      {
+        name: 'Happy Baby Relax',
+        breaths: 12,
+        time: 70,
+        desc: 'Releases emotional stress from hips.'
+      }
+    ],
 
-    'Stress Relief': {
-      Beginner: [
-        { name: 'Lotus Pose', breaths: 10, time: 30 },
-        { name: 'Tree Pose', breaths: 10, time: 30 },
-        { name: 'Mountain Pose', breaths: 10, time: 30 },
-        { name: 'Easy Pose', breaths: 10, time: 30 },
-        { name: 'Child Pose', breaths: 10, time: 30 }
-      ],
+    Advanced: [
+      {
+        name: 'Yoga Nidra',
+        breaths: 25,
+        time: 180,
+        desc: 'Deep sleep meditation technique.'
+      },
+      {
+        name: 'Corpse Pose Extended',
+        breaths: 20,
+        time: 150,
+        desc: 'Full body relaxation for deep sleep.'
+      },
+      {
+        name: 'Legs Up Wall Advanced',
+        breaths: 20,
+        time: 120,
+        desc: 'Boosts recovery and sleep hormone balance.'
+      },
+      {
+        name: 'Supine Twist Deep',
+        breaths: 20,
+        time: 100,
+        desc: 'Deep spinal relaxation before sleep.'
+      },
+      {
+        name: 'Breathing Savasana',
+        breaths: 20,
+        time: 120,
+        desc: 'Breath control for mental shutdown.'
+      }
+    ]
+  },
 
-      Moderate: [
-        { name: 'Tree Pose', breaths: 15, time: 40 },
-        { name: 'Lotus Pose', breaths: 15, time: 40 },
-        { name: 'Seated Forward Bend', breaths: 15, time: 40 },
-        { name: 'Mountain Pose', breaths: 15, time: 40 },
-        { name: 'Easy Pose', breaths: 15, time: 40 }
-      ],
+  // ================= STRESS RELIEF =================
+  'Stress Relief': {
+    Beginner: [
+      {
+        name: 'Mountain Pose',
+        breaths: 10,
+        time: 40,
+        desc: 'Improves posture and mental stability.'
+      },
+      {
+        name: 'Child Pose',
+        breaths: 10,
+        time: 50,
+        desc: 'Calms nervous system instantly.'
+      },
+      {
+        name: 'Tree Pose',
+        breaths: 8,
+        time: 45,
+        desc: 'Improves focus and balance.'
+      },
+      {
+        name: 'Easy Pose',
+        breaths: 10,
+        time: 40,
+        desc: 'Basic meditation posture for calmness.'
+      },
+      {
+        name: 'Lotus Prep Pose',
+        breaths: 10,
+        time: 45,
+        desc: 'Prepares mind for meditation.'
+      }
+    ],
 
-      Advanced: [
-        { name: 'Lotus Pose', breaths: 20, time: 50 },
-        { name: 'Tree Pose', breaths: 20, time: 50 },
-        { name: 'Seated Forward Bend', breaths: 20, time: 50 },
-        { name: 'Mountain Pose', breaths: 20, time: 50 },
-        { name: 'Easy Pose', breaths: 20, time: 50 }
-      ]
-    }
-  };
+    Moderate: [
+      {
+        name: 'Tree Pose Balance',
+        breaths: 12,
+        time: 60,
+        desc: 'Improves concentration and mental control.'
+      },
+      {
+        name: 'Seated Forward Bend',
+        breaths: 12,
+        time: 60,
+        desc: 'Reduces stress and anxiety.'
+      },
+      {
+        name: 'Lotus Pose',
+        breaths: 15,
+        time: 70,
+        desc: 'Deep meditation posture for inner peace.'
+      },
+      {
+        name: 'Mountain Flow',
+        breaths: 12,
+        time: 60,
+        desc: 'Grounding posture for stability.'
+      },
+      {
+        name: 'Child Pose Relax',
+        breaths: 12,
+        time: 60,
+        desc: 'Releases emotional stress.'
+      }
+    ],
+
+    Advanced: [
+      {
+        name: 'Lotus Meditation',
+        breaths: 20,
+        time: 120,
+        desc: 'Deep meditative state for stress release.'
+      },
+      {
+        name: 'Tree Pose Hold',
+        breaths: 20,
+        time: 90,
+        desc: 'Advanced balance and focus training.'
+      },
+      {
+        name: 'Seated Forward Bend Deep',
+        breaths: 18,
+        time: 100,
+        desc: 'Deep emotional and physical release.'
+      },
+      {
+        name: 'Mountain Stillness',
+        breaths: 20,
+        time: 90,
+        desc: 'Mental grounding and stability.'
+      },
+      {
+        name: 'Zen Sitting Pose',
+        breaths: 20,
+        time: 120,
+        desc: 'Deep awareness and mindfulness practice.'
+      }
+    ]
+  },
+
+  // ================= NEW CATEGORY: WEIGHT LOSS YOGA =================
+  'Weight Loss Yoga': {
+    Beginner: [
+      { name: 'Sun Salutation A', breaths: 10, time: 60, desc: 'Full body warm-up and fat burning flow.' },
+      { name: 'Chair Pose', breaths: 10, time: 40, desc: 'Strengthens legs and burns calories.' },
+      { name: 'Warrior I', breaths: 10, time: 50, desc: 'Builds stamina and core strength.' },
+      { name: 'Bridge Pose', breaths: 10, time: 50, desc: 'Activates metabolism and core.' },
+      { name: 'Standing Forward Bend', breaths: 10, time: 45, desc: 'Improves digestion and fat loss.' }
+    ],
+
+    Moderate: [
+      { name: 'Sun Salutation Flow', breaths: 15, time: 90, desc: 'Continuous flow for calorie burn.' },
+      { name: 'Warrior II', breaths: 12, time: 60, desc: 'Strengthens lower body and core.' },
+      { name: 'Plank Pose', breaths: 12, time: 60, desc: 'Core strengthening for fat burn.' },
+      { name: 'Boat Pose', breaths: 12, time: 60, desc: 'Targets belly fat.' },
+      { name: 'Triangle Pose', breaths: 12, time: 60, desc: 'Improves digestion and metabolism.' }
+    ],
+
+    Advanced: [
+      { name: 'Power Sun Flow', breaths: 20, time: 120, desc: 'High intensity yoga fat burn.' },
+      { name: 'Side Plank', breaths: 15, time: 80, desc: 'Core and oblique strengthening.' },
+      { name: 'Warrior Flow', breaths: 20, time: 100, desc: 'Advanced endurance training.' },
+      { name: 'Boat Pose Hold', breaths: 18, time: 90, desc: 'Deep core activation.' },
+      { name: 'Jumping Sun Salutation', breaths: 20, time: 120, desc: 'Cardio + yoga fusion burn.' }
+    ]
+  }
+};
 
   // ================= INIT =================
   ngOnInit() {
