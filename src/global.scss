@@ -35,3 +35,27 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+.streak-alert .alert-title,
+.streak-alert .alert-sub-header,
+.streak-alert .alert-message {
+  text-align: center;
+  color: #f8fafc;
+}
+
+.streak-alert .alert-button-group {
+  justify-content: center;
+}
+
+.streak-alert .alert-head {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.streak-alert .alert-button {
+  color: #3b82f6;
+}
+
+.streak-alert .alert-wrapper {
+  background: rgba(10, 14, 26, 0.98);
+}
+

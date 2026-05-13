@@ -39,6 +39,8 @@ export class FitnessService {
 
   activeDays = 0;
 
+  username = '';
+
   constructor() {
 
     this.loadProfile();
@@ -48,6 +50,8 @@ export class FitnessService {
     this.loadWorkouts();
 
     this.loadExtraData();
+
+    this.username = this.getCurrentUsername() || '';
   }
 
   // =========================
@@ -78,6 +82,7 @@ export class FitnessService {
     this.loadHistory();
     this.loadWorkouts();
     this.loadExtraData();
+    this.username = this.getCurrentUsername() || '';
   }
 
   saveProfile(data: any) {
@@ -156,7 +161,48 @@ export class FitnessService {
     }
 
     this.lastLoginDate = today;
+    this.calculateAndSetRank();
     this.saveExtraData();
+  }
+
+  // =========================
+  // CALCULATE RANK
+  // =========================
+  calculateAndSetRank() {
+    if (this.streak >= 30) {
+      this.rank = 'Legend 👑';
+    } else if (this.streak >= 14) {
+      this.rank = 'Warrior ⚔️';
+    } else if (this.streak >= 7) {
+      this.rank = 'Champ 🏆';
+    } else if (this.streak >= 3) {
+      this.rank = 'Consistent 💪';
+    } else if (this.streak >= 1) {
+      this.rank = 'Beginner 🌱';
+    } else {
+      this.rank = 'Starter 🚀';
+    }
+  }
+
+  getStreakPopupMessage(): string {
+    return `Daily Streak: Day ${this.streak}`;
+  }
+
+  getRankDescription(): string {
+    switch (this.rank) {
+      case 'Beginner 🌱':
+        return '🌱 Just getting started on your fitness journey!';
+      case 'Consistent 💪':
+        return '💪 You\'re showing great consistency! 3 days strong!';
+      case 'Champ 🏆':
+        return '🏆 Amazing dedication! 7 days of consistency!';
+      case 'Warrior ⚔️':
+        return '⚔️ Unstoppable warrior! 14 days of pure dedication!';
+      case 'Legend 👑':
+        return '👑 You are a fitness LEGEND! 30 days of commitment!';
+      default:
+        return 'Keep grinding!';
+    }
   }
 
   // =========================

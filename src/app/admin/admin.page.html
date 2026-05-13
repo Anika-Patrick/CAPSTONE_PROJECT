@@ -1,5 +1,9 @@
 <ion-content class="admin-page">
 
+  <div class="admin-welcome-card" *ngIf="currentUserSummary">
+    <h1>Hello {{ currentUserSummary.username }}!</h1>
+  </div>
+
   <div class="chat-box">
 
     <div *ngFor="let msg of messages"
@@ -27,15 +31,41 @@
     Response Granted (Clear Chat)
   </ion-button>
 
-  <!-- RATINGS -->
-  <div class="ratings">
-
-    <h3>User Ratings ⭐</h3>
-
-    <div *ngFor="let r of getRatings() | keyvalue">
-      👤 {{ r.key }} → ⭐ {{ r.value }}
+  <div class="user-table-card">
+    <h3>Logged Users</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Goal</th>
+            <th>Streak</th>
+            <th>Last Login</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of userTable">
+            <td>{{ row.username }}</td>
+            <td>{{ row.weight }}</td>
+            <td>{{ row.height }}</td>
+            <td>{{ row.goal }}</td>
+            <td>{{ row.streak }}</td>
+            <td>{{ row.lastLoginDate }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 
+  <div class="ratings-card">
+    <h3>User Ratings ⭐</h3>
+    <div *ngIf="ratingSummary.length === 0">No ratings yet.</div>
+    <div class="rating-row" *ngFor="let r of ratingSummary">
+      <span>👤 {{ r.username }}</span>
+      <span>⭐ {{ r.average }} ({{ r.count }})</span>
+    </div>
   </div>
 
 </ion-content>

@@ -147,15 +147,20 @@
 
   margin-bottom: 18px;
 
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
   animation: floatEmoji 4s ease-in-out infinite;
 
-  filter: drop-shadow(
-    0 0 15px rgba(255,255,255,0.2)
-  );
+  color: #f8fafc;
+  filter: none;
 }
 
+.mode-card .emoji ion-icon {
+  width: 1em;
+  height: 1em;
+}
 /* ================= CARD TITLE ================= */
 
 .mode-card h2 {

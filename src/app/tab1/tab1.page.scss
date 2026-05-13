@@ -311,3 +311,12 @@ ion-fab-button {
     width: 26px;
   }
 }
+
+/* ACTIVE RANK PROGRESSION */
+
+.mini-box.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  transform: scale(1.05);
+}

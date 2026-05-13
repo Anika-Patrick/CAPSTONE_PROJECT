@@ -15,12 +15,16 @@ export class ChatPage implements OnInit {
   userMsg = '';
   messages: any[] = [];
 
-  currentUser = '';
+  currentUser = 'User';
   showRating = false;
 
   ngOnInit() {
+    const currentUserRaw = localStorage.getItem('current_user');
+    const currentUserObject = this.parseCurrentUser(currentUserRaw);
 
-    this.currentUser = localStorage.getItem('current_user') || 'User';
+    this.currentUser =
+      currentUserObject?.username ||
+      (typeof currentUserObject === 'string' ? currentUserObject : 'User');
 
     this.loadChat();
 
@@ -38,6 +42,59 @@ export class ChatPage implements OnInit {
       localStorage.setItem('greet_' + this.currentUser, 'true');
       this.saveChat();
     }
+
+    this.addProfileSummaryMessage(currentUserObject);
+  }
+
+  private parseCurrentUser(raw: string | null): any {
+    if (!raw) return null;
+    try {
+      return JSON.parse(raw);
+    } catch {
+      return raw;
+    }
+  }
+
+  private addProfileSummaryMessage(user: any) {
+    const username = user?.username || user;
+    if (!username || username === 'User') {
+      return;
+    }
+
+    const summaryKey = `profile_summary_${username}`;
+    if (localStorage.getItem(summaryKey)) {
+      return;
+    }
+
+    const profile = JSON.parse(
+      localStorage.getItem(`${username}_fitness_profile`) || '{}'
+    );
+    const extra = JSON.parse(
+      localStorage.getItem(`${username}_fitness_extra`) || '{}'
+    );
+
+    const weight = profile.weight || '--';
+    const height = profile.height || '--';
+    const bmi = this.calculateBmi(profile.weight, profile.height);
+    const calories = extra.calories || 0;
+
+    const text = `Weight: ${weight}kg, Height: ${height}cm, BMI: ${bmi}, Calories Burned: ${calories}`;
+
+    this.messages.push({
+      sender: 'user',
+      username,
+      text,
+      time: new Date().toLocaleTimeString()
+    });
+
+    localStorage.setItem(summaryKey, 'true');
+    this.saveChat();
+  }
+
+  private calculateBmi(weight: number, height: number) {
+    if (!weight || !height) return '--';
+    const h = height / 100;
+    return (weight / (h * h)).toFixed(1);
   }
 
   loadChat() {
@@ -70,10 +127,28 @@ export class ChatPage implements OnInit {
   }
 
   submitRating(stars: number) {
+    let ratings: any[] = [];
+    const raw = localStorage.getItem('fitness_ratings') || '[]';
 
-    const ratings = JSON.parse(localStorage.getItem('fitness_ratings') || '{}');
+    try {
+      ratings = JSON.parse(raw);
+    } catch {
+      ratings = [];
+    }
 
-    ratings[this.currentUser] = stars;
+    if (!Array.isArray(ratings)) {
+      ratings = Object.entries(ratings).map(([username, storedStars]: any) => ({
+        username,
+        stars: storedStars,
+        time: new Date().toISOString()
+      }));
+    }
+
+    ratings.push({
+      username: this.currentUser,
+      stars,
+      time: new Date().toISOString()
+    });
 
     localStorage.setItem('fitness_ratings', JSON.stringify(ratings));
 

@@ -1,17 +1,7 @@
 <app-header></app-header>
 <ion-content class="tab1-page">
 
-  <ion-toolbar>
 
-
-   
-
-    
-
-  </ion-toolbar>
-
-
-  
 
   <!-- HERO SECTION -->
   <div class="hero-section">
@@ -26,7 +16,11 @@
     <p>Stay stronger every day.</p>
 
   </div>
-
+  <!-- GREETING WITH USERNAME -->
+  <div class="hero-section" style="text-align: center; margin-bottom: 20px;">
+    <h1 style="font-size: 20px; margin: 0;"> Hello {{ fitness.username || fitness.profile?.name || 'Athlete' }}!</h1>
+    <p style="font-size: 14px; color: #aaa;">Welcome to your fitness journey</p>
+  </div>
   <!-- PROFILE SUMMARY -->
   <div class="main-card profile-card">
 
@@ -129,7 +123,7 @@
 
         <div
           class="bar"
-          [style.height.px]="item">
+          [style.height.px]="getBarHeight(item)">
         </div>
 
         <span>
@@ -151,7 +145,7 @@
 
       <div class="mini-box">
         <h3>Workout Streak</h3>
-        <p>7 Days 🔥</p>
+        <p>{{ fitness.streak }} Days 🔥</p>
       </div>
 
       <div class="mini-box">
@@ -161,12 +155,53 @@
 
       <div class="mini-box">
         <h3>Rank</h3>
-        <p>Warrior ⚔️</p>
+        <p>{{ fitness.rank }}</p>
       </div>
 
       <div class="mini-box">
         <h3>Status</h3>
-        <p>Active 💪</p>
+        <p>{{ fitness.streak > 0 ? 'Active 💪' : 'Inactive' }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RANK PROGRESSION -->
+  <div class="main-card">
+
+    <h2>🎖️ Rank Progression</h2>
+
+    <div class="profile-grid">
+
+      <div class="mini-box" [class.active]="fitness.streak >= 1">
+        <h3>Day 1</h3>
+        <p>🌱 Beginner</p>
+        <p style="font-size: 12px; color: #aaa;">First step</p>
+      </div>
+
+      <div class="mini-box" [class.active]="fitness.streak >= 3">
+        <h3>Day 3</h3>
+        <p>💪 Consistent</p>
+        <p style="font-size: 12px; color: #aaa;">Building habits</p>
+      </div>
+
+      <div class="mini-box" [class.active]="fitness.streak >= 7">
+        <h3>Day 7</h3>
+        <p>🏆 Champ</p>
+        <p style="font-size: 12px; color: #aaa;">Week warrior</p>
+      </div>
+
+      <div class="mini-box" [class.active]="fitness.streak >= 14">
+        <h3>Day 14</h3>
+        <p>⚔️ Warrior</p>
+        <p style="font-size: 12px; color: #aaa;">Two weeks strong</p>
+      </div>
+
+      <div class="mini-box" [class.active]="fitness.streak >= 30">
+        <h3>Day 30</h3>
+        <p>👑 Legend</p>
+        <p style="font-size: 12px; color: #aaa;">Unstoppable</p>
       </div>
 
     </div>

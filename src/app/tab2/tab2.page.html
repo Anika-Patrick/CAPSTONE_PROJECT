@@ -1,17 +1,6 @@
 
 <app-header></app-header><ion-content class="tab2-page ion-padding">
 <!-- FITNESS MODE BUTTON -->
- <ion-header>
-  <ion-toolbar>
-
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-
-    <ion-title>Tab</ion-title>
-
-  </ion-toolbar>
-</ion-header>
 
 
  
@@ -22,10 +11,28 @@
     <p>No excuses. Only results.</p>
   </div>
 
-  <!-- RESET -->
-  <ion-button color="danger" fill="outline" (click)="clearWorkouts()">
+  <!-- TOP BUTTONS -->
+<div class="top-buttons">
+  <ion-button
+    color="danger"
+    fill="outline"
+    (click)="clearWorkouts()">
     Reset Workouts
   </ion-button>
+
+  <ion-button
+    color="success"
+    fill="solid"
+    (click)="toggleDailyWorkout()">
+    {{ showDailyWorkout ? 'Hide Daily Workout' : 'Daily Workout' }}
+  </ion-button>
+</div>
+
+<!-- DAILY WORKOUT MESSAGE -->
+<div class="daily-workout-box" *ngIf="showDailyWorkout">
+  <h2>{{ todayWorkoutText }}</h2>
+  <p>Today's focused workout plan 💪</p>
+</div>
 
   <!-- LEVEL SELECTOR -->
   <div class="level-select">
@@ -54,25 +61,17 @@
   <!-- CARDS -->
   <div class="cards">
 
-    <div class="exercise-card" *ngFor="let c of categories">
-
-      <!-- GIF -->
+    <div class="exercise-card" *ngFor="let c of (showDailyWorkout ? filteredCategories : categories)">
       <div class="exercise-gif">
-  <img
-  [src]="categoryGifs[c.name]"
-  alt="workout gif"
-/>
-</div>
+        <img [src]="categoryGifs[c.name]" alt="workout gif" />
+      </div>
 
       <h2>{{ c.name }}</h2>
-
-      <!-- FIXED LEVEL DISPLAY -->
       <p class="level-text">🔥 Level: {{ selectedLevel }}</p>
 
       <ion-button expand="block" (click)="startWorkout(c.name)">
         Start Workout
       </ion-button>
-
     </div>
 
   </div>

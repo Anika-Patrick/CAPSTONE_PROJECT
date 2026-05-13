@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicModule, ToastController } from '@ionic/angular';
+import { IonicModule, ToastController, AlertController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
@@ -28,6 +28,8 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   quoteInterval: any;
 
+  isFirstLoginToday = false;
+
   quotes = [
     '🔥 Push harder than yesterday',
     '💪 No excuses, just results',
@@ -39,19 +41,57 @@ export class Tab1Page implements OnInit, OnDestroy {
   constructor(
     public fitness: FitnessService,
     private toast: ToastController,
-    private router: Router
+    private router: Router,
+    private alert: AlertController
   ) {}
 
   ngOnInit() {
     this.fitness.loadCurrentUserData();
+    
+    // Check if this is first login of the day
+    const today = new Date().toISOString().slice(0, 10);
+    const lastLogin = this.fitness.lastLoginDate;
+    
+    if (lastLogin !== today) {
+      this.isFirstLoginToday = true;
+    }
+    
     this.fitness.updateStreakOnLogin();
     this.history = this.fitness.weeklyCalories;
+
+    // Show streak popup if first login today
+    if (this.isFirstLoginToday && this.fitness.streak > 0) {
+      setTimeout(() => {
+        this.showStreakPopup();
+      }, 500);
+    }
 
     this.startQuotes();
   }
 
   ngOnDestroy() {
     clearInterval(this.quoteInterval);
+  }
+
+  // Show Streak Popup
+  async showStreakPopup() {
+    const alert = await this.alert.create({
+      cssClass: 'streak-alert',
+      header: '🔥 Daily Streak',
+      subHeader: this.fitness.rank,
+      message: `${this.fitness.getStreakPopupMessage()}\n\n${this.fitness.getRankDescription()}`,
+      buttons: [
+        {
+          text: 'Keep Going! 💪',
+          handler: () => {
+            this.showToast('Let\'s crush today\'s goals! 🚀');
+          }
+        }
+      ],
+      backdropDismiss: false
+    });
+
+    await alert.present();
   }
 
   // 📊 Progress %
@@ -95,6 +135,16 @@ export class Tab1Page implements OnInit, OnDestroy {
         '⚠️ Need 50 tokens to unlock admin chat'
       );
     }
+  }
+
+  getBarHeight(item: number) {
+    const maxHeight = 160;
+    const maxValue = Math.max(...this.history, 100);
+    if (maxValue <= 0) {
+      return 20;
+    }
+    const height = Math.round((item / maxValue) * maxHeight);
+    return Math.max(12, Math.min(height, maxHeight));
   }
 
   // 🧹 Reset All

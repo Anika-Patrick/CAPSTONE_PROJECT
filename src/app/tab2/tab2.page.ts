@@ -19,6 +19,7 @@ export class Tab2Page implements OnInit {
   selectedCategory: string = 'Chest';
   selectedLevel: string = 'Beginner';
   todayWorkoutText: string = '';
+  showDailyWorkout = false;
 
   levels = ['Beginner', 'Moderate', 'Advanced'];
 
@@ -54,27 +55,66 @@ export class Tab2Page implements OnInit {
     const day = new Date().getDay();
 
     const plan: any = {
-      0: { text: '🛌 Rest Day', parts: [] },
-      1: { text: '💪 Chest + Triceps', parts: ['Chest', 'Triceps'] },
-      2: { text: '🔥 Back + Biceps', parts: ['Arms', 'Biceps'] },
-      3: { text: '🦵 Legs Day', parts: ['Legs', 'Quads', 'Hamstrings', 'Calves'] },
-      4: { text: '⚡ Shoulders + Abs', parts: ['Shoulders', 'Abs'] },
-      5: { text: '💥 Arms Day', parts: ['Biceps', 'Triceps'] },
-      6: { text: '🏋️ Full Body', parts: this.categories.map(c => c.name) }
+      0: {
+        day: 'Sunday',
+        text: '🛌 Rest Day',
+        parts: []
+      },
+      1: {
+        day: 'Monday',
+        text: '💪 Chest + Triceps',
+        parts: ['Chest', 'Triceps']
+      },
+      2: {
+        day: 'Tuesday',
+        text: '🔥 Back + Biceps',
+        parts: ['Back', 'Biceps']
+      },
+      3: {
+        day: 'Wednesday',
+        text: '🦵 Legs Day',
+        parts: ['Legs', 'Quads', 'Hamstrings', 'Calves']
+      },
+      4: {
+        day: 'Thursday',
+        text: '⚡ Shoulders + Abs',
+        parts: ['Shoulders', 'Abs']
+      },
+      5: {
+        day: 'Friday',
+        text: '💥 Arms Day',
+        parts: ['Arms', 'Forearms']
+      },
+      6: {
+        day: 'Saturday',
+        text: '🏋️ Full Body',
+        parts: this.categories.map(c => c.name)
+      }
     };
 
     const today = plan[day];
     this.todayWorkoutText = today.text;
 
-    if (today.parts.length) {
+    alert(`📅 ${today.day}\n${today.text}`);
+
+    if (today.parts.length > 0) {
       this.filteredCategories = this.categories.filter(c =>
         today.parts.includes(c.name)
       );
+    } else {
+      this.filteredCategories = [];
+    }
+  }
+
+  toggleDailyWorkout() {
+    this.showDailyWorkout = !this.showDailyWorkout;
+    if (this.showDailyWorkout) {
+      this.getTodayWorkout();
     }
   }
 
   // ================= YOUR EXERCISES =================
- // ================= WORKOUT GIFS =================
+  // ================= WORKOUT GIFS =================
 
 categoryGifs: any = {
   Chest: 'assets/workouts/chest.gif',
@@ -97,16 +137,19 @@ exerciseGifs: any = {
 'Incline Push Ups': 'assets/workouts/chest/inclinepushups.gif',
 'Knee Push Ups': 'assets/workouts/chest/kneepushups.gif',
 'Wall Push Ups': 'assets/workouts/chest/wallpushups.gif',
-'Chest Press Light': 'assets/workouts/chest/chestpresslight.gif',
+'Chest Press light':'assets/workouts/chest/Declinepushup.gif',
 'Bench Press': 'assets/workouts/chest/benchpress.gif',
+'Barbell Bench Press': 'assets/workouts/chest/heavybenchpress.gif',
 'Incline Dumbbell Press': 'assets/workouts/chest/inclinedumbbellpress.gif',
 'Chest Fly': 'assets/workouts/chest/chestfly.gif',
 'Decline Push Ups': 'assets/workouts/chest/Declinepushup.gif',
 'Cable Press': 'assets/workouts/chest/cablepress.gif',
+'Cable Chest Press': 'assets/workouts/chest/cablepress.gif',
 'Weighted Push Ups': 'assets/workouts/chest/heavybenchpress.gif', // no separate weightedpushups.gif found
 'Heavy Bench Press': 'assets/workouts/chest/heavybenchpress.gif',
 'Cable Fly': 'assets/workouts/chest/cablefly.gif',
 'Dips': 'assets/workouts/chest/dips.gif',
+'Dips (Chest Focus)': 'assets/workouts/chest/dips.gif',
 'Explosive Push Ups': 'assets/workouts/chest/explosivepushups.gif',
 
   // ================= BACK =================
@@ -116,13 +159,17 @@ exerciseGifs: any = {
 'Wall Slides': 'assets/workouts/back/wallslides.gif',
 'Bird Dog': 'assets/workouts/back/birddog.gif',
 'Pull Ups': 'assets/workouts/back/pullups.gif',
+'Assisted Pull Ups': 'assets/workouts/back/pullups.gif',
 'Lat Pulldown': 'assets/workouts/back/latpulldown.gif',
 'Seated Row': 'assets/workouts/back/seatedrow.gif',
+'Seated Cable Row': 'assets/workouts/back/seatedrow.gif',
 'Bent Over Row': 'assets/workouts/back/bendoverrow.gif',
 'Deadlift Light': 'assets/workouts/back/deadliftlight.gif',
+'Deadlift (Light)': 'assets/workouts/back/deadliftlight.gif',
 'Weighted Pull Ups': 'assets/workouts/back/weightedpullups.gif',
 'Deadlift': 'assets/workouts/back/deadlift.gif',
 'T Bar Row': 'assets/workouts/back/T-Bar-Row.gif',
+'T-Bar Row': 'assets/workouts/back/T-Bar-Row.gif',
 'Single Arm Row': 'assets/workouts/back/singlearmrow.gif',
 'Muscle Up': 'assets/workouts/back/Muscle-up.gif',
 
@@ -143,20 +190,26 @@ exerciseGifs: any = {
 'Sprints': 'assets/workouts/legs/Jump-Squat.gif',
 
   // ================= SHOULDERS =================
+'Arm Circles': 'assets/workouts/shoulders/Armcircles.gif',
 'Shoulder Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
 'Front Raise': 'assets/workouts/shoulders/frontraise.gif',
-'Arm Circles': 'assets/workouts/shoulders/Armcircles.gif',
+'Front Raise (Light)': 'assets/workouts/shoulders/frontraise.gif',
 'Wall Press': 'assets/workouts/shoulders/wallpress.gif',
+'Wall Shoulder Press': 'assets/workouts/shoulders/wallshoulderpress.gif',
 'Light Lateral Raise': 'assets/workouts/shoulders/lateralraise.gif',
+'Lateral Raise (Light)': 'assets/workouts/shoulders/lateralraise.gif',
 'Dumbbell Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
 'Lateral Raise': 'assets/workouts/shoulders/lateralraise.gif',
 'Rear Delt Fly': 'assets/workouts/shoulders/reardeltfly.gif',
 'Arnold Press': 'assets/workouts/shoulders/Arnold-Press.gif',
 'Cable Raise': 'assets/workouts/shoulders/lateralraise.gif',
 'Heavy Press': 'assets/workouts/shoulders/heavypress.gif',
-'Handstand Pushup': 'assets/workouts/arms/handstandhold.gif',
+'Heavy Shoulder Press': 'assets/workouts/shoulders/heavypress.gif',
+'Handstand Push Ups': 'assets/workouts/shoulders/handstandpushup.gif',
 'Upright Row': 'assets/workouts/shoulders/heavypress.gif',
 'Plate Raise': 'assets/workouts/shoulders/plateraise.gif',
+'Cable Lateral Raise': 'assets/workouts/shoulders/lateralraise.gif',
+'Push Press': 'assets/workouts/shoulders/heavypress.gif',
 'Explosive Press': 'assets/workouts/shoulders/heavypress.gif',
 
 // ================= ABS =================
@@ -165,6 +218,7 @@ exerciseGifs: any = {
 'Plank': 'assets/workouts/abs/plank.gif',
 'Sit Ups': 'assets/workouts/abs/situps.gif',
 'Toe Touch': 'assets/workouts/abs/Crunches.gif',
+'Toe Touch Crunch': 'assets/workouts/abs/Crunches.gif',
 'Bicycle Crunch': 'assets/workouts/abs/Bicyclecrunch.gif',
 'Hanging Knee Raise': 'assets/workouts/abs/HangingKneeraise.gif',
 'Russian Twist': 'assets/workouts/abs/Bicyclecrunch.gif',
@@ -172,16 +226,19 @@ exerciseGifs: any = {
 'Dragon Flag': 'assets/workouts/abs/dragonflag.gif',
 'Hanging Leg Raise': 'assets/workouts/abs/HangingKneeraise.gif',
 'V Ups': 'assets/workouts/abs/legraise.gif',
+'V-Ups': 'assets/workouts/abs/legraise.gif',
 'Toe to Bar': 'assets/workouts/abs/HangingKneeraise.gif',
+'Toes to Bar': 'assets/workouts/abs/HangingKneeraise.gif',
+'Weighted Plank': 'assets/workouts/abs/plank.gif',
 
 // ================= ARMS =================
 'Wall Arm Push': 'assets/workouts/shoulders/wallpress.gif',
 'Light Dumbbell Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
 'Standing Punches': 'assets/workouts/arms/standingpunches.gif',
 'Dumbbell Shoulder Press': 'assets/workouts/shoulders/Shoulder-Press.gif',
-'Tricep Kickbacks': 'assets/workouts/shoulders/reardeltfly.gif',
 'Battle Rope Waves': 'assets/workouts/arms/battleropewaves.gif',
-'Pike Push Ups': 'assets/workouts/chest/pushups.gif',
+'Pike Push Ups': 'assets/workouts/shoulders/pikepushups.gif',
+'Pike Push Ups (Easy)': 'assets/workouts/shoulders/pikepushups.gif',
 'Handstand Hold': 'assets/workouts/arms/handstandhold.gif',
 'Heavy Dumbbell Press': 'assets/workouts/shoulders/heavypress.gif',
 'Explosive Battle Ropes': 'assets/workouts/arms/explosivebattleropes.gif',
@@ -191,8 +248,8 @@ exerciseGifs: any = {
 'Light Dumbbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
 'Resistance Band Curl': 'assets/workouts/back/resistancebandpull.gif',
 'Seated Dumbbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
-'Hammer Curl': 'assets/workouts/forearms/behindbackcurl.gif',
-'Concentration Curl': 'assets/workouts/forearms/behindbackcurl.gif',
+'Hammer Curl': 'assets/workouts/biceps.gif',
+'Concentration Curl': 'assets/workouts/shoulders/heavypress.gif',
 'Barbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
 'Incline Dumbbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
 'Cable Curl': 'assets/workouts/chest/cablepress.gif',
@@ -204,8 +261,24 @@ exerciseGifs: any = {
 'Heavy Barbell Curl': 'assets/workouts/forearms/behindbackcurl.gif',
 'Chin Ups': 'assets/workouts/back/pullups.gif',
 
-// ================= QUADS =================
-// ================= QUADS =================
+// ================= TRICEPS =================
+'Bench Dips': 'assets/workouts/chest/dips.gif',
+'Wall Tricep Push': 'assets/workouts/shoulders/wallpress.gif',
+'Overhead Dumbbell Extension': 'assets/workouts/shoulders/Shoulder-Press.gif',
+'Tricep Kickback': 'assets/workouts/shoulders/reardeltfly.gif',
+'Resistance Band Pushdown': 'assets/workouts/back/resistancebandpull.gif',
+'Cable Pushdown': 'assets/workouts/chest/cablepress.gif',
+'Close Grip Push Ups': 'assets/workouts/chest/pushups.gif',
+'Skull Crushers': 'assets/workouts/chest/benchpress.gif',
+'Overhead Cable Extension': 'assets/workouts/shoulders/Shoulder-Press.gif',
+'Parallel Bar Dips': 'assets/workouts/chest/dips.gif',
+'Weighted Dips': 'assets/workouts/chest/dips.gif',
+'Diamond Push Ups': 'assets/workouts/chest/pushups.gif',
+'Heavy Skull Crushers': 'assets/workouts/chest/benchpress.gif',
+'Single Arm Pushdown': 'assets/workouts/chest/cablepress.gif',
+'Explosive Bench Dips': 'assets/workouts/chest/dips.gif',
+
+// ================= QUADS ==================
 'Static Lunges': 'assets/workouts/quads/walkinglunges.gif',
 'Chair Squats': 'assets/workouts/legs/bodyweight-squat.gif',
 'Goblet Squats': 'assets/workouts/quads/GobletSquat.gif',
@@ -277,7 +350,7 @@ Arms: {
     { name: 'Wall Arm Push', reps: 12, time: 30 },
     { name: 'Resistance Band Curl', reps: 10, time: 30 },
     { name: 'Light Dumbbell Press', reps: 10, time: 30 },
-    { name: 'Standing Punches', reps: 20, time: 30 }
+    { name: 'Hammer Curl', reps: 20, time: 30 }
   ],
   Moderate: [
     { name: 'Dumbbell Shoulder Press', reps: 12, time: 35 },
@@ -324,7 +397,7 @@ Triceps: {
     { name: 'Bench Dips', reps: 10, time: 30 },
     { name: 'Wall Tricep Push', reps: 12, time: 30 },
     { name: 'Overhead Dumbbell Extension', reps: 10, time: 30 },
-    { name: 'Tricep Kickbacks', reps: 10, time: 30 },
+    { name: 'Tricep Kickback', reps: 10, time: 30 },
     { name: 'Resistance Band Pushdown', reps: 12, time: 30 }
   ],
   Moderate: [
@@ -513,10 +586,10 @@ Forearms: {
   Shoulders: {
     Beginner: [
       { name: 'Arm Circles', reps: 15, time: 30 },
-      { name: 'Wall Shoulder Press', reps: 10, time: 30 },
+      { name: 'Shoulder Press', reps: 10, time: 30 },
       { name: 'Front Raise (Light)', reps: 10, time: 30 },
       { name: 'Lateral Raise (Light)', reps: 10, time: 30 },
-      { name: 'Pike Push Ups (Easy)', reps: 8, time: 30 }
+      { name: 'Wall Press', reps: 8, time: 30 }
     ],
     Moderate: [
       { name: 'Dumbbell Shoulder Press', reps: 12, time: 35 },
@@ -564,7 +637,6 @@ Forearms: {
   // ================= INIT =================
   ngOnInit() {
     this.filteredCategories = this.categories;
-    this.getTodayWorkout();
   }
 
   // ================= FILTER =================

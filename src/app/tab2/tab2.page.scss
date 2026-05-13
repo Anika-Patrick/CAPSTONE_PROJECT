@@ -11,6 +11,23 @@
   animation: fadeIn 0.6s ease;
 }
 
+.top-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px 0 10px;
+}
+
+.top-buttons ion-button {
+  min-width: 150px;
+}
+
+.daily-workout-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* CHIPS */
 .category-scroll {
   display: flex;
